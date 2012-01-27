@@ -1,0 +1,35 @@
+From cc7358b3b8ed5397fa3c8fbcd7e050c0e45b0e86 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Fri, 27 Jan 2012 08:47:50 +0100
+Subject: [PATCH] Patch out Qt visibility check. Signed-off-by: Samuel
+ Stirtzel <s.stirtzel@googlemail.com>
+
+---
+ cmake/FindPhononInternal.cmake |   10 ++++++----
+ 1 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/FindPhononInternal.cmake b/cmake/FindPhononInternal.cmake
+index 2bad949..1725946 100644
+--- a/cmake/FindPhononInternal.cmake
++++ b/cmake/FindPhononInternal.cmake
+@@ -290,11 +290,13 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+       file(WRITE "${_source_file}" "${_source}")
+       set(_include_dirs "-DINCLUDE_DIRECTORIES:STRING=${QT_INCLUDES}")
+ 
+-      try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${_include_dirs}" COMPILE_OUTPUT_VARIABLE _compile_output_var)
++# Don't probe our OpenEmbedded Qt version, as this script get's the arguments wrong anyway
+ 
+-      if(NOT _compile_result)
+-         message(FATAL_ERROR "Qt compiled without support for -fvisibility=hidden. This will break plugins and linking of some applications. Please fix your Qt installation.")
+-      endif(NOT _compile_result)
++#      try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${_include_dirs}" COMPILE_OUTPUT_VARIABLE _compile_output_var)
++
++#     if(NOT _compile_result)
++#         message(FATAL_ERROR "Qt compiled without support for -fvisibility=hidden. This will break plugins and linking of some applications. Please fix your Qt installation.")
++#      endif(NOT _compile_result)
+ 
+       if (GCC_IS_NEWER_THAN_4_2)
+           set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+-- 
+1.7.5.4
+

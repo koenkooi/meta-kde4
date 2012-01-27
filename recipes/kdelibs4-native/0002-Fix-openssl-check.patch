@@ -1,0 +1,35 @@
+From 36d143c8a9ac26ba63a943bb88766c2fdfe216c8 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 25 Jan 2012 16:26:07 +0100
+Subject: [PATCH] When using OpenEmbedded we can't trust that these checks are
+ correct for our toolchain. Signed-off-by: Samuel Stirtzel
+ <s.stirtzel@googlemail.com>
+
+---
+ kdecore/network/ConfigureChecks.cmake |   10 ----------
+ 1 files changed, 0 insertions(+), 10 deletions(-)
+
+diff --git a/kdecore/network/ConfigureChecks.cmake b/kdecore/network/ConfigureChecks.cmake
+index e91d1bf..032a93e 100644
+--- a/kdecore/network/ConfigureChecks.cmake
++++ b/kdecore/network/ConfigureChecks.cmake
+@@ -11,16 +11,6 @@ macro_push_required_vars()
+   if (QT_USE_FRAMEWORKS)
+     set(CMAKE_REQUIRED_FLAGS "-F${QT_LIBRARY_DIR} ")
+   endif (QT_USE_FRAMEWORKS)
+-  check_cxx_source_compiles(
+-"#include <QtNetwork/QSslSocket>
+-int main()
+-{
+-    QSslSocket *socket;
+-    return 0;
+-}" HAVE_QSSLSOCKET)
+-  if (NOT HAVE_QSSLSOCKET)
+-    message(SEND_ERROR "KDE Requires Qt to be built with SSL support")
+-  endif (NOT HAVE_QSSLSOCKET)
+ macro_pop_required_vars()
+ 
+ check_include_files("sys/types.h;sys/socket.h;net/if.h" HAVE_NET_IF_H)
+-- 
+1.7.5.4
+

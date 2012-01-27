@@ -1,0 +1,11 @@
+Currently to be done:
+
+kdelibs4:
+-fix compile errors.
+
+plasma-active:
+-provide dependencies.
+-test on OpenEmbedded compatible hardware
+
+all recipes:
+-test cross compiling capabilities.
