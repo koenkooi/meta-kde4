@@ -2,8 +2,8 @@ LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=ccf994d4070fbdcd43bf7de4bf9b4a22"
 
 inherit qt4x11 cmake
-DEPENDS = "boost-native curl-native libxml2-native expat-native binutils-native virtual/libiconv"
-PREFERRED_PROVIDER_virtclass-native_virtual/libiconv ?= "libiconv"
+DEPENDS = "boost curl libxml2 expat binutils virtual/libiconv"
+#DEPENDS_virtclass-native = "libiconv-native"
 
 SRC_URI = "git://anongit.kde.org/strigi.git;branch=master"
 SRCREV = "28a7df0d99f8fde1c8c9f5868cbd7f9a278c4655"

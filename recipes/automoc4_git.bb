@@ -10,4 +10,5 @@ PV = "0.9.88+git${SRCPV}"
 
 S = "${WORKDIR}/git" 
 
+# This recipe could be pure native, but if you compile from your cross environment (on target) you may use this too.
 BBCLASSEXTEND = "native"

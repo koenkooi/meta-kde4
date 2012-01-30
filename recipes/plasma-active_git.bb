@@ -2,9 +2,8 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 inherit qt4x11 cmake
-#require kdelibs4.inc
+require kde4.inc
 
-AUTHOR = "Samuel Stirtzel"
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 
 #depends list from kubuntu "apt-get build-dep plasma-mobile"
@@ -13,7 +12,7 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #finalized (and WORKING) depends list
 DEPENDS = "quilt curl lsof"
 
-# kdelibs *must* be built out of tree
+# build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
@@ -23,18 +22,6 @@ EXTRA_OECMAKE += " \
 		  -DKDE4_KDECONFIG_EXECUTABLE=/usr/bin/kde4-config \
 		  -DCMAKE_MODULE_PATH=${WORKDIR}/git/cmake/modules \
 		 "
-
-#NOTFOUND_DEPENDS =
-#'emacsen-common'
-##'kde-workspace-dev'
-##'kdelibs5-dev'
-#'libkactivities5'
-#'libkdeclarative5'
-#'libkimproxy4'
-#'libkutils4'
-##'libphonon-dev'
-##'libsoprano-dev'
-#'libxmlrpc-core-c3-0'
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"
 SRCREV = "c99274e85a653115d90a4d2b8fd21705d0ea5984"
