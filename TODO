@@ -1,11 +1,8 @@
 Currently to be done:
 
-kdelibs4:
--fix compile errors.
-
 plasma-active:
--provide dependencies.
+-fix the path to kconfig_compiler, as CMake cdoes not recognize it.
 -test on OpenEmbedded compatible hardware
 
 all recipes:
--test cross compiling capabilities.
+-Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.

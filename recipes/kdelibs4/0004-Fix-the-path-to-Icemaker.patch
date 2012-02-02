@@ -1,0 +1,26 @@
+From de3993823f24e57fa99a9bf18f4628cda15afc80 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 1 Feb 2012 12:42:06 +0100
+Subject: [PATCH] Fix the path to Icemaker Signed-off-by: Samuel Stirtzel
+ <s.stirtzel@googlemail.com>
+
+---
+ kjs/CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/kjs/CMakeLists.txt b/kjs/CMakeLists.txt
+index 1188064..2c88c0c 100644
+--- a/kjs/CMakeLists.txt
++++ b/kjs/CMakeLists.txt
+@@ -99,7 +99,7 @@ endif(PCRE_FOUND  AND NOT  KJS_FORCE_DISABLE_PCRE)
+    kde4_add_executable(icemaker NOGUI ${icemaker_SRCS})
+ 
+    # get the name of the generated wrapper script (which sets up LD_LIBRARY_PATH)
+-   get_target_property(ICEMAKER_EXECUTABLE icemaker WRAPPER_SCRIPT)
++#   get_target_property(ICEMAKER_EXECUTABLE icemaker WRAPPER_SCRIPT)
+ 
+ #    export(TARGETS icemaker FILE ${CMAKE_BINARY_DIR}/ImportIcemakerExecutable.cmake)
+ # endif (CMAKE_CROSSCOMPILING)
+-- 
+1.7.5.4
+

@@ -11,8 +11,5 @@ Editors:
 
 FAQ / Troubleshooting:
 1.
-  Q: When this layer is enabled eglibc complains about libiconv, how to resolve this?
-  A: Disable / rename / remove the file recipes/libiconv_1.14.bbappend (this will prevent the native build of strigi)
-2.
   Q: How can I contribute my patches / recipes to this layer?
   A: Send a merge request to one of the layer maintainers, don't forget to add your name to the Editors and the COPYING.MIT list.
