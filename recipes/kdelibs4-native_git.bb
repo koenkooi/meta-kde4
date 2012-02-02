@@ -2,7 +2,7 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-DEPENDS = "automoc4-native giflib attica jpeg libpng bzip2"
+DEPENDS = "kdelibs4-helper-native automoc4-native giflib attica jpeg libpng bzip2"
 
 #soprano
 #strigi-native
@@ -15,7 +15,7 @@ require kde4.inc
 SRC_URI = "git://anongit.kde.org/kdelibs;protocol=git;branch=master \
 	   file://0001-Disable-documentation.patch \
 	   file://0002-Fix-openssl-check.patch \
-	   file://0003-Fix-Qt-and-Phonon.patch \
+	   file://0003-Fix-Qt-Phonon-and-kconfig_compiler.patch \
 	  "
 
 SRCREV = "cc5bf952ad182cf049e5df02c4c5f09d62bb68a2"

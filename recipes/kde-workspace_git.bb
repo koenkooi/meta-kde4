@@ -10,4 +10,8 @@ PV = "4.7.97+git${SRCPV}"
 
 S = "${WORKDIR}/git" 
 
+# build out of tree
+OECMAKE_SOURCEPATH = ".."
+OECMAKE_BUILDPATH = "build"
+
 BBCLASSEXTEND = "native"

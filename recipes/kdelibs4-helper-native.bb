@@ -15,3 +15,5 @@ do_install() {
   install -m 0644 ${WORKDIR}/KDELibs4LibraryTargets.cmake ${D}${datadir}/apps/cmake/modules
   install -m 0644 ${WORKDIR}/KDELibs4ToolsTargets.cmake ${D}${datadir}/apps/cmake/modules
 }
+#	   file://kdemacros.h \
+#install -m 0644 ${WORKDIR}/kdemacros.h ${D}${incdir}

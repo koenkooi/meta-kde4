@@ -1,15 +1,15 @@
-From f8a572b330853d7dfb02301d0521324a3b4dcf0b Mon Sep 17 00:00:00 2001
+From d10aedea173e6630ee21a909d5ec36f04f40eb7f Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Wed, 1 Feb 2012 17:19:39 +0100
-Subject: [PATCH] Fix Qt, Phonon and kconfig_compiler. Signed-off-by: Samuel
+Date: Thu, 2 Feb 2012 11:16:44 +0100
+Subject: [PATCH] Fix Qt, Phonon and kconfig_compiler Signed-off-by: Samuel
  Stirtzel <s.stirtzel@googlemail.com>
 
 ---
- cmake/modules/FindKDE4Internal.cmake |   59 +++++++++++++++++++---------------
- 1 files changed, 33 insertions(+), 26 deletions(-)
+ cmake/modules/FindKDE4Internal.cmake |   61 +++++++++++++++++++--------------
+ 1 files changed, 35 insertions(+), 26 deletions(-)
 
 diff --git a/cmake/modules/FindKDE4Internal.cmake b/cmake/modules/FindKDE4Internal.cmake
-index 84df6f5..733a6a4 100644
+index 84df6f5..dee220e 100644
 --- a/cmake/modules/FindKDE4Internal.cmake
 +++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -346,6 +346,8 @@
@@ -26,26 +26,28 @@ index 84df6f5..733a6a4 100644
     else (WIN32)
        set(LIBRARY_OUTPUT_PATH               ${CMAKE_BINARY_DIR}/lib )
 -      set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
-+      if(NOT OPENEMBEDDED)
++      if(NOT DE4_KCFGC_EXECUTABLE)
 +	set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
-+      endif(NOT OPENEMBEDDED)
++      endif(NOT DE4_KCFGC_EXECUTABLE)
        set(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kauth-policy-gen${CMAKE_EXECUTABLE_SUFFIX}.shell )
        set(KDE4_MEINPROC_EXECUTABLE          ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/meinproc4${CMAKE_EXECUTABLE_SUFFIX}.shell )
        set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets${CMAKE_EXECUTABLE_SUFFIX}.shell )
-@@ -600,8 +604,10 @@ else (_kdeBootStrapping)
+@@ -600,8 +604,12 @@ else (_kdeBootStrapping)
     list(GET _importedConfigurations 0 _firstConfig)
  
     if(NOT WINCE)
 -   get_target_property(KDE4_KCFGC_EXECUTABLE             ${KDE4_TARGET_PREFIX}kconfig_compiler    LOCATION_${_firstConfig})
 -   get_target_property(KDE4_MEINPROC_EXECUTABLE          ${KDE4_TARGET_PREFIX}meinproc4           LOCATION_${_firstConfig})
-+    if(NOT OPENEMBEDDED)
++    if(NOT KDE4_KCFGC_EXECUTABLE)
 +      get_target_property(KDE4_KCFGC_EXECUTABLE             ${KDE4_TARGET_PREFIX}kconfig_compiler    LOCATION_${_firstConfig})
++    endif(NOT KDE4_KCFGC_EXECUTABLE)
++    if(NOT OPENEMBEDDED)
 +      get_target_property(KDE4_MEINPROC_EXECUTABLE          ${KDE4_TARGET_PREFIX}meinproc4           LOCATION_${_firstConfig})
 +    endif(NOT OPENEMBEDDED)
     else(NOT WINCE)
      set(KDE4_KCFGC_EXECUTABLE             ${HOST_BINDIR}/${CMAKE_CFG_INTDIR}/kconfig_compiler )
      set(KDE4_MEINPROC_EXECUTABLE          ${HOST_BINDIR}/${CMAKE_CFG_INTDIR}/meinproc4 )
-@@ -1276,29 +1282,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+@@ -1276,29 +1284,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
        string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
     endif (GCC_IS_NEWER_THAN_4_1)
  

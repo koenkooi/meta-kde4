@@ -25,6 +25,11 @@ PV = "4.7.97+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 
+FILES_${PN} += "\
+	  ${libdir}/kde4/*.so \
+	  ${datadir}/apps/kauth/*.stub \
+	 "
+
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
@@ -49,12 +54,15 @@ do_compile() {
 }
 
 do_install() {
-  install -d ${D}/${libdir}
-  for i in ${S}/build/lib/*
-  do
-    install -m 0755 ${i} ${D}/${libdir}
-  done
+#  install -d ${D}/${libdir}
+#  for i in ${S}/build/lib/*
+#  do
+#    install -m 0755 ${i} ${D}/${libdir}
+#  done
+  cd ${S}/build/kdecore && oe_runmake PREFIX=${D} DESTDIR=${D} INSTALL_ROOT=${D} install
+  install -m 0644 ${S}/build/kdemacros.h ${STAGING_INCDIR}
+  cd ${S}/build/includes && oe_runmake install DESTDIR=${D}
 }
 
-PARALLEL_MAKE=""
+#PARALLEL_MAKE=""
 #BBCLASSEXTEND = "native"
