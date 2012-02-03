@@ -1,7 +1,7 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=be254b9345b1c2ff33e1a6a96768f2fb"
 
-DEPENDS = "kdelibs4 kdelibs4-native"
+DEPENDS = "kdelibs4"
 
 require kde4.inc
 
@@ -14,6 +14,8 @@ EXTRA_OECMAKE =+ "\
 		  \
 		  -DDBUSMENUQT_INCLUDE_DIR=${STAGING_INCDIR}/QtDBus \
 		  -DDBUSMENUQT_LIBRARIES=${OE_QMAKE_LIBDIR_QT} \
+		  \
+		  -DSTRIGI_REQUIRED=FALSE \
 		 "
 
 S = "${WORKDIR}/git"

@@ -9,7 +9,7 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #DEPENDS = "automoc cmake cmake-data emacsen-common kde-workspace-dev kdelibs5-dev libcurl3 libkactivities5 libkdeclarative5 libkimproxy4 libkutils4 liblsofui4 libphonon-dev libsoprano-dev libxmlrpc-core-c3-0 quilt" 
 
 #finalized (and WORKING) depends list
-DEPENDS = "kdelibs4 kdelibs4-native libkactivities4 soprano quilt curl lsof automoc4-native perl-native"
+DEPENDS = "kdelibs4 libkactivities4 soprano quilt curl lsof automoc4-native perl-native"
 
 # build out of tree
 OECMAKE_SOURCEPATH = ".."

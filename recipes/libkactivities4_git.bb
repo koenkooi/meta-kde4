@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/lib/info.h;md5=4547c0d20883d91da92544e
 
 require kde4.inc
 
-DEPENDS = "kdelibs4 kdelibs4-native"
+DEPENDS = "kdelibs4"
 #+soprano
 
 OECMAKE_SOURCEPATH = ".."

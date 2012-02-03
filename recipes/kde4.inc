@@ -15,6 +15,7 @@ do_rewrite_toolchain_file() {
 # CMake system name must be something like "Linux".
 # This is important for cross-compiling.
 set( CMAKE_SYSTEM_NAME `echo ${SDK_OS} | sed 's/^./\u&/'` )
+set( CMAKE_HOST_SYSTEM_NAME "Linux" )
 set( CMAKE_SYSTEM_PROCESSOR ${TARGET_ARCH} )
 set( CMAKE_C_COMPILER ${OECMAKE_C_COMPILER} )
 set( CMAKE_CXX_COMPILER ${OECMAKE_CXX_COMPILER} )
@@ -34,6 +35,10 @@ set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
 # set the archiever to ${AR}
 set( CMAKE_AR ${OECMAKE_AR} )
 
+
+# Lets give this a try, but I doubt that it will make any difference
+set( CMAKE_CROSSCOMPILING TRUE )
+
 # Use qt.conf settings
 set( ENV{QT_CONF_PATH} ${WORKDIR}/qt.conf )
 
@@ -51,6 +56,8 @@ set( CMAKE_INCLUDE_PATH ${STAGING_INCDIR_HOST} )
 
 #set( DBUSMENUQT_INCLUDE_DIR ${STAGING_INCDIR}/QtDBus )
 set( DBUSMENUQT_LIBRARIES ${OE_QMAKE_LIBDIR_QT} )
+
+set( CMAKE_PREFIX_PATH ${STAGING_DIR_HOST}${prefix} )
 
 # native compiled tools
 set( KDE4_KCFGC_EXECUTABLE ${STAGING_BINDIR_NATIVE}/kconfig_compiler )
@@ -73,6 +80,5 @@ set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} ${OE_QMAKE_INCDIR_QT}/Qt ${OE_QMAKE_INCDIR_QT}/Qt3Support ${OE_QMAKE_INCDIR_QT}/QtCore ${OE_QMAKE_INCDIR_QT}/QtDBus ${OE_QMAKE_INCDIR_QT}/QtGui ${OE_QMAKE_INCDIR_QT}/QtNetwork ${OE_QMAKE_INCDIR_QT}/QtSql ${OE_QMAKE_INCDIR_QT}/QtTest ${OE_QMAKE_INCDIR_QT}/QtXml ${OE_QMAKE_INCDIR_QT}/QtXmlPatterns )
 
 EOF
-#die "CMAKE_MODULE_PATH: ${STAGING_DATADIR_NATIVE}/apps/cmake/modules/"
 }
 addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure

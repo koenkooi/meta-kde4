@@ -2,7 +2,7 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-DEPENDS = "automoc4-native giflib attica jpeg libpng bzip2 libpcre"
+DEPENDS = "kdelibs4-native automoc4-native giflib attica jpeg libpng bzip2 libpcre"
 
 #soprano
 #strigi-native
@@ -34,7 +34,7 @@ FILES_${PN} += "\
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-# as long as Qt4 native is broken we need our DIRTY HACK / WORKAROUND stuff here
+
 EXTRA_OECMAKE =+ "\
 		  -DAUTOMOC4_EXECUTABLE=${STAGING_BINDIR_NATIVE}/automoc4 \
 		  \
