@@ -14,8 +14,6 @@ SRC_URI = "git://anongit.kde.org/kactivities;protocol=git;branch=master \
 
 SRCREV = "ba5ca629ffe5b777d875cb83a1263f16b94a8d4e"
 
-# This one needs special include files not included in the make install of kdelibs4 includes target
-#OECMAKE_CXX_FLAGS += " -I${STAGING_INCDIR}"
 
 PV = "4.7.97+git${SRCPV}"
 

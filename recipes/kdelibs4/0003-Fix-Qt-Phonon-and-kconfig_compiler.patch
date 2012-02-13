@@ -1,7 +1,7 @@
-From d10aedea173e6630ee21a909d5ec36f04f40eb7f Mon Sep 17 00:00:00 2001
+From 3f67ac806d8a208a33f52d3c41e248e9ac8123bd Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Thu, 2 Feb 2012 11:16:44 +0100
-Subject: [PATCH] Fix Qt, Phonon and kconfig_compiler Signed-off-by: Samuel
+Date: Mon, 13 Feb 2012 09:32:00 +0100
+Subject: [PATCH] Fix-Qt-Phonon-and-kconfig_compiler Signed-off-by: Samuel
  Stirtzel <s.stirtzel@googlemail.com>
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH] Fix Qt, Phonon and kconfig_compiler Signed-off-by: Samuel
  1 files changed, 35 insertions(+), 26 deletions(-)
 
 diff --git a/cmake/modules/FindKDE4Internal.cmake b/cmake/modules/FindKDE4Internal.cmake
-index 84df6f5..dee220e 100644
+index 84df6f5..aea65f0 100644
 --- a/cmake/modules/FindKDE4Internal.cmake
 +++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -346,6 +346,8 @@
@@ -26,9 +26,9 @@ index 84df6f5..dee220e 100644
     else (WIN32)
        set(LIBRARY_OUTPUT_PATH               ${CMAKE_BINARY_DIR}/lib )
 -      set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
-+      if(NOT DE4_KCFGC_EXECUTABLE)
++      if(NOT OPENEMBEDDED)
 +	set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
-+      endif(NOT DE4_KCFGC_EXECUTABLE)
++      endif(NOT OPENEMBEDDED)
        set(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kauth-policy-gen${CMAKE_EXECUTABLE_SUFFIX}.shell )
        set(KDE4_MEINPROC_EXECUTABLE          ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/meinproc4${CMAKE_EXECUTABLE_SUFFIX}.shell )
        set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets${CMAKE_EXECUTABLE_SUFFIX}.shell )

@@ -1,0 +1,52 @@
+From 88aa3d3eb363b410d094337ff9f2c2f0ba872053 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Mon, 13 Feb 2012 08:55:55 +0100
+Subject: [PATCH] Don't build documentation disable Strigi Signed-off-by:
+ Samuel Stirtzel <s.stirtzel@googlemail.com>
+
+---
+ CMakeLists.txt |   13 +++++++++----
+ 1 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c82cdda..3a2cdad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
+ # Make CPack available to easy generate binary packages
+ include(CPack)
+ 
++## we need no docs, or at least an option to disable them!
++set (DISABLE_DOCS "Docs won't be build" TRUE)
++set(OPENEMBEDDED "We need nothing that depends on Strigi" TRUE)
+ ################# set KDE specific information #################
+ 
+ set (KDE_VERSION_MAJOR 4)
+@@ -76,8 +79,10 @@ if (WIN32)
+     set (STRIGI_REQUIRED FALSE)
+     set (STRIGI_EXTRA_TEXT "")
+ else (WIN32)
+-    set (STRIGI_REQUIRED TRUE)
+-    set (STRIGI_EXTRA_TEXT "Required by some critical kioslaves")
++    if (NOT OPENEMBEDDED)
++      set (STRIGI_REQUIRED TRUE)
++      set (STRIGI_EXTRA_TEXT "Required by some critical kioslaves")
++    endif (NOT OPENEMBEDDED)
+ endif (WIN32)
+ macro_log_feature(STRIGI_FOUND "Strigi" "Desktop indexing and search support" "http://strigi.sourceforge.net" ${STRIGI_REQUIRED} "${STRIGI_MIN_VERSION}" ${STRIGI_EXTRA_TEXT})
+ 
+@@ -295,9 +300,9 @@ if (QT_QT3SUPPORT_FOUND)
+ endif (QT_QT3SUPPORT_FOUND)
+ add_subdirectory( kfile )
+ add_subdirectory( kconf_update )
+-if(NOT WINCE)
++if(NOT WINCE AND NOT DISABLE_DOCS)
+ add_subdirectory( kdoctools  )
+-endif(NOT WINCE)
++endif(NOT WINCE AND NOT DISABLE_DOCS)
+ add_subdirectory( kioslave   )
+ add_subdirectory( knewstuff  )
+ add_subdirectory( kparts     )
+-- 
+1.7.5.4
+

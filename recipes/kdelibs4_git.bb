@@ -2,20 +2,20 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-DEPENDS = "kdelibs4-native automoc4-native giflib attica jpeg libpng bzip2 libpcre"
+
+DEPENDS = "kdelibs4-native kdelibs4-helper automoc4-native giflib attica jpeg libpng bzip2 libpcre perl-native"
 
 #soprano
 #strigi-native
 #libphonon-native
-#DEPENDS_virtclass-native = "perl-native "
 
 inherit mime perlnative
 require kde4.inc
 
 SRC_URI = "git://anongit.kde.org/kdelibs;protocol=git;branch=master \
-	   file://0001-Disable-documentation.patch \
+	   file://0001-Don-t-build-documentation-disable-Strigi.patch \
 	   file://0002-Fix-openssl-check.patch \
-	   file://0003-Fix-Qt-and-Phonon.patch \
+	   file://0003-Fix-Qt-Phonon-and-kconfig_compiler.patch \
 	   file://0004-Fix-the-path-to-Icemaker.patch \
 	  "
 
@@ -30,10 +30,15 @@ FILES_${PN} += "\
 	  ${datadir}/apps/kauth/*.stub \
 	 "
 
+FILES_${PN}-dev += "\
+		   ${datadir}/apps/cmake/modules/* \
+		  "
+
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
+OECMAKE_CXX_FLAGS += " -I${STAGING_INCDIR}"
 
 EXTRA_OECMAKE =+ "\
 		  -DAUTOMOC4_EXECUTABLE=${STAGING_BINDIR_NATIVE}/automoc4 \
@@ -47,6 +52,8 @@ EXTRA_OECMAKE =+ "\
 		  -DICEMAKER_EXECUTABLE=${STAGING_BINDIR_NATIVE}/icemaker \
 		  \
 		  -DKDE_PREFIX=${TARGET_PREFIX} \
+		  -DPERL_LIBDIR=${STAGING_LIBDIR}/perl \
+		  -DBZIP2_NEED_PREFIX=TRUE \
 		 "
 
 do_compile() {
@@ -54,15 +61,16 @@ do_compile() {
 }
 
 do_install() {
-#  install -d ${D}/${libdir}
-#  for i in ${S}/build/lib/*
-#  do
-#    install -m 0755 ${i} ${D}/${libdir}
-#  done
-  cd ${S}/build/kdecore && oe_runmake PREFIX=${D} DESTDIR=${D} INSTALL_ROOT=${D} install
-  install -m 0644 ${S}/build/kdemacros.h ${STAGING_INCDIR}
+# Install CMake files and includes
+  install -d ${D}${datadir}/apps/cmake/modules
+  cd ${S}/build/cmake && oe_runmake install DESTDIR=${D}
   cd ${S}/build/includes && oe_runmake install DESTDIR=${D}
+  install -m 0755 ${S}/build/KDELibsDependencies.cmake ${D}${datadir}/apps/cmake/modules
+  install -m 0755 ${S}/build/KDEPlatformProfile.cmake ${D}${datadir}/apps/cmake/modules
+
+# Install the core library and a stray include file
+  cd ${S}/build/kdecore && oe_runmake install DESTDIR=${D}
+  install -m 0644 ${S}/build/kdemacros.h ${STAGING_INCDIR}
 }
 
 #PARALLEL_MAKE=""
-#BBCLASSEXTEND = "native"

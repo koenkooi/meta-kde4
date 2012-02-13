@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 
 require kde4.inc
 
-SRC_URI = "git://anongit.kde.org/soprano.git;branch=master;tag=v2.6.0"
+SRC_URI = "git://anongit.kde.org/soprano.git;branch=master"
 SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
 
 # soprano *must* be built out of tree

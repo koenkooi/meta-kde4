@@ -2,18 +2,18 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-DEPENDS = "kdelibs4-helper-native automoc4-native giflib attica jpeg libpng bzip2"
+DEPENDS = "automoc4-native giflib-native attica-native"
 
-#soprano
 #strigi-native
-#libphonon-native
+#soprano
+# jpeg libpng bzip2
 DEPENDS_virtclass-native = "perl-native "
 
 inherit mime native perlnative
-require kde4.inc
+require kde4-native.inc
 
 SRC_URI = "git://anongit.kde.org/kdelibs;protocol=git;branch=master \
-	   file://0001-Disable-documentation.patch \
+	   file://0001-Don-t-build-documentation-disable-Strigi.patch \
 	   file://0002-Fix-openssl-check.patch \
 	   file://0003-Fix-Qt-Phonon-and-kconfig_compiler.patch \
 	  "
@@ -28,6 +28,15 @@ OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
 
+EXTRA_OECMAKE =+ "\
+		  -DAUTOMOC4_EXECUTABLE=${STAGING_BINDIR_NATIVE}/automoc4 \
+		  -DKJS_FORCE_DISABLE_PCRE=TRUE \
+		  -DSTRIGI_REQUIRED=FALSE \
+		  -DDBUSMENUQT_INCLUDE_DIR=${STAGING_INCDIR}/QtDBus \
+		  -DDBUSMENUQT_LIBRARIES=${OE_QMAKE_LIBDIR_QT} \
+		  -DSTRIGI_INCLUDE_DIR=TRUE=${STAGING_INCDIR} \
+		 "
+
 do_compile() {
   cd ${S}/build
   make -C kdecore/kconfig_compiler
@@ -36,18 +45,7 @@ do_compile() {
 
 do_install() {
   install -d ${D}${bindir}
-  install -d ${D}${datadir}/apps/cmake/modules
+  
   install -m 0755 ${S}/build/bin/icemaker ${D}${bindir}
   install -m 0755 ${S}/build/bin/kconfig_compiler ${D}${bindir}
-
-  install -m 0755 ${S}/build/KDELibsDependencies.cmake ${D}${datadir}/apps/cmake/modules
-  install -m 0755 ${S}/build/KDEPlatformProfile.cmake ${D}${datadir}/apps/cmake/modules
-  cd ${S}/build/cmake && oe_runmake install DESTDIR=${D}
-  cd ${S}/build/includes && oe_runmake install DESTDIR=${D}
 }
-
-EXTRA_OECMAKE =+ "\
-		  -DAUTOMOC4_EXECUTABLE=${STAGING_BINDIR_NATIVE}/automoc4 \
-		  -DKJS_FORCE_DISABLE_PCRE=TRUE \
-		  -DSTRIGI_REQUIRED=FALSE \
-		 "
