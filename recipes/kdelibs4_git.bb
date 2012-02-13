@@ -3,7 +3,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 
-DEPENDS = "kdelibs4-native kdelibs4-helper automoc4-native giflib attica jpeg libpng bzip2 libpcre perl-native"
+DEPENDS = "kdelibs4-native kdelibs4-helper automoc4-native strigi giflib attica jpeg libpng bzip2 libpcre perl-native"
 
 #soprano
 #strigi-native
@@ -58,6 +58,7 @@ EXTRA_OECMAKE =+ "\
 
 do_compile() {
   cd ${S}/build/kdecore && oe_runmake CC="${CC}" CXX="${CXX}"
+  cd ${S}/build/kdecore && oe_runmake CC="${CC}" CXX="${CXX}"
 }
 
 do_install() {
@@ -65,7 +66,10 @@ do_install() {
   install -d ${D}${datadir}/apps/cmake/modules
   cd ${S}/build/cmake && oe_runmake install DESTDIR=${D}
   cd ${S}/build/includes && oe_runmake install DESTDIR=${D}
-  install -m 0755 ${S}/build/KDELibsDependencies.cmake ${D}${datadir}/apps/cmake/modules
+
+# This cmake file is very malicious because it has hardcoded string constants in there pointing to /usr/.. instead of /sysroot/.../user !!
+##install -m 0755 ${S}/build/KDELibsDependencies.cmake ${D}${datadir}/apps/cmake/modules
+
   install -m 0755 ${S}/build/KDEPlatformProfile.cmake ${D}${datadir}/apps/cmake/modules
 
 # Install the core library and a stray include file

@@ -14,4 +14,4 @@ S = "${WORKDIR}/git"
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-BBCLASSEXTEND = "native"
+#BBCLASSEXTEND = "native"

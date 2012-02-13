@@ -23,6 +23,8 @@ S = "${WORKDIR}/git"
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
+##OECMAKE_CXX_FLAGS =+ "-I${STAGING_INCDIR}/KDE"
+
 do_compile() {
   cd ${S}/build/lib && oe_runmake CC="${CC}" CXX="${CXX}"
 }
@@ -31,7 +33,7 @@ do_install() {
   cd ${S}/build/lib && oe_runmake install DESTDIR=${D}
 }
 
-EXTRA_OECMAKE += " \
+EXTRA_OECMAKE += "\
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
 		  -DQT_DBUSXML2CPP_EXECUTABLE=${STAGING_BINDIR_NATIVE}/qdbusxml2cpp \
 		  -DQT_DBUSCPP2XML_EXECUTABLE=${STAGING_BINDIR_NATIVE}/qdbuscpp2xml \

@@ -1,12 +1,5 @@
-
+# This file is inherited by all KDE CMake related recipes in meta-kde
 inherit qt4x11 cmake
-# CMake can't find our Qt stuff, this should fix it
-#EXTRA_OECMAKE = "\
-#		 
-#		"
-
-# This won't work compiling native
-#		 -DQT_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
 
 do_rewrite_toolchain_file() {
 # This is a override, so if there is no file to delete an error occured.
@@ -27,13 +20,10 @@ set( CMAKE_CXX_FLAGS_RELEASE "${OECMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "CXXFLA
 # only search in the paths provided so cmake doesnt pick
 # up libraries and tools from the native build machine
 # Please note: variable order is important!
-set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_HOST} ${STAGING_DIR_NATIVE} ${CROSS_DIR} ${OECMAKE_PERLNATIVE_DIR} ${OECMAKE_EXTRA_ROOT_PATH} )
+set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_HOST} ${STAGING_DIR_NATIVE} )
 set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
-
-# set the archiever to ${AR}
-set( CMAKE_AR ${OECMAKE_AR} )
 
 
 # Lets give this a try, but I doubt that it will make any difference
@@ -51,13 +41,11 @@ set( CMAKE_MODULE_PATH ${STAGING_DATADIR}/cmake/Modules/ ${STAGING_DATADIR}/apps
 
 # add for non /usr/lib libdir, e.g. /usr/lib64
 set( CMAKE_LIBRARY_PATH ${STAGING_LIBDIR} )
-
 set( CMAKE_INCLUDE_PATH ${STAGING_INCDIR} )
 
 #set( DBUSMENUQT_INCLUDE_DIR ${STAGING_INCDIR}/QtDBus )
 set( DBUSMENUQT_LIBRARIES ${OE_QMAKE_LIBDIR_QT} )
 
-set( CMAKE_PREFIX_PATH ${STAGING_DIR}${prefix} )
 
 # native compiled tools
 set( KDE4_KCFGC_EXECUTABLE ${STAGING_BINDIR_NATIVE}/kconfig_compiler )
@@ -65,8 +53,6 @@ set( AUTOMOC4_EXECUTABLE ${STAGING_BINDIR_NATIVE}/automoc4 )
 set( KDE4_KDECONFIG_EXECUTABLE ${STAGING_BINDIR_NATIVE}/kde4-config )
 
 set( KDE4_INCLUDE_DIR ${STAGING_INCDIR}/KDE )
-set( KDE4_LIB_DIR ${STAGING_LIBDIR} )
-
 
 set( QT_LIBRARY_DIR ${OE_QMAKE_LIBDIR_QT} )
 set( QT_INSTALL_LIBS ${OE_QMAKE_LIBDIR_QT} )
@@ -82,7 +68,6 @@ set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
 
 # Qt Stuff for testing
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} )
-#${OE_QMAKE_INCDIR_QT}/Qt ${OE_QMAKE_INCDIR_QT}/Qt3Support ${OE_QMAKE_INCDIR_QT}/QtCore ${OE_QMAKE_INCDIR_QT}/QtDBus ${OE_QMAKE_INCDIR_QT}/QtGui ${OE_QMAKE_INCDIR_QT}/QtNetwork ${OE_QMAKE_INCDIR_QT}/QtSql ${OE_QMAKE_INCDIR_QT}/QtTest ${OE_QMAKE_INCDIR_QT}/QtXml ${OE_QMAKE_INCDIR_QT}/QtXmlPatterns
 EOF
 }
 addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure
