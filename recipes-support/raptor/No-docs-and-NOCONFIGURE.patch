@@ -1,0 +1,98 @@
+From 517b7e299d646151085d48271ac17b9a995f1cc0 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 14 Feb 2012 14:08:24 +0100
+Subject: [PATCH] No-docs and NOCONFIGURE Signed-off-by: Samuel Stirtzel
+ <s.stirtzel@googlemail.com>
+
+---
+ autogen.sh |   59 ++++++++++++++++++++++++++++++-----------------------------
+ 1 files changed, 30 insertions(+), 29 deletions(-)
+
+diff --git a/autogen.sh b/autogen.sh
+index 47b293b..d3d3360 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -51,10 +51,10 @@ programs="automake aclocal autoconf autoheader libtoolize"
+ confs=`find . -name configure.ac -print | grep -v /releases/`
+ 
+ gtkdoc_args=
+-if grep "^GTK_DOC_CHECK" $confs >/dev/null; then
+-  programs="$programs gtkdocize"
+-  gtkdoc_args="--enable-gtk-doc"
+-fi
++#if grep "^GTK_DOC_CHECK" $confs >/dev/null; then
++#  programs="$programs gtkdocize"
++#  gtkdoc_args="--enable-gtk-doc"
++#fi
+ if grep "^AC_CHECK_PROGS.SWIG" $confs >/dev/null; then
+   programs="$programs swig"
+ fi
+@@ -340,12 +340,12 @@ do
+       $DRYRUN rm -f ltmain.sh libtool
+       eval $DRYRUN $libtoolize $libtoolize_args
+ 
+-      if grep "^GTK_DOC_CHECK" configure.ac >/dev/null; then
+-        # gtkdocize junk
+-        $DRYRUN rm -rf gtk-doc.make
+-        echo "$program: Running $gtkdocize $gtkdocize_args"
+-        $DRYRUN $gtkdocize $gtkdocize_args
+-      fi
++#      if grep "^GTK_DOC_CHECK" configure.ac >/dev/null; then
++#        # gtkdocize junk
++#        $DRYRUN rm -rf gtk-doc.make
++#        echo "$program: Running $gtkdocize $gtkdocize_args"
++#        $DRYRUN $gtkdocize $gtkdocize_args
++#      fi
+ 
+       echo "$program: Running $aclocal $aclocal_args"
+       $DRYRUN $aclocal $aclocal_args
+@@ -361,25 +361,26 @@ do
+   fi
+ done
+ 
++if "X$NOCONFIGURE" != X; then
++  rm -f config.cache
+ 
+-rm -f config.cache
+-
+-AUTOMAKE=$automake
+-AUTOCONF=$autoconf
+-ACLOCAL=$aclocal
+-export AUTOMAKE AUTOCONF ACLOCAL
++  AUTOMAKE=$automake
++  AUTOCONF=$autoconf
++  ACLOCAL=$aclocal
++  export AUTOMAKE AUTOCONF ACLOCAL
+ 
+-echo " "
+-if test -z "$*"; then
+-  echo "$program: WARNING: Running \`configure' with no arguments."
+-  echo "If you wish to pass any to it, please specify them on the"
+-  echo "\`$program' command line."
+-fi
++  echo " "
++  if test -z "$*"; then
++    echo "$program: WARNING: Running \`configure' with no arguments."
++    echo "If you wish to pass any to it, please specify them on the"
++    echo "\`$program' command line."
++  fi
+ 
+-echo "$program: Running ./configure $configure_args $@"
+-if test "X$DRYRUN" = X; then
+-  $DRYRUN ./configure $configure_args "$@" \
+-  && echo "$program: Now type \`make' to compile this package" || exit 1
+-else
+-  $DRYRUN ./configure $configure_args "$@"
+-fi
++  echo "$program: Running ./configure $configure_args $@"
++  if test "X$DRYRUN" = X; then
++    $DRYRUN ./configure $configure_args "$@" \
++    && echo "$program: Now type \`make' to compile this package" || exit 1
++  else
++    $DRYRUN ./configure $configure_args "$@"
++  fi
++fi
+\ No newline at end of file
+-- 
+1.7.5.4
+

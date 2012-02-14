@@ -3,7 +3,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 
-DEPENDS = "kdelibs4-native kdelibs4-helper automoc4-native strigi giflib attica jpeg libpng bzip2 libpcre perl-native"
+DEPENDS = "kdelibs4-native kdelibs4-helper automoc4-native strigi giflib attica jpeg libpng bzip2 libpcre perl-native docbook-utils-native"
 
 #soprano
 #strigi-native
@@ -18,6 +18,7 @@ SRC_URI = "git://anongit.kde.org/kdelibs;protocol=git;branch=master \
 	   file://0003-Fix-Qt-Phonon-and-kconfig_compiler.patch \
 	   file://0004-Fix-the-path-to-Icemaker.patch \
 	  "
+
 
 SRCREV = "cc5bf952ad182cf049e5df02c4c5f09d62bb68a2"
 PV = "4.7.97+git${SRCPV}"
@@ -54,10 +55,11 @@ EXTRA_OECMAKE =+ "\
 		  -DKDE_PREFIX=${TARGET_PREFIX} \
 		  -DPERL_LIBDIR=${STAGING_LIBDIR}/perl \
 		  -DBZIP2_NEED_PREFIX=TRUE \
+		  -DNEPOMUK_LIBRARIES=${STAGING_LIBDIR} \
+		  -DNEPOMUK_QUERY_LIBRARIES=${STAGING_LIBDIR} \
 		 "
 
 do_compile() {
-  cd ${S}/build/kdecore && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/build/kdecore && oe_runmake CC="${CC}" CXX="${CXX}"
 }
 
@@ -67,7 +69,7 @@ do_install() {
   cd ${S}/build/cmake && oe_runmake install DESTDIR=${D}
   cd ${S}/build/includes && oe_runmake install DESTDIR=${D}
 
-# This cmake file is very malicious because it has hardcoded string constants in there pointing to /usr/.. instead of /sysroot/.../user !!
+# This cmake file is malicious because it has hardcoded string constants in there pointing to /usr/.. instead of .../sysroot/.../usr !!
 ##install -m 0755 ${S}/build/KDELibsDependencies.cmake ${D}${datadir}/apps/cmake/modules
 
   install -m 0755 ${S}/build/KDEPlatformProfile.cmake ${D}${datadir}/apps/cmake/modules

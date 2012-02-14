@@ -9,8 +9,8 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #DEPENDS = "automoc cmake cmake-data emacsen-common kde-workspace-dev kdelibs5-dev libcurl3 libkactivities5 libkdeclarative5 libkimproxy4 libkutils4 liblsofui4 libphonon-dev libsoprano-dev libxmlrpc-core-c3-0 quilt" 
 
 #finalized (and WORKING) depends list
-DEPENDS = "kdelibs4 libkactivities4 soprano quilt curl lsof automoc4-native perl-native"
-
+DEPENDS = "kdelibs4 soprano quilt curl lsof automoc4-native perl-native"
+#libkactivities4 
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
@@ -18,6 +18,8 @@ OECMAKE_BUILDPATH = "build"
 #		  -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=BOTH
 
 EXTRA_OECMAKE =+ "\
+		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules/ \
+		  -DNEPOMUK_INCLUDE_DIR=${STAGING_INCDIR}/KDE/Nepomuk/ \
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
 		 "
 

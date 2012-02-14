@@ -21,7 +21,7 @@ EXTRA_OECMAKE =+ "\
 S = "${WORKDIR}/git"
 
 # build out of tree
-OECMAKE_SOURCEPATH = ".."
-OECMAKE_BUILDPATH = "build"
+#OECMAKE_SOURCEPATH = ".."
+#OECMAKE_BUILDPATH = "build"
 
 #BBCLASSEXTEND = "native"

@@ -23,14 +23,22 @@ S = "${WORKDIR}/git"
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
+FILES_${PN}-dev += "${datadir}/apps/cmake/modules/KActivitiesConfig.cmake \
+		    ${datadir}/apps/cmake/modules/KActivitiesLibraryTargets.cmake"
+
 ##OECMAKE_CXX_FLAGS =+ "-I${STAGING_INCDIR}/KDE"
 
 do_compile() {
-  cd ${S}/build/lib && oe_runmake CC="${CC}" CXX="${CXX}"
+#  cd ${S}/build/lib && oe_runmake CC="${CC}" CXX="${CXX}"
+  echo "done"
 }
 
+
 do_install() {
-  cd ${S}/build/lib && oe_runmake install DESTDIR=${D}
+#  cd ${S}/build/lib && oe_runmake install DESTDIR=${D}
+  install -d ${D}${datadir}/apps/cmake/modules
+  install -m 0644 ${S}/build/lib/KActivitiesConfig.cmake ${D}${datadir}/apps/cmake/modules
+  install -m 0644 ${S}/build/lib/CMakeFiles/Export/*/lib/cmake/KActivities/KActivitiesLibraryTargets.cmake ${D}${datadir}/apps/cmake/modules
 }
 
 EXTRA_OECMAKE += "\
