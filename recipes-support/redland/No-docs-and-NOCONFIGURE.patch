@@ -1,16 +1,15 @@
-From 60d103155b0ef92e746b68aeadba05cb37e61d38 Mon Sep 17 00:00:00 2001
+From 0a14cdf8bf80d27cee5e0c4ce3fa9b6c3c642a7b Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Tue, 14 Feb 2012 12:52:36 +0100
+Date: Wed, 15 Feb 2012 14:09:23 +0100
 Subject: [PATCH] No-docs and NOCONFIGURE Signed-off-by: Samuel Stirtzel
  <s.stirtzel@googlemail.com>
 
 ---
- autogen.sh   |   49 +++++++++++++++++++++++++------------------------
- configure.ac |    8 ++++----
- 2 files changed, 29 insertions(+), 28 deletions(-)
+ autogen.sh |   61 ++++++++++++++++++++++++++++++-----------------------------
+ 1 files changed, 31 insertions(+), 30 deletions(-)
 
 diff --git a/autogen.sh b/autogen.sh
-index 47b293b..5cae1c8 100755
+index 47b293b..72dc9e7 100755
 --- a/autogen.sh
 +++ b/autogen.sh
 @@ -50,11 +50,11 @@ GITMODULES='.gitmodules'
@@ -30,6 +29,25 @@ index 47b293b..5cae1c8 100755
  if grep "^AC_CHECK_PROGS.SWIG" $confs >/dev/null; then
    programs="$programs swig"
  fi
+@@ -340,12 +340,12 @@ do
+       $DRYRUN rm -f ltmain.sh libtool
+       eval $DRYRUN $libtoolize $libtoolize_args
+ 
+-      if grep "^GTK_DOC_CHECK" configure.ac >/dev/null; then
+-        # gtkdocize junk
+-        $DRYRUN rm -rf gtk-doc.make
+-        echo "$program: Running $gtkdocize $gtkdocize_args"
+-        $DRYRUN $gtkdocize $gtkdocize_args
+-      fi
++#      if grep "^GTK_DOC_CHECK" configure.ac >/dev/null; then
++#        # gtkdocize junk
++#        $DRYRUN rm -rf gtk-doc.make
++#        echo "$program: Running $gtkdocize $gtkdocize_args"
++#        $DRYRUN $gtkdocize $gtkdocize_args
++#      fi
+ 
+       echo "$program: Running $aclocal $aclocal_args"
+       $DRYRUN $aclocal $aclocal_args
 @@ -361,25 +361,26 @@ do
    fi
  done
@@ -77,32 +95,6 @@ index 47b293b..5cae1c8 100755
 +  fi
 +fi
 \ No newline at end of file
-diff --git a/configure.ac b/configure.ac
-index e548387..4e9cd26 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1314,8 +1314,8 @@ AM_SILENT_RULES([no])
- 
- AC_CONFIG_FILES([Makefile
- redland.rdf
--docs/Makefile
--docs/version.xml
-+#docs/Makefile
-+#docs/version.xml
- examples/Makefile
- scripts/Makefile
- src/Makefile
-@@ -1330,8 +1330,8 @@ redland.pc])
- AC_CONFIG_FILES([redland-config], [chmod +x redland-config])
- AC_CONFIG_FILES([redland-src-config], [chmod +x redland-src-config])
- 
--dnl Check for gtk-doc and docbook
--GTK_DOC_CHECK([1.3])
-+#dnl Check for gtk-doc and docbook
-+
- 
- AC_OUTPUT
- 
 -- 
 1.7.5.4
 
