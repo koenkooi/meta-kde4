@@ -4,7 +4,10 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 inherit qt4x11 cmake
 #require kde4.inc
 
-SRC_URI = "git://anongit.kde.org/soprano.git;branch=master"
+DEPENDS = "virtuoso raptor"
+
+SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
+	  "
 SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
 
 # soprano *can't* be built out of tree
@@ -17,6 +20,7 @@ FILES_${PN} =+ "${libdir}libsopranoserver.*"
 
 do_compile() {
   cd ${S}/soprano && oe_runmake CC="${CC}" CXX="${CXX}"
+  cd ${S}/parsers/raptor && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/client && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/backends && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/server && oe_runmake sopranoserver CC="${CC}" CXX="${CXX}"
@@ -24,6 +28,7 @@ do_compile() {
 
 do_install() {
   cd ${S}/soprano && oe_runmake install DESTDIR=${D}
+  cd ${S}/parsers/raptor && oe_runmake install DESTDIR=${D}
   cd ${S}/client && oe_runmake install DESTDIR=${D}
   cd ${S}/includes && oe_runmake install DESTDIR=${D}
   cd ${S}/backends && oe_runmake install DESTDIR=${D}
@@ -35,7 +40,9 @@ do_install() {
 }
 
 EXTRA_OECMAKE =+ "\
-		  -DBUILD_VIRTUOSO_BACKEND=FALSE \
+		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
+		  -DBUILD_RAPTOR_PARSER=TRUE \
+		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_BINDIR}${bindir_crossscripts}/redland-config \
 		 "
 
 PV = "2.7.53+git${SRCPV}"
