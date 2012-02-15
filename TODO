@@ -1,8 +1,11 @@
 Currently to be done:
 
 plasma-active:
--fix the path to kconfig_compiler, as CMake cdoes not recognize it.
+-Build nepomuk-core
+--Soprano: fix the Redland installation with a crossscript of redland-config
 -test on OpenEmbedded compatible hardware
+
+
 
 all recipes:
 -Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.
