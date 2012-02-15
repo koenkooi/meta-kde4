@@ -1,0 +1,9 @@
+--- a/libsrc/util/md5.h	2012-02-15 10:35:31.726512752 +0100
++++ b/libsrc/util/md5.h	2012-02-15 10:32:58.606516099 +0100
+@@ -22,4 +22,5 @@
+ 
+ #include "libutil.h"
+ 
+-#error "Please provide implementation of MD5 routines"
++#include <openssl/md5.h>
++//#error "Please provide implementation of MD5 routines"

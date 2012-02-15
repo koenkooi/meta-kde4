@@ -1,0 +1,73 @@
+Build only things needed by KDE, not everything and the kitchensync (which
+includes also a lot of testcases).
+
+--- a/configure.in	2010-02-04 12:33:43.113909799 +0100
++++ b/configure.in	2010-02-04 12:31:37.313904838 +0100
+@@ -200,6 +200,23 @@
+ 	hostingdir=$libdir/virtuoso/hosting
+ 	;;
+ 
++  [[Oo]][[Pp]][[Ee]][[Nn]][[Ss]][[Uu]][[Ss]][[Ee]])	# openSUSE
++	virtuoso_layout=openSUSE
++	if test "x$prefix" = "xNONE"
++	then
++		prefix=/usr
++		localstatedir=/var
++	fi
++	vaddir=$datadir/virtuoso/vad
++	docdir=$datadir/doc/packages/virtuoso
++	htmldocdir=$datadir/doc/packages/virtuoso/html
++	pdfdocdir=$datadir/doc/packages/virtuoso/pdf
++	demodir=$localstatedir/lib/virtuoso/demo
++	dbdir=$localstatedir/lib/virtuoso/db
++	httprootdir=$localstatedir/lib/virtuoso/vsp
++	hostingdir=$libdir/virtuoso/hosting
++	;;
++
+   [[Ff]][[Rr]][[Ee]][[Ee]][[Bb]][[Ss]][[Dd]])		# FreeBSD
+ 	virtuoso_layout=FreeBSD
+ 	if test "x$prefix" = "xNONE"
+--- a/libsrc/Makefile.am	2009-05-07 16:08:26.000000000 +0200
++++ b/libsrc/Makefile.am	2009-05-07 16:08:31.000000000 +0200
+@@ -19,7 +19,7 @@
+ #  
+ #  
+ 
+-SUBDIRS = util zlib odbcsdk Dk Thread langfunc Wi plugin Tidy Xml.new JDBCDriverType4
++SUBDIRS = util zlib odbcsdk Dk Thread langfunc Wi plugin Tidy Xml.new
+ 
+ noinst_HEADERS = Dk.h libutil.h
+ 
+--- a/Makefile.am	2009/11/22 08:58:58	1.1
++++ b/Makefile.am	2009/11/22 08:59:23
+@@ -23,7 +23,7 @@
+ ACLOCAL_AMFLAGS 	= -I binsrc/config
+ 
+ 
+-SUBDIRS = . docsrc libsrc binsrc appsrc
++SUBDIRS = . docsrc libsrc binsrc
+ 
+ dist_doc_DATA = \
+ 	AUTHORS \
+--- a/binsrc/Makefile.am	2009/11/22 08:59:03	1.1
++++ b/binsrc/Makefile.am	2009/11/22 08:59:23
+@@ -19,7 +19,7 @@
+ #  
+ #  
+ 
+-SUBDIRS = dav mono virtuoso tests rdf_mappers driver maildrop sqldoc hosting bpel b3s tutorial yacutia samples vsp ws sync vspx vad cached_resources virtodbc virtoledb virtuoso_sink xddl VirtuosoClient.Net oat isparql jena sesame sesame2 sesame3 redland hibernate
++SUBDIRS = virtuoso driver
+ 
+ 
+ # ----------------------------------------------------------------------
+--- a/binsrc/virtuoso/Makefile.am	2009/11/22 08:59:08	1.1
++++ b/binsrc/virtuoso/Makefile.am	2009/11/22 08:59:23
+@@ -41,7 +41,7 @@
+ 
+ LIBS		+= @ZLIB_LIB@
+ 
+-lib_LTLIBRARIES = libvirtuoso-t.la $(IODBC_LIBS) $(MONO_LIBS) $(IODBC_MONO_LIBS)
++noinst_LTLIBRARIES = libvirtuoso-t.la $(IODBC_LIBS) $(MONO_LIBS) $(IODBC_MONO_LIBS)
+ bin_PROGRAMS = virtuoso-t $(IODBC_PROGS)
+ 
+ noinst_SCRIPTS = virtuoso
