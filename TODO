@@ -9,3 +9,4 @@ plasma-active:
 
 all recipes:
 -Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.
+-Change to a unified form of variable order.

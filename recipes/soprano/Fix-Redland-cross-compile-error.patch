@@ -1,0 +1,48 @@
+From 44bce3c58340e80be196c0b9dd944eec339994b1 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 16 Feb 2012 08:39:13 +0100
+Subject: [PATCH] Fix Redland cross-compile error Signed-off-by: Samuel
+ Stirtzel <s.stirtzel@googlemail.com>
+
+---
+ cmake/modules/FindRedland.cmake |   24 ++++++++++++------------
+ 1 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/cmake/modules/FindRedland.cmake b/cmake/modules/FindRedland.cmake
+index 4eddb84..86abb3d 100644
+--- a/cmake/modules/FindRedland.cmake
++++ b/cmake/modules/FindRedland.cmake
+@@ -105,18 +105,18 @@ if(NOT WIN32)
+   set(CMAKE_FIND_LIBRARY_SUFFIXES ${_SUFFIXES})
+   if(_REDLAND_STORAGE_LIBS)
+     message(STATUS "Found Redland storage: ${_REDLAND_STORAGE_LIBS}")
+-    try_run(_TEST_EXITCODE _TEST_COMPILED
+-      "${CMAKE_CURRENT_BINARY_DIR}"
+-      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CheckLibraryLoads.c"
+-      CMAKE_FLAGS "-DLINK_LIBRARIES=dl"
+-      RUN_OUTPUT_VARIABLE _OUTPUT
+-      ARGS ${_REDLAND_STORAGE_LIBS}
+-    )
+-    if(NOT "${_TEST_EXITCODE}" EQUAL 0)
+-      set(_REDLAND_VERSION_OK)
+-      message(STATUS "${_OUTPUT}")
+-      message(STATUS "Redland with broken NEEDED section detected, disabling")
+-    endif(NOT "${_TEST_EXITCODE}" EQUAL 0)
++#    try_run(_TEST_EXITCODE _TEST_COMPILED
++#      "${CMAKE_CURRENT_BINARY_DIR}"
++#      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CheckLibraryLoads.c"
++#      CMAKE_FLAGS "-DLINK_LIBRARIES=dl"
++#      RUN_OUTPUT_VARIABLE _OUTPUT
++#      ARGS ${_REDLAND_STORAGE_LIBS}
++#    )
++#    if(NOT "${_TEST_EXITCODE}" EQUAL 0)
++#      set(_REDLAND_VERSION_OK)
++#      message(STATUS "${_OUTPUT}")
++#      message(STATUS "Redland with broken NEEDED section detected, disabling")
++#    endif(NOT "${_TEST_EXITCODE}" EQUAL 0)
+   endif(_REDLAND_STORAGE_LIBS)
+ 
+ endif(NOT WIN32)
+-- 
+1.7.5.4
+

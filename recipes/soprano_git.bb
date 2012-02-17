@@ -7,22 +7,23 @@ inherit qt4x11 cmake
 DEPENDS = "virtuoso raptor"
 
 SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
+	   file://Fix-Redland-cross-compile-error.patch \
 	  "
+
 SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
 
-# soprano *can't* be built out of tree
-#OECMAKE_SOURCEPATH = ".."
-#OECMAKE_BUILDPATH = "build"
+#Note: the cmake patch for redland could be resolved with a TryRun.cmake file, however since the cmake file will be installed for other programs it would be needed at every program using it.
 
 FILES_${PN} =+ "${libdir}libsopranoserver.*"
 
-#OECMAKE_CXX_FLAGS += " -I."
 
 do_compile() {
   cd ${S}/soprano && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/parsers/raptor && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/client && oe_runmake CC="${CC}" CXX="${CXX}"
   cd ${S}/backends && oe_runmake CC="${CC}" CXX="${CXX}"
+
+  # The target sopranod will not compile
   cd ${S}/server && oe_runmake sopranoserver CC="${CC}" CXX="${CXX}"
 }
 
@@ -42,7 +43,7 @@ do_install() {
 EXTRA_OECMAKE =+ "\
 		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
 		  -DBUILD_RAPTOR_PARSER=TRUE \
-		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_BINDIR}${bindir_crossscripts}/redland-config \
+		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_DIR_TARGET}${bindir_crossscripts}/redland-config \
 		 "
 
 PV = "2.7.53+git${SRCPV}"
