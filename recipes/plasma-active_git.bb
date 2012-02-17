@@ -21,6 +21,8 @@ EXTRA_OECMAKE =+ "\
 		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules/ \
 		  -DNEPOMUK_INCLUDE_DIR=${STAGING_INCDIR}/KDE/Nepomuk/ \
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
+		  -DNEPOMUK_LIBRARIES=${STAGING_LIBDIR} \
+		  -DNEPOMUK_QUERY_LIBRARIES=${STAGING_LIBDIR} \
 		 "
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"

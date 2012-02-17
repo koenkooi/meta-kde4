@@ -2,7 +2,7 @@
 inherit qt4x11 cmake
 
 do_rewrite_toolchain_file() {
-# This is a override, so if there is no file to delete an error occured.
+# This is an override, so if there is no file to delete an error occured.
 	rm ${WORKDIR}/toolchain.cmake
 	cat > ${WORKDIR}/toolchain.cmake <<EOF
 # CMake system name must be something like "Linux".
@@ -25,10 +25,6 @@ set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
 
-
-# Lets give this a try, but I doubt that it will make any difference
-set( CMAKE_CROSSCOMPILING TRUE )
-
 # Use qt.conf settings
 set( ENV{QT_CONF_PATH} ${WORKDIR}/qt.conf )
 
@@ -40,17 +36,37 @@ set( CMAKE_INSTALL_RPATH ${OECMAKE_RPATH} )
 set( CMAKE_MODULE_PATH ${STAGING_DATADIR}/cmake/Modules/ ${STAGING_DATADIR}/apps/cmake/modules/ )
 
 # add for non /usr/lib libdir, e.g. /usr/lib64
-set( CMAKE_LIBRARY_PATH ${STAGING_LIBDIR} )
-set( CMAKE_INCLUDE_PATH ${STAGING_INCDIR} )
+#set( CMAKE_LIBRARY_PATH ${STAGING_LIBDIR} )
+#set( CMAKE_INCLUDE_PATH ${STAGING_INCDIR})
 
-#set( DBUSMENUQT_INCLUDE_DIR ${STAGING_INCDIR}/QtDBus )
-set( DBUSMENUQT_LIBRARIES ${OE_QMAKE_LIBDIR_QT} )
+set( DBUSMENUQT_INCLUDE_DIR ${STAGING_INCDIR}/dbusmenu-qt )
+#set( DBUSMENUQT_LIBRARIES ${OE_QMAKE_LIBDIR_QT} )
 
 
-# native compiled tools
-set( KDE4_KCFGC_EXECUTABLE ${STAGING_BINDIR_NATIVE}/kconfig_compiler )
-set( AUTOMOC4_EXECUTABLE ${STAGING_BINDIR_NATIVE}/automoc4 )
-set( KDE4_KDECONFIG_EXECUTABLE ${STAGING_BINDIR_NATIVE}/kde4-config )
+
+##---- see http://techbase.kde.org/Getting_Started/Build/Windows/Cross-Compiling
+set( KDE_PREFIX ${D}${prefix} )
+set( KDE4_BIN_DIR    ${STAGING_BINDIR_NATIVE} )
+ 
+# this one is used by FindKDE4.cmake to load FindKDE4Internal.cmake:
+set( KDE4_DATA_DIR    ${KDE_PREFIX}/share/apps CACHE PATH "points to the apps directory of installed kdelibs")
+
+ 
+# disable some things:
+set( WITH_AVAHI OFF   CACHE BOOL "Disabled" )
+set( WITH_DNSSD OFF   CACHE BOOL "Disabled" )
+set( WITH_ENCHANT OFF CACHE BOOL "Disabled" )
+set( WITH_FAM OFF     CACHE BOOL "Disabled" )
+set( WITH_GSSAPI OFF  CACHE BOOL "Disabled" )
+set( WITH_HSPELL OFF  CACHE BOOL "Disabled" )
+set( WITH_OpenEXR OFF CACHE BOOL "Disabled" )
+ 
+# use the binaries from native KDE4
+set( KDE4_KCFGC_EXECUTABLE ${KDE4_BIN_DIR}/kconfig_compiler CACHE PATH "" )
+set( KDE4_AUTOMOC_EXECUTABLE ${KDE4_BIN_DIR}/automoc4 CACHE PATH "" )
+#set(KDE4_MEINPROC_EXECUTABLE ${KDE4_BIN_DIR}/meinproc4 CACHE PATH "")
+##----
+
 
 set( KDE4_INCLUDE_DIR ${STAGING_INCDIR}/KDE )
 
@@ -61,7 +77,7 @@ set( QT_UIC_EXECUTABLE ${OE_QMAKE_UIC} )
 set( QT_UIC3_EXECUTABLE ${OE_QMAKE_UIC3} )
 set( QT_RCC_EXECUTABLE ${OE_QMAKE_RCC} )
 set( QT_QMAKE_EXECUTABLE ${OE_QMAKE_QMAKE} )
-set( QT_MAKESPEC_DIR ${QMAKESPEC} )
+set( QT_MKSPECS_DIR ${STAGING_DATADIR}/qt4/mkspecs )
 set( QT_QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/Qt )
 set( QT_QTGUI_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtGui )
 set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
