@@ -1,0 +1,38 @@
+--- a/soprano/soprano_export.h	2012-02-23 11:38:24.782329787 +0100
++++ b/soprano/soprano_export.h	2012-02-23 11:38:55.338329119 +0100
+@@ -31,7 +31,7 @@
+ #  define SOPRANO_EXPORT
+ # elif defined(MAKE_SOPRANO_LIB)
+    /* We are building this library */ 
+-#  define SOPRANO_EXPORT Q_DECL_EXPORT
++#  define SOPRANO_EXPORT Q_DECL_EXPORT __attribute__((visibility("default")))
+ # else
+    /* We are using this library */ 
+ #  define SOPRANO_EXPORT Q_DECL_IMPORT
+@@ -44,7 +44,7 @@
+ #  define SOPRANO_SERVER_EXPORT
+ # elif defined(MAKE_SOPRANO_SERVER_LIB)
+    /* We are building this library */ 
+-#  define SOPRANO_SERVER_EXPORT Q_DECL_EXPORT
++#  define SOPRANO_SERVER_EXPORT Q_DECL_EXPORT __attribute__((visibility("default")))
+ # else
+    /* We are using this library */ 
+ #  define SOPRANO_SERVER_EXPORT Q_DECL_IMPORT
+@@ -57,7 +57,7 @@
+ #  define SOPRANO_CLIENT_EXPORT
+ # elif defined(MAKE_SOPRANO_CLIENT_LIB)
+    /* We are building this library */ 
+-#  define SOPRANO_CLIENT_EXPORT Q_DECL_EXPORT
++#  define SOPRANO_CLIENT_EXPORT Q_DECL_EXPORT __attribute__((visibility("default")))
+ # else
+    /* We are using this library */ 
+ #  define SOPRANO_CLIENT_EXPORT Q_DECL_IMPORT
+@@ -67,7 +67,7 @@
+ #ifndef SOPRANO_INDEX_EXPORT
+ # if defined(MAKE_SOPRANO_INDEX_LIB)
+    /* We are building this library */ 
+-#  define SOPRANO_INDEX_EXPORT Q_DECL_EXPORT
++#  define SOPRANO_INDEX_EXPORT Q_DECL_EXPORT __attribute__((visibility("default")))
+ # else
+    /* We are using this library */ 
+ #  define SOPRANO_INDEX_EXPORT Q_DECL_IMPORT
