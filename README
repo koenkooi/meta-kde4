@@ -12,6 +12,11 @@ Editors:
 Thanks to:
 Andreas Müller
 
+
+Install:
+To intall this layer you need to add it to the config/bblayer.conf and source/layer.txt files.
+This layer needs kdelibsX-dev or kdelibsX.devel installed (either kdelibs4 or kdelibs5).
+
 FAQ / Troubleshooting:
 1.
   Q: How can I contribute my patches / recipes to this layer?

@@ -1,0 +1,36 @@
+From bbaf1689bfaeb09077fead197d87bf45b1833772 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 23 Feb 2012 14:52:57 +0100
+Subject: [PATCH] Fix makekdewidget executable path Signed-off-by: Samuel
+ Stirtzel <s.stirtzel@googlemail.com>
+
+---
+ kdewidgets/CMakeLists.txt |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/kdewidgets/CMakeLists.txt b/kdewidgets/CMakeLists.txt
+index 5153601..d962f10 100644
+--- a/kdewidgets/CMakeLists.txt
++++ b/kdewidgets/CMakeLists.txt
+@@ -20,14 +20,16 @@ target_link_libraries(makekdewidgets  ${KDE4_KDECORE_LIBS} )
+ 
+ # "export" this target too so we can use the LOCATION property of the imported target in
+ # FindKDE4Internal.cmake to get the full path to the installed executable instead of using FIND_PROGRAM(), Alex
+-install(TARGETS makekdewidgets  EXPORT kdelibsToolsTargets ${INSTALL_TARGETS_DEFAULT_ARGS} )
++#install(TARGETS makekdewidgets  EXPORT kdelibsToolsTargets ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ 
+ 
+ ########### next target ###############
+ 
+ if(QT_QTDESIGNER_FOUND)
+   # get the name of the generated wrapper script (which sets up LD_LIBRARY_PATH)
+-  get_target_property(MAKEKDEWIDGETS_EXECUTABLE makekdewidgets WRAPPER_SCRIPT)
++  if(NOT MAKEKDEWIDGETS_EXECUTABLE)
++     get_target_property(MAKEKDEWIDGETS_EXECUTABLE makekdewidgets WRAPPER_SCRIPT)
++  endif(NOT ${MAKEKDEWIDGETS_EXECUTABLE})
+ 
+   add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kdewidgets.cpp
+     COMMAND "${MAKEKDEWIDGETS_EXECUTABLE}" -o ${CMAKE_CURRENT_BINARY_DIR}/kdewidgets.cpp ${CMAKE_CURRENT_SOURCE_DIR}/kde.widgets
+-- 
+1.7.5.4
+

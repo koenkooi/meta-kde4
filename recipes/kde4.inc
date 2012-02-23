@@ -36,18 +36,11 @@ set( CMAKE_INSTALL_RPATH ${OECMAKE_RPATH} )
 set( CMAKE_MODULE_PATH ${STAGING_DATADIR}/cmake/Modules/ ${STAGING_DATADIR}/apps/cmake/modules/ )
 
 # add for non /usr/lib libdir, e.g. /usr/lib64
-#set( CMAKE_LIBRARY_PATH ${STAGING_LIBDIR} )
-#set( CMAKE_INCLUDE_PATH ${STAGING_INCDIR})
-
-set( DBUSMENUQT_INCLUDE_DIR ${STAGING_INCDIR}/dbusmenu-qt )
-#set( DBUSMENUQT_LIBRARIES ${OE_QMAKE_LIBDIR_QT} )
-
-
+set( CMAKE_LIBRARY_PATH ${libdir} )
 
 ##---- see http://techbase.kde.org/Getting_Started/Build/Windows/Cross-Compiling
 set( KDE_PREFIX ${D}${prefix} )
-set( KDE4_BIN_DIR    ${STAGING_BINDIR_NATIVE} )
- 
+
 # this one is used by FindKDE4.cmake to load FindKDE4Internal.cmake:
 set( KDE4_DATA_DIR    ${KDE_PREFIX}/share/apps CACHE PATH "points to the apps directory of installed kdelibs")
 
@@ -61,12 +54,17 @@ set( WITH_GSSAPI OFF  CACHE BOOL "Disabled" )
 set( WITH_HSPELL OFF  CACHE BOOL "Disabled" )
 set( WITH_OpenEXR OFF CACHE BOOL "Disabled" )
  
-# use the binaries from native KDE4
-set( KDE4_KCFGC_EXECUTABLE ${KDE4_BIN_DIR}/kconfig_compiler CACHE PATH "" )
-set( KDE4_AUTOMOC_EXECUTABLE ${KDE4_BIN_DIR}/automoc4 CACHE PATH "" )
-#set(KDE4_MEINPROC_EXECUTABLE ${KDE4_BIN_DIR}/meinproc4 CACHE PATH "")
+
 ##----
 
+# This was needed because kdelibs native needs Qt QSSL which needs openssl which is not ported for native environment.
+set( MAKEKDEWIDGETS_EXECUTABLE /usr/bin/makekdewidgets CACHE PATH "" )
+set( KDE4_MAKEKDEWIDGETS_EXECUTABLE /usr/bin/makekdewidgets CACHE PATH "" )
+set( KDE4_KCFGC_EXECUTABLE /usr/bin/kconfig_compiler CACHE PATH "" )
+set( KDE4_AUTOMOC_EXECUTABLE /usr/bin/automoc4 CACHE PATH "" )
+
+# This one is a totally useless dependency
+set( KDE4_KDECONFIG_EXECUTABLE /dev/null CACHE PATH "" )
 
 set( KDE4_INCLUDE_DIR ${STAGING_INCDIR}/KDE )
 

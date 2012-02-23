@@ -1,15 +1,15 @@
-From 3f67ac806d8a208a33f52d3c41e248e9ac8123bd Mon Sep 17 00:00:00 2001
+From bc714635af3d3df6dd4d3ff60da1bb5cbc50283a Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Mon, 13 Feb 2012 09:32:00 +0100
-Subject: [PATCH] Fix-Qt-Phonon-and-kconfig_compiler Signed-off-by: Samuel
+Date: Thu, 23 Feb 2012 13:41:03 +0100
+Subject: [PATCH] Fix FindKDE4Internals cmake file. Signed-off-by: Samuel
  Stirtzel <s.stirtzel@googlemail.com>
 
 ---
- cmake/modules/FindKDE4Internal.cmake |   61 +++++++++++++++++++--------------
- 1 files changed, 35 insertions(+), 26 deletions(-)
+ cmake/modules/FindKDE4Internal.cmake |   74 +++++++++++++++++++---------------
+ 1 files changed, 42 insertions(+), 32 deletions(-)
 
 diff --git a/cmake/modules/FindKDE4Internal.cmake b/cmake/modules/FindKDE4Internal.cmake
-index 84df6f5..aea65f0 100644
+index 6d65e61..c7a4951 100644
 --- a/cmake/modules/FindKDE4Internal.cmake
 +++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -346,6 +346,8 @@
@@ -21,18 +21,24 @@ index 84df6f5..aea65f0 100644
  # this is required now by cmake 2.6 and so must not be skipped by if(KDE4_FOUND) below
  cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
  # set the cmake policies to the 2.4.x compatibility settings (may change for KDE 4.3)
-@@ -521,7 +523,9 @@ if (_kdeBootStrapping)
+@@ -521,10 +523,12 @@ if (_kdeBootStrapping)
        set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets )
     else (WIN32)
        set(LIBRARY_OUTPUT_PATH               ${CMAKE_BINARY_DIR}/lib )
 -      set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
+-      set(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kauth-policy-gen${CMAKE_EXECUTABLE_SUFFIX}.shell )
+-      set(KDE4_MEINPROC_EXECUTABLE          ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/meinproc4${CMAKE_EXECUTABLE_SUFFIX}.shell )
+-      set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets${CMAKE_EXECUTABLE_SUFFIX}.shell )
 +      if(NOT OPENEMBEDDED)
 +	set(KDE4_KCFGC_EXECUTABLE             ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kconfig_compiler${CMAKE_EXECUTABLE_SUFFIX}.shell )
++	set(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kauth-policy-gen${CMAKE_EXECUTABLE_SUFFIX}.shell )
++	set(KDE4_MEINPROC_EXECUTABLE          ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/meinproc4${CMAKE_EXECUTABLE_SUFFIX}.shell )
++	set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets${CMAKE_EXECUTABLE_SUFFIX}.shell )
 +      endif(NOT OPENEMBEDDED)
-       set(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/kauth-policy-gen${CMAKE_EXECUTABLE_SUFFIX}.shell )
-       set(KDE4_MEINPROC_EXECUTABLE          ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/meinproc4${CMAKE_EXECUTABLE_SUFFIX}.shell )
-       set(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR}/makekdewidgets${CMAKE_EXECUTABLE_SUFFIX}.shell )
-@@ -600,8 +604,12 @@ else (_kdeBootStrapping)
+    endif (WIN32)
+ 
+    set(KDE4_LIB_DIR ${LIBRARY_OUTPUT_PATH}/${CMAKE_CFG_INTDIR})
+@@ -600,15 +604,20 @@ else (_kdeBootStrapping)
     list(GET _importedConfigurations 0 _firstConfig)
  
     if(NOT WINCE)
@@ -47,7 +53,18 @@ index 84df6f5..aea65f0 100644
     else(NOT WINCE)
      set(KDE4_KCFGC_EXECUTABLE             ${HOST_BINDIR}/${CMAKE_CFG_INTDIR}/kconfig_compiler )
      set(KDE4_MEINPROC_EXECUTABLE          ${HOST_BINDIR}/${CMAKE_CFG_INTDIR}/meinproc4 )
-@@ -1276,29 +1284,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+    endif(NOT WINCE)
+-   get_target_property(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${KDE4_TARGET_PREFIX}kauth-policy-gen    LOCATION_${_firstConfig})
+-   get_target_property(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${KDE4_TARGET_PREFIX}makekdewidgets      LOCATION_${_firstConfig})
+-
++   if(NOT OPENEMBEDDED)
++    get_target_property(KDE4_KAUTH_POLICY_GEN_EXECUTABLE  ${KDE4_TARGET_PREFIX}kauth-policy-gen    LOCATION_${_firstConfig})
++    get_target_property(KDE4_MAKEKDEWIDGETS_EXECUTABLE    ${KDE4_TARGET_PREFIX}makekdewidgets      LOCATION_${_firstConfig})
++   endif(NOT OPENEMBEDDED)
+    # allow searching cmake modules in all given kde install locations (KDEDIRS based)
+    execute_process(COMMAND "${KDE4_KDECONFIG_EXECUTABLE}" --path data OUTPUT_VARIABLE _data_DIR ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+    file(TO_CMAKE_PATH "${_data_DIR}" _data_DIR)
+@@ -1276,29 +1285,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
        string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
     endif (GCC_IS_NEWER_THAN_4_1)
  
