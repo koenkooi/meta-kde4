@@ -1,0 +1,11 @@
+--- a/src/dbusmenu_export.h	2012-02-23 09:15:46.446516855 +0100
++++ b/src/dbusmenu_export.h	2012-02-23 09:17:26.174514673 +0100
+@@ -29,7 +29,7 @@
+ #include <QtCore/QtGlobal>
+ 
+ #ifdef dbusmenu_qt_EXPORTS
+-#define DBUSMENU_EXPORT Q_DECL_EXPORT
++#define DBUSMENU_EXPORT Q_DECL_EXPORT __attribute__((visibility("default")))
+ #else
+ #define DBUSMENU_EXPORT Q_DECL_IMPORT
+ #endif

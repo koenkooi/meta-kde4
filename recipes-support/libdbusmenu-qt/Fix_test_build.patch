@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt	2012-02-22 17:19:53.457725322 +0100
++++ b/CMakeLists.txt	2012-02-22 17:19:15.225727066 +0100
+@@ -4,6 +4,7 @@
+ 
+ # Build options
+ option(WITH_DOC "Build documentation (requires Doxygen)" ON)
++option(BUILD_TESTS "Build tests" ON)
+ 
+ # Versions
+ ## Package version
+@@ -60,7 +61,11 @@
+     )
+ 
+ add_subdirectory(src)
+-add_subdirectory(tests)
++
++if(BUILD_TESTS)
++  add_subdirectory(tests)
++endif(BUILD_TESTS)
++
+ add_subdirectory(tools)
+ 
+ if(WITH_DOC)

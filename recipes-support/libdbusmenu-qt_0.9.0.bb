@@ -6,6 +6,8 @@ inherit qt4x11 cmake
 DEPENDS = "dbus"
 
 SRC_URI = "https://launchpad.net/libdbusmenu-qt/trunk/0.9.0/+download/libdbusmenu-qt-0.9.0.tar.bz2 \
+	   file://WORKAROUND-export-visibility.patch \
+	   file://Fix_test_build.patch \
 	  "
 
 SRC_URI[md5sum] = "cc6b7b551377e2a07f6fa5afef0d29ff"
@@ -21,3 +23,5 @@ EXTRA_OECMAKE =+ "\
 #PV = "0.6.0+git${SRCPV}"
 
 #S = "${WORKDIR}/git"
+
+BBCLASSEXTEND = "native"
