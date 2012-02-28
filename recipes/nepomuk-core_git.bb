@@ -14,10 +14,11 @@ OECMAKE_BUILDPATH = "build"
 
 EXTRA_OECMAKE =+ "\
 		  -DNEPOMUK_INCLUDE_DIR=${STAGING_INCDIR}/KDE/Nepomuk/ \
-		  -DKDE4_KDECORE_LIBRARY=${STAGING_LIBDIR}/libkdecore.so \
 		 "
 
 
 PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
+
+#PARALLEL_MAKE=""
