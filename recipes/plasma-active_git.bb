@@ -9,24 +9,21 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #DEPENDS = "automoc cmake cmake-data emacsen-common kde-workspace-dev kdelibs5-dev libcurl3 libkactivities5 libkdeclarative5 libkimproxy4 libkutils4 liblsofui4 libphonon-dev libsoprano-dev libxmlrpc-core-c3-0 quilt" 
 
 #finalized (and WORKING) depends list
-DEPENDS = "kdelibs4 soprano quilt curl lsof automoc4-native perl-native"
-#libkactivities4 
+DEPENDS = "kdelibs4 soprano libkactivities4 quilt curl lsof automoc4-native perl-native"
+
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-#		  -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=BOTH
-
 EXTRA_OECMAKE =+ "\
 		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules/ \
-		  -DNEPOMUK_INCLUDE_DIR=${STAGING_INCDIR}/KDE/Nepomuk/ \
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
-		  -DNEPOMUK_LIBRARIES=${STAGING_LIBDIR} \
-		  -DNEPOMUK_QUERY_LIBRARIES=${STAGING_LIBDIR} \
+		  \
+		  -DRCGEN=/usr/bin/nepomuk-rcgen \
 		 "
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"
-SRCREV = "c99274e85a653115d90a4d2b8fd21705d0ea5984"
+SRCREV = "4fab06881388c658553afad27ff61a784aacfcc1"
 PV = "2+git${SRCPV}"
 
 S=${WORKDIR}/git
