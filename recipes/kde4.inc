@@ -17,10 +17,13 @@ set( CMAKE_CXX_FLAGS "${OECMAKE_CXX_FLAGS}" CACHE STRING "CXXFLAGS" )
 set( CMAKE_C_FLAGS_RELEASE "${OECMAKE_C_FLAGS_RELEASE}" CACHE STRING "CFLAGS for release" )
 set( CMAKE_CXX_FLAGS_RELEASE "${OECMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "CXXFLAGS for release" )
 
+# We actually do cross compiling
+set( CMAKE_CROSSCOMPILING TRUE )
+
 # only search in the paths provided so cmake doesnt pick
 # up libraries and tools from the native build machine
 # Please note: variable order is important!
-set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_HOST} ${STAGING_DIR_NATIVE} )
+set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_TARGET} ${STAGING_DIR_NATIVE} )
 set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
@@ -42,8 +45,8 @@ set( CMAKE_LIBRARY_PATH ${libdir} )
 set( KDE_PREFIX ${D}${prefix} )
 
 # this one is used by FindKDE4.cmake to load FindKDE4Internal.cmake:
-set( KDE4_DATA_DIR    ${KDE_PREFIX}/share/apps CACHE PATH "points to the apps directory of installed kdelibs")
-
+set( KDE4_DATA_DIR    ${STAGING_DATADIR}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
+set( DATA_INSTALL_DIR ${datadir}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
  
 # disable some things:
 set( WITH_AVAHI OFF   CACHE BOOL "Disabled" )
@@ -64,9 +67,7 @@ set( KDE4_KCFGC_EXECUTABLE /usr/bin/kconfig_compiler CACHE PATH "" )
 set( KDE4_AUTOMOC_EXECUTABLE /usr/bin/automoc4 CACHE PATH "" )
 
 # This one is a totally useless dependency
-set( KDE4_KDECONFIG_EXECUTABLE /dev/null CACHE PATH "" )
-
-set( KDE4_INCLUDE_DIR ${STAGING_INCDIR}/KDE )
+set( KDE4_KDECONFIG_EXECUTABLE TRUE CACHE PATH "" )
 
 set( QT_LIBRARY_DIR ${OE_QMAKE_LIBDIR_QT} )
 set( QT_INSTALL_LIBS ${OE_QMAKE_LIBDIR_QT} )
