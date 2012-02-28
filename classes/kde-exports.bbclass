@@ -10,7 +10,7 @@ do_install_prepend() {
     for tmp_destfile in ${tmp_files_array}
     do
       echo "Patching /usr/ to ${STAGING_DIR_TARGET}${prefix} for  ${tmp_destfile}"
-      cat ${tmp_destfile} | sed "s|\"/usr/|${STAGING_DIR_TARGET}${prefix}/|" > ${WORKDIR}/tmp_swapfile
+      cat ${tmp_destfile} | sed 's|"/usr/|"${STAGING_DIR_TARGET}${prefix}/|'
       cat ${WORKDIR}/tmp_swapfile > ${tmp_destfile}
       rm ${WORKDIR}/tmp_swapfile
     done
