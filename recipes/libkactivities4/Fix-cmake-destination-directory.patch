@@ -1,0 +1,34 @@
+From 86eef333925a8208d238394160544e151546161f Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 28 Feb 2012 11:03:07 +0100
+Subject: [PATCH] Fix cmake destination directory.
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ lib/CMakeLists.txt |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index ac1e2ae..8aa852e 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -137,7 +137,7 @@ install(
+ 
+ install(
+    EXPORT kactivitiesLibraryTargets
+-   DESTINATION ${LIB_INSTALL_DIR}/cmake/KActivities
++   DESTINATION ${DATA_INSTALL_DIR}/cmake/modules
+    FILE KActivitiesLibraryTargets.cmake
+    )
+ 
+@@ -153,6 +153,6 @@ MACRO_WRITE_BASIC_CMAKE_VERSION_FILE(${CMAKE_CURRENT_BINARY_DIR}/KActivitiesConf
+ INSTALL(
+     FILES ${CMAKE_CURRENT_BINARY_DIR}/KActivitiesConfig.cmake
+           ${CMAKE_CURRENT_BINARY_DIR}/KActivitiesConfigVersion.cmake
+-    DESTINATION ${LIB_INSTALL_DIR}/cmake/KActivities
++    DESTINATION ${DATA_INSTALL_DIR}/cmake/modules
+ )
+ 
+-- 
+1.7.5.4
+
