@@ -1,0 +1,29 @@
+From 176a834927176120956f381d2c77169d44e43515 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 28 Feb 2012 11:40:41 +0100
+Subject: [PATCH] Create a opt-in for the docs, we don't need them
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b7bddc6..8d2d266 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -139,7 +139,10 @@ add_subdirectory(l10n)
+ add_subdirectory(localization)
+ if(NOT WINCE)
+   add_subdirectory(kde-menu)
+-macro_optional_add_subdirectory(doc)
++
++if(DEFINED WITH_DOCS)
++  macro_optional_add_subdirectory(doc)
++endif(DEFINED WITH_DOCS)
+ endif(NOT WINCE)
+ 
+ # Artwork
+-- 
+1.7.5.4
+

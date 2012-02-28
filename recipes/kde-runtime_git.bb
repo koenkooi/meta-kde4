@@ -5,12 +5,15 @@ DEPENDS = "kdelibs4"
 
 require kde4.inc
 
-SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master"
-SRCREV = "d831f935b12ac2f7d4c44f2384976303c3e1b0d9"
+SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master \
+	  file://Disable-docs.patch"
+SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"
 
 PV = "4.7.97+git${SRCPV}"
 EXTRA_OECMAKE =+ "\
 		  -DKDEBASE_DISABLE_MULTIMEDIA=ON \
+		  \
+		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules \
 		 "
 
 #		  -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
