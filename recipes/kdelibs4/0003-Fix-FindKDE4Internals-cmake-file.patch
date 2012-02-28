@@ -1,15 +1,15 @@
-From bc714635af3d3df6dd4d3ff60da1bb5cbc50283a Mon Sep 17 00:00:00 2001
+From 5f7b0284af3447f24291616153ddcdd3410890a5 Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Thu, 23 Feb 2012 13:41:03 +0100
-Subject: [PATCH] Fix FindKDE4Internals cmake file. Signed-off-by: Samuel
- Stirtzel <s.stirtzel@googlemail.com>
+Date: Mon, 27 Feb 2012 13:23:57 +0100
+Subject: [PATCH] Fix FindKDE4Internals.cmake file
 
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
 ---
- cmake/modules/FindKDE4Internal.cmake |   74 +++++++++++++++++++---------------
- 1 files changed, 42 insertions(+), 32 deletions(-)
+ cmake/modules/FindKDE4Internal.cmake |   82 ++++++++++++++++++++--------------
+ 1 files changed, 48 insertions(+), 34 deletions(-)
 
 diff --git a/cmake/modules/FindKDE4Internal.cmake b/cmake/modules/FindKDE4Internal.cmake
-index 6d65e61..c7a4951 100644
+index 6d65e61..d31524a 100644
 --- a/cmake/modules/FindKDE4Internal.cmake
 +++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -346,6 +346,8 @@
@@ -38,7 +38,22 @@ index 6d65e61..c7a4951 100644
     endif (WIN32)
  
     set(KDE4_LIB_DIR ${LIBRARY_OUTPUT_PATH}/${CMAKE_CFG_INTDIR})
-@@ -600,15 +604,20 @@ else (_kdeBootStrapping)
+@@ -582,8 +586,12 @@ else (_kdeBootStrapping)
+ 
+    # KDE4_LIB_INSTALL_DIR and KDE4_INCLUDE_INSTALL_DIR are set in KDELibsDependencies.cmake,
+    # use them to set the KDE4_LIB_DIR and KDE4_INCLUDE_DIR "public interface" variables
+-   set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR} )
+-   set(KDE4_INCLUDE_DIR ${KDE4_INCLUDE_INSTALL_DIR} )
++   if(NOT KDE4_LIB_DIR)
++    set(KDE4_LIB_DIR ${KDE4_LIB_INSTALL_DIR} )
++   endif(NOT KDE4_LIB_DIR)
++   if(NOT KDE4_INCLUDE_DIR)
++    set(KDE4_INCLUDE_DIR ${KDE4_INCLUDE_INSTALL_DIR} )
++   endif(NOT KDE4_INCLUDE_DIR)
+ 
+ 
+    # This setting is currently not recorded in KDELibsDependencies.cmake:
+@@ -600,15 +608,20 @@ else (_kdeBootStrapping)
     list(GET _importedConfigurations 0 _firstConfig)
  
     if(NOT WINCE)
@@ -64,7 +79,7 @@ index 6d65e61..c7a4951 100644
     # allow searching cmake modules in all given kde install locations (KDEDIRS based)
     execute_process(COMMAND "${KDE4_KDECONFIG_EXECUTABLE}" --path data OUTPUT_VARIABLE _data_DIR ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
     file(TO_CMAKE_PATH "${_data_DIR}" _data_DIR)
-@@ -1276,29 +1285,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+@@ -1276,29 +1289,30 @@ if (CMAKE_COMPILER_IS_GNUCXX)
        string(REGEX MATCH "(--enable-libstdcxx-allocator=mt)" _GCC_COMPILED_WITH_BAD_ALLOCATOR "${_gcc_alloc_info}")
     endif (GCC_IS_NEWER_THAN_4_1)
  
