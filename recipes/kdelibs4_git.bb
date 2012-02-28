@@ -7,10 +7,10 @@ DEPENDS = "automoc4-native strigi giflib attica jpeg libpng bzip2 libpcre perl-n
 
 #soprano
 
-inherit mime perlnative
+inherit mime perlnative kde-exports
 require kde4.inc
 
-SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=v4.7.4 \
+SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.7.4 \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
 	  file://0002-Fix-openssl-check.patch \
 	  file://0003-Fix-FindKDE4Internals-cmake-file.patch \
@@ -19,25 +19,33 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=v4.7.4 \
 	  file://0006-Fix-makekdewidget-executable-path.patch \
 	  "
 
-SRCREV = "0e296a6d0d6b4b5e20c0f9fcb7fe831e7409df87"
+SRCREV = "bd4af4938a23585fd6443193935c170739d12822"
 PV = "4.7.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
+KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
+
 FILES_${PN} += "\
-	  ${libdir}/kde4/*.so \
 	  ${datadir}/apps/kauth/*.stub \
 	 "
 
 FILES_${PN}-dev += "\
+		   ${libdir}/kde4/*.so \
 		   ${datadir}/apps/cmake/modules/* \
 		  "
+
+##		   ${incdir}/nepomuk/tools.h
 
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-#OECMAKE_CXX_FLAGS += " -I${STAGING_INCDIR}/qt4/QtCore -L${STAGING_LIBDIR}"
+#do_install_append() {
+#  install -d ${D}${incdir}/nepomuk/
+#  install -m 0644 ${S}/nepomuk/core/tools.h ${D}${incidr}/nepomuk/tools.h
+#}
+
 
 EXTRA_OECMAKE =+ "\
 		  -DKJS_FORCE_DISABLE_PCRE=TRUE \
@@ -51,6 +59,6 @@ EXTRA_OECMAKE =+ "\
 		  -DKDE4_INSTALL_DIR=${D}${prefix} \
 		 "
 
-
+##		  -DKDE_PLATFORM_PROFILE=Mobile \
 
 #PARALLEL_MAKE=""
