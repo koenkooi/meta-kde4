@@ -17,30 +17,6 @@ SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
 
 FILES_${PN} =+ "${libdir}libsopranoserver.*"
 
-
-do_compile() {
-  cd ${S}/soprano && oe_runmake CC="${CC}" CXX="${CXX}"
-  cd ${S}/parsers/raptor && oe_runmake CC="${CC}" CXX="${CXX}"
-  cd ${S}/client && oe_runmake CC="${CC}" CXX="${CXX}"
-  cd ${S}/backends && oe_runmake CC="${CC}" CXX="${CXX}"
-
-  # The target sopranod will not compile
-  cd ${S}/server && oe_runmake sopranoserver CC="${CC}" CXX="${CXX}"
-}
-
-do_install() {
-  cd ${S}/soprano && oe_runmake install DESTDIR=${D}
-  cd ${S}/parsers/raptor && oe_runmake install DESTDIR=${D}
-  cd ${S}/client && oe_runmake install DESTDIR=${D}
-  cd ${S}/includes && oe_runmake install DESTDIR=${D}
-  cd ${S}/backends && oe_runmake install DESTDIR=${D}
-  cd ${S}/cmake && oe_runmake install DESTDIR=${D}
-
-  # This needs to be installed manually as sopranod is seriously broken and also not needed
-  install -d ${D}${libdir}
-  install -m 0644 ${S}/server/libsopranoserver.* ${D}${libdir}/
-}
-
 EXTRA_OECMAKE =+ "\
 		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
 		  -DBUILD_RAPTOR_PARSER=TRUE \
