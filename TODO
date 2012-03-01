@@ -1,12 +1,15 @@
 Currently to be done:
 
 plasma-active:
--Build nepomuk-core
---Soprano: fix the Redland installation with a crossscript of redland-config
+-Fix the CMake error at kde-workspace that pretents that Qt can't be found when it actually found a bogus value in the cached variables
+-Fix the "QA Issue: kdelibs4 rdepends on kdelibs4-dev" error in kdelibs4
 -test on OpenEmbedded compatible hardware
 
 
-
 all recipes:
+-Fix packages that install their CMake files to the libdir due to KDE developer mistakes (looks like INSTALL ... ${LIB_INSTALL_DIR}/cmake/KDE4Workspace)
 -Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.
--Change to a unified form of variable order.
+-Change to a unified form of variable order (aka. clean up the recipes structure).
+
+-Find a upstreamable solution to add "out of the box" KDE cross compiling support
+--Fix hardcoded install directories and library targets in KDEs CMake files (see *relwithdebinfo*.cmake files)
