@@ -7,7 +7,7 @@ KDE_EXPORT_FILES = "${S}/build/lib/CMakeFiles/Export/_usr/share/apps/cmake/modul
 
 require kde4.inc
 
-#DEPENDS = "kdelibs4"
+DEPENDS = "kdelibs4 soprano shared-desktop-ontologies"
 #+soprano
 
 OECMAKE_SOURCEPATH = ".."
