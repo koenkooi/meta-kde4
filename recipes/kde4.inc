@@ -5,6 +5,7 @@ do_rewrite_toolchain_file() {
 # This is an override, so if there is no file to delete an error occured.
 	rm ${WORKDIR}/toolchain.cmake
 	cat > ${WORKDIR}/toolchain.cmake <<EOF
+message(STATUS "Toolchain file found and load at: ${WORKDIR}/toolchain.cmake")
 # CMake system name must be something like "Linux".
 # This is important for cross-compiling.
 set( CMAKE_SYSTEM_NAME `echo ${SDK_OS} | sed 's/^./\u&/'` )
@@ -46,8 +47,10 @@ set( KDE_PREFIX ${D}${prefix} )
 
 # this one is used by FindKDE4.cmake to load FindKDE4Internal.cmake:
 set( KDE4_DATA_DIR    ${STAGING_DATADIR}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
-set( DATA_INSTALL_DIR ${datadir}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
- 
+if(NOT DEFINED KDE_WORKSPACE_WORKAROUND)
+  set( DATA_INSTALL_DIR ${datadir}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
+endif(NOT DEFINED KDE_WORKSPACE_WORKAROUND)
+
 # disable some things:
 set( WITH_AVAHI OFF   CACHE BOOL "Disabled" )
 set( WITH_DNSSD OFF   CACHE BOOL "Disabled" )
