@@ -1,0 +1,28 @@
+From 049974191700c0e1075af86dfd359794381d8cd8 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 29 Feb 2012 13:51:03 +0100
+Subject: [PATCH] Fix the KDE flavoured version of FindQt4.cmake
+
+This version caches if the Qt qmake executable changed, but in some cases this will lead to errors after bitbake -ccleansstate.
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ cmake/modules/FindQt4.cmake |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/cmake/modules/FindQt4.cmake b/cmake/modules/FindQt4.cmake
+index f482d3c..e8493a5 100644
+--- a/cmake/modules/FindQt4.cmake
++++ b/cmake/modules/FindQt4.cmake
+@@ -457,7 +457,7 @@ FIND_PROGRAM(QT_QMAKE_EXECUTABLE NAMES qmake qmake4 qmake-qt4 qmake-mac PATHS
+ IF (QT_QMAKE_EXECUTABLE)
+ 
+   IF(QT_QMAKE_EXECUTABLE_LAST)
+-    STRING(COMPARE NOTEQUAL "${QT_QMAKE_EXECUTABLE_LAST}" "${QT_QMAKE_EXECUTABLE}" QT_QMAKE_CHANGED)
++#    STRING(COMPARE NOTEQUAL "${QT_QMAKE_EXECUTABLE_LAST}" "${QT_QMAKE_EXECUTABLE}" QT_QMAKE_CHANGED)
+   ENDIF(QT_QMAKE_EXECUTABLE_LAST)
+ 
+   SET(QT_QMAKE_EXECUTABLE_LAST "${QT_QMAKE_EXECUTABLE}" CACHE INTERNAL "" FORCE)
+-- 
+1.7.5.4
+

@@ -3,7 +3,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 
-DEPENDS = "automoc4-native strigi giflib attica jpeg libpng bzip2 libpcre perl-native"
+DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
 
 #soprano
 
@@ -17,6 +17,7 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.7.4 \
 	  file://0004-Fix-the-path-to-Icemaker.patch \
 	  file://0005-Remove-docs-so-they-don-t-get-pulled-in-elsewhere.patch \
 	  file://0006-Fix-makekdewidget-executable-path.patch \
+	  file://0007-Fix-the-KDE-flavoured-version-of-FindQt4.cmake.patch \
 	  "
 
 SRCREV = "bd4af4938a23585fd6443193935c170739d12822"
@@ -26,16 +27,7 @@ S = "${WORKDIR}/git"
 
 KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
 
-FILES_${PN} += "\
-	  ${datadir}/apps/kauth/*.stub \
-	 "
 
-FILES_${PN}-dev += "\
-		   ${libdir}/kde4/*.so \
-		   ${datadir}/apps/cmake/modules/* \
-		  "
-
-##		   ${incdir}/nepomuk/tools.h
 
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
@@ -59,6 +51,7 @@ EXTRA_OECMAKE =+ "\
 		  -DKDE4_INSTALL_DIR=${D}${prefix} \
 		 "
 
+# This will cause errors related to disabled DEPRECATED settings (e.g. usr/include/nepomuk/tools.h will be missing but is required)
 ##		  -DKDE_PLATFORM_PROFILE=Mobile \
 
 #PARALLEL_MAKE=""
