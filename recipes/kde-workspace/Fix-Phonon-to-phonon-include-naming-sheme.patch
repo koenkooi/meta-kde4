@@ -1,0 +1,26 @@
+From dbaae58f424e3b5a2a9bf54901912c3b97571a36 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 29 Feb 2012 08:34:12 +0100
+Subject: [PATCH] Fix Phonon to phonon include naming sheme
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ kcontrol/access/kaccess.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/kcontrol/access/kaccess.h b/kcontrol/access/kaccess.h
+index c364b25..560b2b8 100644
+--- a/kcontrol/access/kaccess.h
++++ b/kcontrol/access/kaccess.h
+@@ -12,7 +12,7 @@
+ #include <KUniqueApplication>
+ #include <KUrl>
+ 
+-#include <Phonon/MediaObject>
++#include <phonon/MediaObject>
+ 
+ #include <X11/Xlib.h>
+ #define explicit int_explicit        // avoid compiler name clash in XKBlib.h
+-- 
+1.7.5.4
+

@@ -1,0 +1,27 @@
+From 2fb09cc09e9bb353f04b1c59a9839a72ca6d87d6 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 28 Feb 2012 17:52:14 +0100
+Subject: [PATCH] Disable docs
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6d57ae2..bbaf6fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,7 +157,9 @@ endif(NOT WIN32)
+ if(NOT WIN32)
+   macro_optional_add_subdirectory( cursors )
+ endif(NOT WIN32)
++if(DEFINED WITH_DOCS)
+ macro_optional_add_subdirectory( doc )
++endif(DEFINED WITH_DOCS)
+ macro_optional_add_subdirectory( wallpapers )
+ 
+ if(X11_Xau_FOUND AND X11_Xdmcp_FOUND)
+-- 
+1.7.5.4
+
