@@ -20,8 +20,5 @@ EXTRA_OECMAKE =+ "\
 		  -DBUILD_TESTS=FALSE \
 		 "
 
-#PV = "0.6.0+git${SRCPV}"
-
-#S = "${WORKDIR}/git"
 
 BBCLASSEXTEND = "native"

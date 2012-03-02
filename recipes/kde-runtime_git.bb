@@ -16,8 +16,6 @@ EXTRA_OECMAKE =+ "\
 		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules \
 		 "
 
-#		  -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
-
 S = "${WORKDIR}/git"
 
 # build out of tree

@@ -10,7 +10,5 @@ SRCREV = "2d19bb9d148a3293b18355bb8fd8d777d680a1b1"
 
 PV = "Active/2.0+git${SRCPV}"
 
-EXTRA_OECMAKE =+ ""
-
 S = "${WORKDIR}/git"
 

@@ -15,7 +15,7 @@ SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"
 SRCREV = "4fab06881388c658553afad27ff61a784aacfcc1"
 PV = "2+git${SRCPV}"
 
-S=${WORKDIR}/git
+S = "${WORKDIR}/git"
 
 FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_plasma-device.so \

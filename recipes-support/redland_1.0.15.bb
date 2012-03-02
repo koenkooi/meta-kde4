@@ -12,12 +12,6 @@ SRC_URI = "http://download.librdf.org/source/redland-1.0.15.tar.gz \
 SRC_URI[md5sum] = "b0deb87f3c7d3237a3d587c1e0f2f266"
 SRC_URI[sha256sum] = "0e1f5825b6357c9b490da866c95ae1d895dbb5f445013d2511c37df822ee9ec6"
 
-##SRCREV = "96e715aaccd86a8fb8fd00276aa973cd35ebe683"
-
-##PV = "1.0.15+git${SRCPV}"
-
-##S = "${WORKDIR}/git"
-
 EXTRA_OECONF = "\
 		--enable-maintainer-mode \
 		--disable-gtk-doc \

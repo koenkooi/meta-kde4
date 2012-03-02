@@ -26,16 +26,7 @@ S = "${WORKDIR}/git"
 FILES_${PN}-dev += "${datadir}/apps/cmake/modules/KActivitiesConfig.cmake \
 		    ${datadir}/apps/cmake/modules/KActivitiesLibraryTargets.cmake"
 
-#do_install_prepend() {
-#  tmp_patchfile=${S}/build/lib/CMakeFiles/Export/_usr/share/apps/cmake/modules/KActivitiesLibraryTargets-relwithdebinfo.cmake
-#  cat ${tmp_patchfile} | sed "s|/usr/|${STAGING_DIR_TARGET}${prefix}/|" > ${WORKDIR}/tmp_swapfile
-#  cat ${WORKDIR}/tmp_swapfile > ${tmp_patchfile}
-#  rm ${WORKDIR}/tmp_swapfile
-#}
 
 EXTRA_OECMAKE += "\
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
 		 "
-
-#PARALLEL_MAKE=""
-#BBCLASSEXTEND = "native"

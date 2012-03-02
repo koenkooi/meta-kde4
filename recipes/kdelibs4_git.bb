@@ -39,11 +39,6 @@ FILES_${PN} =+ "\
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-#do_install_append() {
-#  install -d ${D}${incdir}/nepomuk/
-#  install -m 0644 ${S}/nepomuk/core/tools.h ${D}${incidr}/nepomuk/tools.h
-#}
-
 
 EXTRA_OECMAKE =+ "\
 		  -DKJS_FORCE_DISABLE_PCRE=TRUE \
@@ -59,5 +54,3 @@ EXTRA_OECMAKE =+ "\
 
 # This will cause errors related to disabled DEPRECATED settings (e.g. usr/include/nepomuk/tools.h will be missing but is required)
 ##		  -DKDE_PLATFORM_PROFILE=Mobile \
-
-#PARALLEL_MAKE=""

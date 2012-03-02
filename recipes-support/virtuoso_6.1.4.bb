@@ -24,4 +24,4 @@ EXTRA_OECONF =+ "\
 
 
 
-S = ${WORKDIR}/${BPN}-opensource-${PV}
+S = "${WORKDIR}/${BPN}-opensource-${PV}"

@@ -21,4 +21,3 @@ PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-#PARALLEL_MAKE=""

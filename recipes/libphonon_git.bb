@@ -3,7 +3,6 @@ LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=2d5025d4aa3495befef8f17206a5b0a1"
 
 DEPENDS = "automoc4-native"
 
-inherit qt4x11 cmake
 require kde4.inc
 
 SRC_URI = "git://anongit.kde.org/phonon.git;protocol=git;branch=master \
