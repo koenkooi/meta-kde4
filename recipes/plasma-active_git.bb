@@ -17,6 +17,11 @@ PV = "2+git${SRCPV}"
 
 S=${WORKDIR}/git
 
+FILES_${PN} =+ "\
+		${libdir}/libkdeinit4_plasma-device.so \
+		${libdir}/libkdeinit4_plasma-keyboardcontainer.so \
+		${libdir}/libkdeinit4_plasma-widgetstrip.so"
+
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"

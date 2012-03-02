@@ -28,6 +28,12 @@ S = "${WORKDIR}/git"
 KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
 
 
+FILES_${PN} =+ "\
+		${libdir}/libkdeinit4_kbuildsycoca4.so \
+		${libdir}/libkdeinit4_kconf_update.so \
+		${libdir}/libkdeinit4_kded4.so \
+		${libdir}/libkdeinit4_kio_http_cache_cleaner.so \
+		${libdir}/libkdeinit4_klauncher.so"
 
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."

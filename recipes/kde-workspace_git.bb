@@ -18,6 +18,22 @@ PV = "4.7.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
+FILES_${PN} =+ "\
+		${libdir}/libkdeinit4_kaccess.so \
+		${libdir}/libkdeinit4_kcminit.so \
+		${libdir}/libkdeinit4_kcminit_startup.so \
+		${libdir}/libkdeinit4_klipper.so \
+		${libdir}/libkdeinit4_kmenuedit.so \
+		${libdir}/libkdeinit4_krunner.so \
+		${libdir}/libkdeinit4_ksmserver.so \
+		${libdir}/libkdeinit4_ksysguard.so \
+		${libdir}/libkdeinit4_kwin.so \
+		${libdir}/libkdeinit4_kwin_rules_dialog.so \
+		${libdir}/libkdeinit4_plasma-desktop.so \
+		${libdir}/libkdeinit4_plasma-netbook.so \
+		${libdir}/libkdeinit4_plasma-windowed.so \
+		${libdir}/libkickoff.so \
+		${libdir}/libpowerdevilui.so"
 
 EXTRA_OECMAKE += "\
 		  -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \

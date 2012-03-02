@@ -2,7 +2,6 @@ Currently to be done:
 
 plasma-active:
 -Fix the CMake error at kde-workspace that pretents that Qt can't be found when it actually found a bogus value in the cached variables
--Fix the "QA Issue: kdelibs4 rdepends on kdelibs4-dev" error in kdelibs4
 -test on OpenEmbedded compatible hardware
 
 
