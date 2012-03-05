@@ -7,6 +7,7 @@ plasma-active:
 
 all recipes:
 -Fix packages that install their CMake files to the libdir due to KDE developer mistakes (looks like INSTALL ... ${LIB_INSTALL_DIR}/cmake/KDE4Workspace)
+--This is a serious problem as it affects many recipes and causes "Bad RPATH" QA issues, unvortunately it can only get fixed by adding proper cross compiling support to KDE.
 -Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.
 -Change to a unified form of variable order (aka. clean up the recipes structure).
 
