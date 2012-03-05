@@ -20,8 +20,35 @@ S = "${WORKDIR}/git"
 FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_plasma-device.so \
 		${libdir}/libkdeinit4_plasma-keyboardcontainer.so \
-		${libdir}/libkdeinit4_plasma-widgetstrip.so"
+		${libdir}/libkdeinit4_plasma-widgetstrip.so\
+		${libdir}/kde4/*.so \
+		${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/*.js \
+		${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/*.qml \
+		${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/*.so \
+		${libdir}/kde4/imports/org/kde/metadatamodels/libdatamodelsplugin.so \
+		${libdir}/kde4/imports/org/kde/runnermodel/librunnermodelplugin.so \
+		${libdir}/kde4/imports/org/kde/*/qmldir \
+		${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/qmldir \
+		${libdir}/kde4/libexec/* \
+		${libdir}/qt4/plugins/inputmethods/*.so \
+		\
+		${datadir}/apps/* \
+		${datadir}/kde4/* \
+		${datadir}/wallpapers/* \
+		${datadir}/icons/* \
+		${datadir}/autostart/plasma-keyboardshell.desktop \
+		${datadir}/dbus-1/system-services/org.kde.active.clockconfig.service \
+		\
+	       "
 
+FILES_${PN}-dbg =+ "\
+		    ${libdir}/kde4/.debug/* \
+		    ${libdir}/qt4/plugins/inputmethods/.debug/* \
+		    ${libdir}/kde4/imports/org/kde/metadatamodels/.debug/libdatamodelsplugin.so \
+		    ${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/.debug/libmobilecomponentsplugin.so \
+		    ${libdir}/kde4/imports/org/kde/runnermodel/.debug/librunnermodelplugin.so \
+		    ${libdir}/kde4/libexec/.debug/activedatetimehelper \
+		   "
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"

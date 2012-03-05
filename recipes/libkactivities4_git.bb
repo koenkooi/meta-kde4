@@ -23,6 +23,15 @@ PV = "4.7.97+git${SRCPV}"
 
 S = "${WORKDIR}/git" 
 
+FILES_${PN} += "\
+		${datadir}/apps/* \
+		${datadir}/kde4/* \
+		\
+		${libdir}/kde4/*.so \
+	       "
+
+FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
+
 FILES_${PN}-dev += "${datadir}/apps/cmake/modules/KActivitiesConfig.cmake \
 		    ${datadir}/apps/cmake/modules/KActivitiesLibraryTargets.cmake"
 

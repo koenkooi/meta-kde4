@@ -18,7 +18,7 @@ PV = "4.7.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} =+ "\
+FILES_${PN} += "\
 		${libdir}/libkdeinit4_kaccess.so \
 		${libdir}/libkdeinit4_kcminit.so \
 		${libdir}/libkdeinit4_kcminit_startup.so \
@@ -33,7 +33,28 @@ FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_plasma-netbook.so \
 		${libdir}/libkdeinit4_plasma-windowed.so \
 		${libdir}/libkickoff.so \
-		${libdir}/libpowerdevilui.so"
+		${libdir}/libpowerdevilui.so \
+		${libdir}/kde4/*.so \
+		${libdir}/kde4/plugins/*/*.so \
+		${libdir}/kde4/libexec/* \
+		${libdir}/strigi/strigita_font.so \
+		\
+		${datadir}/apps/* \
+		${datadir}/config/* \
+		${datadir}/config.kcfg/* \
+		${datadir}/kde4/* \
+		${datadir}/wallpapers/* \
+		${datadir}/icons/* \
+		${datadir}/autostart/* \
+		${datadir}/dbus-1/* \
+"
+
+FILES_${PN}-dbg += "\
+		    ${libdir}/kde4/.debug/* \
+		    ${libdir}/kde4/libexec/.debug/* \
+		    ${libdir}/kde4/plugins/*/.debug/* \
+		    ${libdir}/strigi/.debug/strigita_font.so \
+		   "
 
 EXTRA_OECMAKE += "\
 		  -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \

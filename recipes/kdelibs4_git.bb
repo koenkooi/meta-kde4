@@ -33,7 +33,21 @@ FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_kconf_update.so \
 		${libdir}/libkdeinit4_kded4.so \
 		${libdir}/libkdeinit4_kio_http_cache_cleaner.so \
-		${libdir}/libkdeinit4_klauncher.so"
+		${libdir}/libkdeinit4_klauncher.so \
+		${libdir}/kde4/plugins/* \
+		${libdir}/kde4/libexec/* \
+		${libdir}/kde4/plugins/designer/* \
+		${libdir}/kde4/plugins/imageformats/* \
+		${libdir}/kde4/plugins/kauth/* \
+		${libdir}/kde4/plugins/script/* \
+		\
+		${datadir}/apps/* \
+		${datadir}/config/* \
+		${datadir}/mime/* \
+		${datadir}/kde4/* \
+		${datadir}/icons/* \
+		${datadir}/dbus-1/* \
+	       "
 
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
