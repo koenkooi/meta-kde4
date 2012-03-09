@@ -1,0 +1,64 @@
+From e396c51a060cb90b880c55243f7261c97f364552 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 8 Mar 2012 15:29:07 +0100
+Subject: [PATCH] Convert Phonon to phonon
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ .../panels/information/informationpanelcontent.cpp |    6 +++---
+ dolphin/src/panels/information/phononwidget.cpp    |    8 ++++----
+ dolphin/src/panels/information/phononwidget.h      |    2 +-
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/dolphin/src/panels/information/informationpanelcontent.cpp b/dolphin/src/panels/information/informationpanelcontent.cpp
+index 7de6052..7ff311f 100644
+--- a/dolphin/src/panels/information/informationpanelcontent.cpp
++++ b/dolphin/src/panels/information/informationpanelcontent.cpp
+@@ -32,9 +32,9 @@
+ #include <kseparator.h>
+ #include <KStringHandler>
+ 
+-#include <Phonon/BackendCapabilities>
+-#include <Phonon/MediaObject>
+-#include <Phonon/SeekSlider>
++#include <phonon/BackendCapabilities>
++#include <phonon/MediaObject>
++#include <phonon/SeekSlider>
+ 
+ #include <QEvent>
+ #include <QLabel>
+diff --git a/dolphin/src/panels/information/phononwidget.cpp b/dolphin/src/panels/information/phononwidget.cpp
+index 5f0c111..3cd86c5 100644
+--- a/dolphin/src/panels/information/phononwidget.cpp
++++ b/dolphin/src/panels/information/phononwidget.cpp
+@@ -20,10 +20,10 @@
+ 
+ #include "phononwidget.h"
+ 
+-#include <Phonon/Global>
+-#include <Phonon/MediaObject>
+-#include <Phonon/SeekSlider>
+-#include <Phonon/VideoPlayer>
++#include <phonon/Global>
++#include <phonon/MediaObject>
++#include <phonon/SeekSlider>
++#include <phonon/VideoPlayer>
+ 
+ #include <QVBoxLayout>
+ #include <QHBoxLayout>
+diff --git a/dolphin/src/panels/information/phononwidget.h b/dolphin/src/panels/information/phononwidget.h
+index 1e1ea37..cfdd73d 100644
+--- a/dolphin/src/panels/information/phononwidget.h
++++ b/dolphin/src/panels/information/phononwidget.h
+@@ -26,7 +26,7 @@
+ #include <QSize>
+ #include <QWidget>
+ 
+-#include <Phonon/Global>
++#include <phonon/Global>
+ 
+ namespace Phonon
+ {
+-- 
+1.7.5.4
+
