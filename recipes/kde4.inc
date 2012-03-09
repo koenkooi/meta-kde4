@@ -59,7 +59,7 @@ set( WITH_FAM OFF     CACHE BOOL "Disabled" )
 set( WITH_GSSAPI OFF  CACHE BOOL "Disabled" )
 set( WITH_HSPELL OFF  CACHE BOOL "Disabled" )
 set( WITH_OpenEXR OFF CACHE BOOL "Disabled" )
- 
+
 
 ##----
 
@@ -86,6 +86,10 @@ set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
 
 # Qt Stuff for testing
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} )
+
+
+# Don't build the documentation
+set( BUILD_doc OFF )
 EOF
 }
 addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure

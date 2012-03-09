@@ -7,10 +7,10 @@ DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologi
 
 #soprano
 
-inherit mime perlnative kde-exports
+inherit perlnative kde-exports
 require kde4.inc
 
-SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.7.4 \
+SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
 	  file://0002-Fix-openssl-check.patch \
 	  file://0003-Fix-FindKDE4Internals-cmake-file.patch \
@@ -20,8 +20,8 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.7.4 \
 	  file://0007-Fix-the-KDE-flavoured-version-of-FindQt4.cmake.patch \
 	  "
 
-SRCREV = "bd4af4938a23585fd6443193935c170739d12822"
-PV = "4.7.4+git${SRCPV}"
+SRCREV = "dbb242558dd5dfc690e1428e0ca36245bcfc0c0c"
+PV = "4.8.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
@@ -34,12 +34,12 @@ FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_kded4.so \
 		${libdir}/libkdeinit4_kio_http_cache_cleaner.so \
 		${libdir}/libkdeinit4_klauncher.so \
-		${libdir}/kde4/plugins/* \
+		${libdir}/kde4/*.so \
 		${libdir}/kde4/libexec/* \
 		${libdir}/kde4/plugins/designer/* \
 		${libdir}/kde4/plugins/imageformats/* \
 		${libdir}/kde4/plugins/kauth/* \
-		${libdir}/kde4/plugins/script/* \
+		${libdir}/kde4/plugins/script/*.so.* \
 		\
 		${datadir}/apps/* \
 		${datadir}/config/* \
@@ -47,7 +47,26 @@ FILES_${PN} =+ "\
 		${datadir}/kde4/* \
 		${datadir}/icons/* \
 		${datadir}/dbus-1/* \
+		\
+		${sysconfdir}/* \
+		${prefix}${sysconfdir}/* \
 	       "
+
+FILES_${PN}-dev += "\
+		    ${bindir}/kconfig_compiler \
+		    ${bindir}/kde4-config \
+		    \
+		    ${datadir}/apps/cmake/* \
+		    \
+		    ${libdir}/kde4/plugins/script/libkrossqtsplugin.so \
+		   "
+
+FILES_${PN}-dbg += "\
+		    ${libdir}/kde4/.debug/* \
+		    ${libdir}/kde4/*/.debug/* \
+		    ${libdir}/kde4/*/*/.debug/* \
+		    ${libdir}/kde4/*plugins/kauth/helper/.debug/* \
+		   "
 
 # kdelibs *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."

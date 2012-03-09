@@ -1,9 +1,9 @@
-From 69625da2ccc08e39538ad188ecdc1de3547368f8 Mon Sep 17 00:00:00 2001
+From cae49893a69418729088f584d7177522c536b6ba Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Wed, 22 Feb 2012 12:57:03 +0100
-Subject: [PATCH] Remove docs so they don't get pulled in elsewhere
- Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 6 Mar 2012 16:06:34 +0100
+Subject: [PATCH] Remove docs so they don t get pulled in elsewhere
 
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
 ---
  doc/CMakeLists.txt                                 |   20 -
  doc/TODO                                           |   49 -
@@ -165,7 +165,7 @@ Subject: [PATCH] Remove docs so they don't get pulled in elsewhere
  doc/kioslave/help/CMakeLists.txt                   |    3 -
  doc/kioslave/help/index.docbook                    |   24 -
  doc/kioslave/http/CMakeLists.txt                   |    3 -
- doc/kioslave/http/index.docbook                    |   38 -
+ doc/kioslave/http/index.docbook                    |   35 -
  doc/kioslave/mailto/CMakeLists.txt                 |    3 -
  doc/kioslave/mailto/index.docbook                  |   24 -
  doc/kioslave/rlogin/CMakeLists.txt                 |    3 -
@@ -190,7 +190,7 @@ Subject: [PATCH] Remove docs so they don't get pulled in elsewhere
  doc/qtoptions/man-qtoptions.7.docbook              |  244 ---
  doc/sonnet/CMakeLists.txt                          |    1 -
  doc/sonnet/index.docbook                           |   89 --
- 185 files changed, 0 insertions(+), 12929 deletions(-)
+ 185 files changed, 0 insertions(+), 12926 deletions(-)
  delete mode 100644 doc/CMakeLists.txt
  delete mode 100644 doc/TODO
  delete mode 100644 doc/api/Doxyfile.local
@@ -847,7 +847,7 @@ index 567a248..0000000
 -done
 diff --git a/doc/api/doxygen.sh b/doc/api/doxygen.sh
 deleted file mode 100755
-index 84341d3..0000000
+index dc28a56..0000000
 --- a/doc/api/doxygen.sh
 +++ /dev/null
 @@ -1,1062 +0,0 @@
@@ -1207,7 +1207,7 @@ index 84341d3..0000000
 -               PROJECT_NAME="KDE"
 -        fi
 -        if test -z "$PROJECT_VERSION" ; then
--               PROJECT_VERSION="4.7"
+-               PROJECT_VERSION="4.8"
 -        fi
 -        vf="$PROJECT_NAME"-"$PROJECT_VERSION"
 -        echo "QHP_VIRTUAL_FOLDER     = $vf" >> "$subdir/Doxyfile"
@@ -35629,7 +35629,7 @@ index 26ae3af..0000000
 -</HTML>
 diff --git a/doc/common/header.html b/doc/common/header.html
 deleted file mode 100644
-index 88bf19e..0000000
+index 512c70e..0000000
 --- a/doc/common/header.html
 +++ /dev/null
 @@ -1,69 +0,0 @@
@@ -35674,7 +35674,7 @@ index 88bf19e..0000000
 -<div id="header">
 -  <div id="header_top"><div><div>
 -    <img alt ="" src="@topdir@/top-kde.jpg"/>
--    KDE 4.7 API Reference  </div></div></div>
+-    KDE 4.8 API Reference  </div></div></div>
 -  <div id="header_bottom">
 -    <div id="location">
 -      <ul>
@@ -38497,7 +38497,7 @@ index b4ea9fd..0000000
 -</html>
 diff --git a/doc/common/mainheader.html b/doc/common/mainheader.html
 deleted file mode 100644
-index 9cea33f..0000000
+index e5adb56..0000000
 --- a/doc/common/mainheader.html
 +++ /dev/null
 @@ -1,68 +0,0 @@
@@ -38542,7 +38542,7 @@ index 9cea33f..0000000
 -<div id="header">
 -  <div id="header_top"><div><div>
 -    <img alt ="" src="@topdir@/top-kde.jpg"/>
--    KDE 4.7 API Reference  </div></div></div>
+-    KDE 4.8 API Reference  </div></div></div>
 -  <div id="header_bottom">
 -    <div id="location">
 -      <ul>
@@ -41992,10 +41992,10 @@ index b112fc8..0000000
 -
 diff --git a/doc/kioslave/http/index.docbook b/doc/kioslave/http/index.docbook
 deleted file mode 100644
-index 517f659..0000000
+index 200294d..0000000
 --- a/doc/kioslave/http/index.docbook
 +++ /dev/null
-@@ -1,38 +0,0 @@
+@@ -1,35 +0,0 @@
 -<?xml version="1.0" ?>
 -<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
 -"dtd/kdex.dtd" [
@@ -42023,9 +42023,6 @@ index 517f659..0000000
 -<para>You can use the http kioslave in &konqueror; by giving it a
 -<acronym>URL</acronym>.  
 -<userinput>http://<replaceable>www.kde.org</replaceable></userinput>.</para>
--
--<para> See the manual: <ulink url="man:/http">http</ulink>.
--</para>
 -
 -<para>https is http encapsulated in a SSL/TLS stream.</para>
 -<para>
