@@ -1,5 +1,5 @@
 The recipes located here are not KDE related but dependencies of KDE packages.
 
-Please note, if you have a package (or you want to port one) that depends on any of these recipes, don't depend on this layer!
+Please note, if you have a package (or you want to port one) that depends on any of these support recipes, don't depend on this layer!
 Instead move the recipe you need over to meta-openembedded and/or contact one of the layer maintainers of meta-kde.
 
