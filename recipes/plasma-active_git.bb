@@ -2,6 +2,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 require kde4.inc
+inherit kde-workaround-tmp
 
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 
@@ -10,6 +11,10 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 
 #finalized (and WORKING) depends list
 DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native perl-native"
+
+RDEPENDS_${PN} = "kde-workspace kde-runtime libkactivities4 oxygen-icons"
+
+RRECOMMENDS_${PN} = "startactive"
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"
 SRCREV = "4fab06881388c658553afad27ff61a784aacfcc1"
@@ -39,14 +44,15 @@ FILES_${PN} =+ "\
 		${datadir}/autostart/plasma-keyboardshell.desktop \
 		${datadir}/dbus-1/system-services/org.kde.active.clockconfig.service \
 		\
+		${sysconfdir}/* \
+		${prefix}${sysconfdir}/* \
 	       "
 
 FILES_${PN}-dbg =+ "\
 		    ${libdir}/kde4/.debug/* \
 		    ${libdir}/qt4/plugins/inputmethods/.debug/* \
-		    ${libdir}/kde4/imports/org/kde/metadatamodels/.debug/libdatamodelsplugin.so \
+		    ${libdir}/kde4/imports/org/kde/*/.debug/*.so \
 		    ${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/.debug/libmobilecomponentsplugin.so \
-		    ${libdir}/kde4/imports/org/kde/runnermodel/.debug/librunnermodelplugin.so \
 		    ${libdir}/kde4/libexec/.debug/activedatetimehelper \
 		   "
 # build out of tree
@@ -59,17 +65,3 @@ EXTRA_OECMAKE =+ "\
 		  \
 		  -DRCGEN=/usr/bin/nepomuk-rcgen \
 		 "
-
-## DIRTY HACK / WORKAROUND
-do_install_append() {
-
-# This will move dbus into the wrong directory to prevent mv error directory not empty
-  mv ${D}/usr/share/* ${D}${STAGING_DIR_TARGET}/usr/share
-
-# This moves the wrong directory to the normal prefix
-  mv -nf ${D}${STAGING_DIR_TARGET}/usr/* ${D}/usr/
-
-# The next 2 lines will remove empty leftover directories
-  tmp_relative_staging_dir_target=`echo "${STAGING_DIR_TARGET}" | sed 's|^/||'`
-  cd ${D} && rmdir -p ${tmp_relative_staging_dir_target}/usr
-}
