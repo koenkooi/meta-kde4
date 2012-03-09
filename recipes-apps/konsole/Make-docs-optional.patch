@@ -1,0 +1,25 @@
+From 6e59e4d79bc9d6e8c7a7b62601ba9e417bdf8269 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 8 Mar 2012 17:10:20 +0100
+Subject: [PATCH] Make docs optional
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 83a8c5c..1b97ee4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,6 +14,6 @@ KDE4_NO_ENABLE_FINAL(konsole)
+ add_subdirectory( src ) 
+ add_subdirectory( data ) 
+ add_subdirectory( desktop )
+-add_subdirectory( doc/manual )
++macro_optional_add_subdirectory( doc/manual )
+ 
+ macro_display_feature_log()
+-- 
+1.7.5.4
+
