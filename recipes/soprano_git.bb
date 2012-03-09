@@ -5,6 +5,8 @@ require kde4.inc
 
 DEPENDS = "virtuoso raptor"
 
+RDEPENDS_${PN} = "virtuoso raptor rasqal redland"
+
 SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
 	   file://Fix-Redland-cross-compile-error.patch \
 	   file://WORKAROUND-export-visibility.patch \
@@ -14,7 +16,11 @@ SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
 
 #Note: the cmake patch for redland could be resolved with a TryRun.cmake file, however since the cmake file will be installed for other programs it would be needed at every program using it.
 
-FILES_${PN} =+ "${libdir}libsopranoserver.*"
+FILES_${PN} =+ "${libdir}/soprano/* \
+		${datadir}/dbus-1/* \
+	       "
+
+FILES_${PN}-dev += "${datadir}/soprano/cmake/*"
 
 EXTRA_OECMAKE =+ "\
 		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
