@@ -2,7 +2,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
 require kde4.inc
-inherit kde-workaround-tmp
+
 
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 
@@ -16,7 +16,8 @@ RDEPENDS_${PN} = "kde-workspace kde-runtime libkactivities4 oxygen-icons"
 
 RRECOMMENDS_${PN} = "startactive"
 
-SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master"
+SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master \
+	   file://Fix-Qt-inputmethid-plugin-install-path.patch"
 SRCREV = "4fab06881388c658553afad27ff61a784aacfcc1"
 PV = "2+git${SRCPV}"
 
@@ -45,7 +46,6 @@ FILES_${PN} =+ "\
 		${datadir}/dbus-1/system-services/org.kde.active.clockconfig.service \
 		\
 		${sysconfdir}/* \
-		${prefix}${sysconfdir}/* \
 	       "
 
 FILES_${PN}-dbg =+ "\
@@ -64,4 +64,7 @@ EXTRA_OECMAKE =+ "\
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
 		  \
 		  -DRCGEN=/usr/bin/nepomuk-rcgen \
+		  \
+		  -DOE_CROSSCOMPILING=TRUE \
+		  -DOE_QT_PLUGINS_DIR=${libdir}/qt4/plugins \
 		 "

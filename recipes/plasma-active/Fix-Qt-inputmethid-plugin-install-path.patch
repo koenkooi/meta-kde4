@@ -1,0 +1,29 @@
+From fa57abc2defd711531ed3683a268e9ce0c38fd46 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 14 Mar 2012 09:19:06 +0100
+Subject: [PATCH] Fix Qt inputmethid plugin install path.
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ virtualkeyboard/inputmethod/CMakeLists.txt |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/virtualkeyboard/inputmethod/CMakeLists.txt b/virtualkeyboard/inputmethod/CMakeLists.txt
+index 2404e33..6c4d311 100644
+--- a/virtualkeyboard/inputmethod/CMakeLists.txt
++++ b/virtualkeyboard/inputmethod/CMakeLists.txt
+@@ -25,7 +25,10 @@ target_link_libraries(plasmainputcontextplugin ${QT_QTCORE_LIBRARY} ${QT_QTDBUS_
+ 
+ #This won't work with a local installation, but qt searches plugins only there
+ #FIXME: a place in the kde install prefix to install qt-only plugins?
+-install(TARGETS plasmainputcontextplugin DESTINATION ${QT_PLUGINS_DIR}/inputmethods/)
++
++##install(TARGETS plasmainputcontextplugin DESTINATION ${QT_PLUGINS_DIR}/inputmethods/)
++# OPENEMBEDDED: This will install it to the wrong path so install it to OE_QT_PLUGINS_DIR
++install(TARGETS plasmainputcontextplugin DESTINATION ${OE_QT_PLUGINS_DIR}/inputmethods/)
+ 
+ #install(FILES plasmainputmethod.sh DESTINATION ${CMAKE_INSTALL_PREFIX}/env)
+ 
+-- 
+1.7.5.4
+
