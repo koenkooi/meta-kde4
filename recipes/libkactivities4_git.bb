@@ -1,14 +1,13 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/git/lib/info.h;md5=4547c0d20883d91da92544ee5fc15a0d;beginline=1;endline=16"
 
-inherit kde-exports kde-workaround-tmp
-
 KDE_EXPORT_FILES = "${S}/build/lib/CMakeFiles/Export/_usr/share/apps/cmake/modules/KActivitiesLibraryTargets-relwithdebinfo.cmake"
 
+inherit kde-exports
 require kde4.inc
 
 DEPENDS = "kdelibs4 soprano shared-desktop-ontologies"
-#+soprano
+RDEPENDS_${PN} = "soprano shared-desktop-ontologies"
 
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
@@ -29,7 +28,6 @@ FILES_${PN} += "\
 		${libdir}/kde4/*.so \
 		\
 		${sysconfdir}/* \
-		${prefix}${sysconfdir}/* \
 	       "
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
@@ -40,4 +38,5 @@ FILES_${PN}-dev += "${datadir}/apps/cmake/* \
 
 EXTRA_OECMAKE += "\
 		  -DPERL_EXECUTABLE=${STAGING_BINDIR_NATIVE}/perl-native/perl \
+		  -DOE_CROSSCOMPILING=TRUE \
 		 "
