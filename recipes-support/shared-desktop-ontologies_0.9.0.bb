@@ -14,3 +14,7 @@ SRC_URI = "http://kent.dl.sourceforge.net/project/oscaf/shared-desktop-ontologie
 
 SRC_URI[md5sum] = "8cd0950dc66eb5fbe560ac7fdb416e04"
 SRC_URI[sha256sum] = "6efaf4caed8b5467390dc6ae62c678b28fd753df524c257f0a938c2a7b6ac526"
+
+# build out of tree
+OECMAKE_SOURCEPATH = ".."
+OECMAKE_BUILDPATH = "build"
