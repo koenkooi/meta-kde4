@@ -69,6 +69,10 @@ set( KDE4_MAKEKDEWIDGETS_EXECUTABLE /usr/bin/makekdewidgets CACHE PATH "" )
 set( KDE4_KCFGC_EXECUTABLE /usr/bin/kconfig_compiler CACHE PATH "" )
 set( KDE4_AUTOMOC_EXECUTABLE /usr/bin/automoc4 CACHE PATH "" )
 
+
+# This will prevent KDElibs from installing files to /usr/etc instead of /etc
+set( SYSCONF_INSTALL_DIR ${sysconfdir} CACHE PATH "" )
+
 # This one is a totally useless dependency
 set( KDE4_KDECONFIG_EXECUTABLE TRUE CACHE PATH "" )
 
