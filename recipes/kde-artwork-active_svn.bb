@@ -1,7 +1,8 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://splash/main.qml;beginline=2;endline=18;md5=ab5c18ec5cfda84f5423a5ebe94dcb01"
 
-inherit kde-workaround-tmp
+DEPENDS = "kdelibs4"
+
 require kde4.inc
 
 SRC_URI = "svn://anonsvn.kde.org/home/kde;module=trunk/playground/base/plasma/kde-artwork-active;proto=svn"
@@ -16,3 +17,5 @@ FILES_${PN} += "\
 		${datadir}/apps/kscreenlocker/* \
 		${datadir}/wallpapers/* \
 	       "
+
+EXTRA_OECMAKE =+ "-DOE_CROSSCOMPILING=TRUE"
