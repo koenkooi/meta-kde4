@@ -2,14 +2,15 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 require kde4.inc
-inherit kde-workaround-tmp perlnative
+inherit kde-without-docs perlnative
 
-DEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies"
+#if you use x86 replace virtual/egl with virtual/gl
+DEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies virtual/egl"
+RDEPENDS_${PN} = "libkactivities4 soprano"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;tag=v4.8.0 \
 	   file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
-	   file://Opt-out-python-scriptengine.patch \
-	   file://Disable-docs.patch"
+	   file://Opt-out-python-scriptengine.patch"
 
 
 SRCREV = "0ad49f2e4392b75ce16c5a08dcac99caf8cabe0d"
@@ -19,19 +20,7 @@ PV = "4.8.0+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "\
-		${libdir}/libkdeinit4_kaccess.so \
-		${libdir}/libkdeinit4_kcminit.so \
-		${libdir}/libkdeinit4_kcminit_startup.so \
-		${libdir}/libkdeinit4_klipper.so \
-		${libdir}/libkdeinit4_kmenuedit.so \
-		${libdir}/libkdeinit4_krunner.so \
-		${libdir}/libkdeinit4_ksmserver.so \
-		${libdir}/libkdeinit4_ksysguard.so \
-		${libdir}/libkdeinit4_kwin.so \
-		${libdir}/libkdeinit4_kwin_rules_dialog.so \
-		${libdir}/libkdeinit4_plasma-desktop.so \
-		${libdir}/libkdeinit4_plasma-netbook.so \
-		${libdir}/libkdeinit4_plasma-windowed.so \
+		${libdir}/libkdeinit4_*.so \
 		${libdir}/libkickoff.so \
 		${libdir}/libpowerdevilui.so \
 		${libdir}/kde4/*.so \
@@ -52,7 +41,6 @@ FILES_${PN} += "\
 		${datadir}/dbus-1/* \
 		\
 		${sysconfdir}/* \
-		${prefix}${sysconfdir}/* \
 	       "
 
 FILES_${PN}-dbg += "\
@@ -73,6 +61,11 @@ EXTRA_OECMAKE += "\
 		  -DHONORS_SOCKET_PERMS_EXITCODE=0 \
 		  -DKDE_WORKSPACE_WORKAROUND=TRUE \
 		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules/ \
+		  \
+		  -DSHAREDDESKTOPONTOLOGIES_FOUND=TRUE \
+		  -DSHAREDDESKTOPONTOLOGIES_ROOT_DIR=${STAGING_DATADIR}/ontology \
+		  \
+		  -DOE_CROSSCOMPILING=TRUE \
 		 "
 
 # build out of tree
