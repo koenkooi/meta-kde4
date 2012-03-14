@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 DEPENDS = "kdelibs4 soprano"
 
-inherit kde-without-docs kde-workaround-tmp
+inherit kde-without-docs
 require kde4.inc
 
 SRC_URI = "git://anongit.kde.org/kde-baseapps;protocol=git;tag=v4.8.0 \
@@ -25,3 +25,5 @@ FILES_${PN} += "\
 	       "
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
+
+EXTRA_OECMAKE =+ "-DOE_CROSSCOMPILING=TRUE"
