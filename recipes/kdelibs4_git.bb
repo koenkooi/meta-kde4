@@ -7,7 +7,7 @@ DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologi
 
 #soprano
 
-inherit perlnative kde-exports
+inherit perlnative kde-exports kde-without-docs
 require kde4.inc
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
@@ -15,9 +15,7 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
 	  file://0002-Fix-openssl-check.patch \
 	  file://0003-Fix-FindKDE4Internals-cmake-file.patch \
 	  file://0004-Fix-the-path-to-Icemaker.patch \
-	  file://0005-Remove-docs-so-they-don-t-get-pulled-in-elsewhere.patch \
 	  file://0006-Fix-makekdewidget-executable-path.patch \
-	  file://0007-Fix-the-KDE-flavoured-version-of-FindQt4.cmake.patch \
 	  "
 
 SRCREV = "dbb242558dd5dfc690e1428e0ca36245bcfc0c0c"
@@ -26,7 +24,6 @@ PV = "4.8.0+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
-
 
 FILES_${PN} =+ "\
 		${libdir}/libkdeinit4_kbuildsycoca4.so \
@@ -49,7 +46,6 @@ FILES_${PN} =+ "\
 		${datadir}/dbus-1/* \
 		\
 		${sysconfdir}/* \
-		${prefix}${sysconfdir}/* \
 	       "
 
 FILES_${PN}-dev += "\
