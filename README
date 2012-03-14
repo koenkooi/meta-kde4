@@ -6,8 +6,8 @@ Layer license:		MIT license (see COPYING.MIT)
 Layer maintainers:
 Samuel Stirtzel <s.stirtzel@googlemail.com>
 
-Editors:
-(C)2011, 2012 - Samuel Stirtzel
+Contributors:
+Copyright (C) 2011, 2012 - Samuel Stirtzel
 
 Thanks to:
 Andreas Müller
@@ -20,4 +20,4 @@ This layer needs kdelibsX-dev or kdelibsX.devel installed (either kdelibs4 or kd
 FAQ / Troubleshooting:
 1.
   Q: How can I contribute my patches / recipes to this layer?
-  A: Send a merge request to one of the layer maintainers, don't forget to add your name to the Editors and the COPYING.MIT list.
+  A: Send a merge request to one of the layer maintainers, don't forget to add your name to the contributors list.

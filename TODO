@@ -2,14 +2,17 @@ Currently to be done:
 
 plasma-active:
 -Fix the CMake error at kde-workspace that pretents that Qt can't be found when it actually found a bogus value in the cached variables
--test on OpenEmbedded compatible hardware
+--Very misterious error that only happens after ccleansstate?
+--Error message is:
+| -- Qt's moc NOT found!
+| -- Qt's uic NOT found!
+| -- Qt's rcc NOT found!
+--But Qt is actually found, re running the task will not give this error again!
+-runtest on OpenEmbedded compatible hardware
 
 
 all recipes:
--Fix packages that install their CMake files to the libdir due to KDE developer mistakes (looks like INSTALL ... ${LIB_INSTALL_DIR}/cmake/KDE4Workspace)
+-Fix packages that install their CMake files to the libdir due to lacking knowledge about FHS (looks like INSTALL ... ${LIB_INSTALL_DIR}/cmake/KDE4Workspace)
 --This is a serious problem as it affects many recipes and causes "Bad RPATH" QA issues, unvortunately it can only get fixed by adding proper cross compiling support to KDE.
 -Check if licenses really match, the license variables were just copied over assuming that it is GPLv2 conform.
 -Change to a unified form of variable order (aka. clean up the recipes structure).
-
--Find a upstreamable solution to add "out of the box" KDE cross compiling support
---Fix hardcoded install directories and library targets in KDEs CMake files (see *relwithdebinfo*.cmake files)
