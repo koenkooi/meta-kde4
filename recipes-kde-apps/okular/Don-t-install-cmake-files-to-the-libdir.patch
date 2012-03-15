@@ -1,0 +1,26 @@
+From 462abb2b9682ba946ebab520235579b2f4721ef3 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 15 Mar 2012 15:39:45 +0100
+Subject: [PATCH] Don't install cmake files to the libdir
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0034cf3..dacbcb1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -205,7 +205,7 @@ macro_write_basic_cmake_version_file(${CMAKE_CURRENT_BINARY_DIR}/OkularConfigVer
+ 
+ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/OkularConfig.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/OkularConfigVersion.cmake
+-        DESTINATION ${LIB_INSTALL_DIR}/cmake/Okular )
++        DESTINATION ${DATA_INSTALL_DIR}/cmake/modules )
+ 
+ macro_display_feature_log()
+ 
+-- 
+1.7.5.4
+

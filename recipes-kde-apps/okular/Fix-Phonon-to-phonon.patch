@@ -1,0 +1,26 @@
+From 9f00a1dbe3aeac52d7052172cc8fb19976367206 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 15 Mar 2012 15:32:09 +0100
+Subject: [PATCH] Fix Phonon to phonon
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ core/audioplayer.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/core/audioplayer.cpp b/core/audioplayer.cpp
+index af59588..76ce63d 100644
+--- a/core/audioplayer.cpp
++++ b/core/audioplayer.cpp
+@@ -15,7 +15,7 @@
+ #include <qdir.h>
+ #include <kdebug.h>
+ #include <krandom.h>
+-#include <Phonon/Path>
++#include <phonon/Path>
+ #include <phonon/audiooutput.h>
+ #include <phonon/abstractmediastream.h>
+ #include <phonon/mediaobject.h>
+-- 
+1.7.5.4
+
