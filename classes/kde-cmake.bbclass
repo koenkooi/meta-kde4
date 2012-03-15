@@ -18,7 +18,7 @@ set( CMAKE_CXX_FLAGS "${OECMAKE_CXX_FLAGS}" CACHE STRING "CXXFLAGS" )
 set( CMAKE_C_FLAGS_RELEASE "${OECMAKE_C_FLAGS_RELEASE}" CACHE STRING "CFLAGS for release" )
 set( CMAKE_CXX_FLAGS_RELEASE "${OECMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "CXXFLAGS for release" )
 
-# We actually do cross compiling
+# We actually do cross compiling, but this should be already set automatically
 set( CMAKE_CROSSCOMPILING TRUE )
 
 # only search in the paths provided so cmake doesnt pick
@@ -91,9 +91,13 @@ set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
 # Qt Stuff for testing
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} )
 
+# This will now allow us to instll to the right directory instead of some bogus dirs found by FindKDE4Internal.cmake
+if( NOT DEFINED OE_CROSSCOMPILING)
+  set( OE_CROSSCOMPILING TRUE )
+endif( NOT DEFINED OE_CROSSCOMPILING )
 
 # Don't build the documentation
 set( BUILD_doc OFF )
 EOF
 }
-addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure
+addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure 

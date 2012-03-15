@@ -1,8 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-require kde4.inc
-
+inherit kde-cmake
 
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 
@@ -65,6 +64,5 @@ EXTRA_OECMAKE =+ "\
 		  \
 		  -DRCGEN=/usr/bin/nepomuk-rcgen \
 		  \
-		  -DOE_CROSSCOMPILING=TRUE \
 		  -DOE_QT_PLUGINS_DIR=${libdir}/qt4/plugins \
 		 "

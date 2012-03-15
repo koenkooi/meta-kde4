@@ -1,7 +1,7 @@
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=ccf994d4070fbdcd43bf7de4bf9b4a22"
 
-require kde4.inc
+inherit kde-cmake
 
 DEPENDS = "boost curl libxml2 expat binutils"
 #DEPENDS_virtclass-native = "libiconv-native"

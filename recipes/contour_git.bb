@@ -1,7 +1,7 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-require kde4.inc
+inherit kde-cmake
 
 DEPENDS = "kde-workspace kde-runtime soprano shared-desktop-ontologies kdelibs4 libkactivities4"
 
@@ -27,7 +27,3 @@ FILES_${PN} += "\
 FILES_${PN}-dev += "${datadir}/cmake/*"
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
-
-EXTRA_OECMAKE =+ "-DOE_CROSSCOMPILING=TRUE"
-
-

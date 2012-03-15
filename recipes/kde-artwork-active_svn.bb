@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://splash/main.qml;beginline=2;endline=18;md5=ab5c18ec5c
 
 DEPENDS = "kdelibs4"
 
-require kde4.inc
+inherit kde-cmake
 
 SRC_URI = "svn://anonsvn.kde.org/home/kde;module=trunk/playground/base/plasma/kde-artwork-active;proto=svn"
 SRCREV = "1266939"
@@ -18,4 +18,3 @@ FILES_${PN} += "\
 		${datadir}/wallpapers/* \
 	       "
 
-EXTRA_OECMAKE =+ "-DOE_CROSSCOMPILING=TRUE"

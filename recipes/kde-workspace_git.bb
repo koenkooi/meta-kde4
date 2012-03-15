@@ -1,8 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-require kde4.inc
-inherit kde-without-docs perlnative
+inherit kde-cmake kde-without-docs perlnative
 
 #if you use x86 replace virtual/egl with virtual/gl
 DEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies virtual/egl"
@@ -64,8 +63,6 @@ EXTRA_OECMAKE += "\
 		  \
 		  -DSHAREDDESKTOPONTOLOGIES_FOUND=TRUE \
 		  -DSHAREDDESKTOPONTOLOGIES_ROOT_DIR=${STAGING_DATADIR}/ontology \
-		  \
-		  -DOE_CROSSCOMPILING=TRUE \
 		 "
 
 # build out of tree

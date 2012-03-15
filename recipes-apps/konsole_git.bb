@@ -5,8 +5,7 @@ DEPENDS = "kdelibs4 kde-baseapps"
 
 RDEPENDS_${PN} = "kde-baseapps"
 
-inherit kde-without-docs kde-workaround-tmp
-require kde4.inc
+inherit kde-without-docs kde-cmake
 
 SRC_URI = "git://anongit.kde.org/konsole.git;protocol=git;tag=v4.8.0\ 
 	   file://Make-docs-optional.patch"

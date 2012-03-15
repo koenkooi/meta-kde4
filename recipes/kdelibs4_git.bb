@@ -2,13 +2,9 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
+inherit kde-cmake kde-exports kde-without-docs perlnative
 
 DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
-
-#soprano
-
-inherit perlnative kde-exports kde-without-docs
-require kde4.inc
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
@@ -26,11 +22,7 @@ S = "${WORKDIR}/git"
 KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
 
 FILES_${PN} =+ "\
-		${libdir}/libkdeinit4_kbuildsycoca4.so \
-		${libdir}/libkdeinit4_kconf_update.so \
-		${libdir}/libkdeinit4_kded4.so \
-		${libdir}/libkdeinit4_kio_http_cache_cleaner.so \
-		${libdir}/libkdeinit4_klauncher.so \
+		${libdir}/libkdeinit4_*.so \
 		${libdir}/kde4/*.so \
 		${libdir}/kde4/libexec/* \
 		${libdir}/kde4/plugins/designer/* \
@@ -68,7 +60,8 @@ FILES_${PN}-dbg += "\
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-
+# OE_CROSSCOMPILING is only set for applications that use kde, but not for kdelibs itself.
+# This will prevent errors when the cmake macro _set_fancy is required by other cmake files while compiling kdelibs.
 EXTRA_OECMAKE =+ "\
 		  -DKJS_FORCE_DISABLE_PCRE=TRUE \
 		  -DSTRIGI_REQUIRED=FALSE \
@@ -79,6 +72,7 @@ EXTRA_OECMAKE =+ "\
 		  -DBZIP2_NEED_PREFIX=TRUE \
 		  \
 		  -DKDE4_INSTALL_DIR=${D}${prefix} \
+		  -DOE_CROSSCOMPILING=FALSE \
 		 "
 
 # This will cause errors related to disabled DEPRECATED settings (e.g. usr/include/nepomuk/tools.h will be missing but is required)
