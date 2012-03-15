@@ -1,0 +1,23 @@
+From 4bf8c0b83de493608920dd180eec441e3add8a10 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 15 Mar 2012 14:50:58 +0100
+Subject: [PATCH] Make docs optional
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 60ab5c4..4f0a3b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -96,4 +96,4 @@ install( FILES kcalcrc.upd  DESTINATION ${DATA_INSTALL_DIR}/kconf_update)
+ 
+ kde4_install_icons( ${ICON_INSTALL_DIR}   )
+ 
+-add_subdirectory(doc)
++macro_optional_add_subdirectory(doc)
+-- 
+1.7.5.4
+
