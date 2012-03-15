@@ -1,7 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://main.cpp;beginline=2;endline=17;md5=ab7ff4858efc6ddd5151e115b0bf2d9f"
 
-inherit kde-cmake
+inherit kde_cmake
 
 DEPENDS = "kdelibs4"
 

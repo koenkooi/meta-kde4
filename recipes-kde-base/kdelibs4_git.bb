@@ -2,7 +2,7 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-inherit kde-cmake kde-exports kde-without-docs perlnative
+inherit kde_cmake kde_exports kde_without_docs perlnative
 
 DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
 

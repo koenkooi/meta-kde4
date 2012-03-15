@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 DEPENDS = "kdelibs4 libkactivities4 soprano shared-desktop-ontologies"
 RDEPENDS_${PN} = "soprano kdelibs4"
 
-inherit kde-without-docs kde-cmake
+inherit kde_without_docs kde_cmake
 
 SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;tag=v4.8.0"
 SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"

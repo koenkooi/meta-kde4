@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://server/main.cpp;beginline=1;endline=16;md5=445b0d89ea
 
 #DEPENDS = "soprano"
 
-inherit kde-cmake
+inherit kde_cmake
 
 SRC_URI = "git://anongit.kde.org/nepomuk-core.git;branch=master"
 SRCREV = "8cc42cb460785220a376a017997bf5259382b8bb"

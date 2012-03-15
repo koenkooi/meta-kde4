@@ -1,9 +1,7 @@
 # This file is inherited by all KDE CMake related recipes in meta-kde
 inherit qt4x11 cmake
 
-do_rewrite_toolchain_file() {
-# This is an override, so if there is no file to delete an error occured.
-	rm ${WORKDIR}/toolchain.cmake
+do_generate_toolchain_file() {
 	cat > ${WORKDIR}/toolchain.cmake <<EOF
 message(STATUS "Toolchain file found and load at: ${WORKDIR}/toolchain.cmake")
 # CMake system name must be something like "Linux".
@@ -100,4 +98,4 @@ endif( NOT DEFINED OE_CROSSCOMPILING )
 set( BUILD_doc OFF )
 EOF
 }
-addtask rewrite_toolchain_file after do_generate_toolchain_file before do_configure 
+addtask generate_toolchain_file after do_patch before do_configure 

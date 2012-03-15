@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/git/lib/info.h;md5=4547c0d20883d91da92544e
 
 KDE_EXPORT_FILES = "${S}/build/lib/CMakeFiles/Export/_usr/share/apps/cmake/modules/KActivitiesLibraryTargets-relwithdebinfo.cmake"
 
-inherit kde-exports kde-cmake
+inherit kde_exports kde_cmake
 
 DEPENDS = "kdelibs4 soprano shared-desktop-ontologies"
 RDEPENDS_${PN} = "soprano shared-desktop-ontologies"

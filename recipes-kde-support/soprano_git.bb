@@ -1,7 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 
-inherit kde-cmake
+inherit kde_cmake
 
 DEPENDS = "virtuoso raptor"
 
