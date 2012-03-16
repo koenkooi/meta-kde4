@@ -1,6 +1,18 @@
 # This file is inherited by all KDE CMake related recipes in meta-kde
 inherit qt4x11 cmake
 
+RDEPENDS_${PN} += "\
+		   libqtcore4 \
+		   libqtgui4 \
+		   libqtdbus4 \
+		   libqtwebkit4 \
+		   libqtdeclarative4 \
+		   \
+		   qt4-dbus \
+		   qt4-plugin-script-dbus \
+		   qt4-qml-plugins \
+		  "
+
 do_generate_toolchain_file() {
 	cat > ${WORKDIR}/toolchain.cmake <<EOF
 message(STATUS "Toolchain file found and load at: ${WORKDIR}/toolchain.cmake")
