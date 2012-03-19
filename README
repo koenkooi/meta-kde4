@@ -17,7 +17,17 @@ Install:
 To intall this layer you need to add it to the config/bblayer.conf and source/layer.txt files.
 This layer needs kdelibsX-dev or kdelibsX.devel installed (either kdelibs4 or kdelibs5).
 
+Please note that it is a good advice to delete the tmp and sstate directories when adding or removing layers,
+in the meta-kde case there will be problems with dependencies (qt4) otherwise.
+(alternatively it would be faster to rebuild just qt with "bitbake -ccleansstate qt4-x11-free && bitbake qt4-x11-free")
+
 FAQ / Troubleshooting:
 1.
   Q: How can I contribute my patches / recipes to this layer?
   A: Send a merge request to one of the layer maintainers, don't forget to add your name to the contributors list.
+
+2.
+  Q: A recipe does not build, breaks parsing, what to do?
+  A: This layer is still work in progress, breakage can happen at any time.
+     Contact a layer maintainer, if the problem is easy to fix send a patch.
+     If the error is not that simple, wait until the issue is fixed (or disable this layer if parsing fails).
