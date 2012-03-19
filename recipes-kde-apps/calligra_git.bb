@@ -63,11 +63,14 @@ RDEPENDS_${PN}-words = "${PN}"
 
 
 FILES_${PN}-words = "\
+${bindir}/calligrawords \
+\
 ${datadir}/apps/words \
 ${datadir}/kde4/services/words* \
 ${datadir}/kde4/services/ServiceMenus/words_konqi.desktop \
 ${datadir}/config/wordsrc \
 \
+${libdir}/libwords*.so.* \
 ${libdir}/kde4/word* \
 ${libdir}/libkdeinit4_calligrawords.so \
 "
@@ -78,46 +81,61 @@ ${datadir}/kde4/services/ServiceMenus/krita_konqi.desktop \
 "
 
 FILES_${PN}-flow = "\
+${bindir}/calligraflow \
+\
 ${datadir}/apps/flow \
 ${datadir}/kde4/services/flow \
 ${datadir}/kde4/services/ServiceMenus/flow_konqi.desktop \
 ${datadir}/kde4/servicetypes/flow* \
 ${datadir}/config/flow* \
 \
+${libdir}/libflow*.so.* \
 ${libdir}/kde4/flow* \
 ${libdir}/libkdeinit4_calligraflow.so \
 "
 
 FILES_${PN}-stage = "\
+${bindir}/calligrastage \
+\
 ${datadir}/apps/stage \
 ${datadir}/config/stagerc \
 ${datadir}/kde4/services/stagepart.desktop \
 \
+${libdir}/libstage*.so.* \
 ${libdir}/kde4/calligrastage* \
 ${libdir}/libkdeinit4_calligrastage.so \
 "
 
 FILES_${PN}-karbon = "\
+${bindir}/karbon \
+\
 ${datadir}/apps/karbon \
 ${datadir}/kde4/services/karbon* \
 ${datadir}/kde4/servicetypes/karbon* \
 ${datadir}/kde4/services/ServiceMenus/karbon*_konqi.desktop \
 ${datadir}/config/karbonrc \
 \
+${libdir}/libkarbon*.so.* \
 ${libdir}/kde4/karbon* \
 ${libdir}/libkdeinit4_karbon.so \
 "
 
 FILES_${PN}-braindump = "\
+${bindir}/braindump \
+\
+${libdir}/libbraindump*.so.* \
 ${datadir}/apps/braindump \
 "
 
 FILES_${PN}-kexi = "\
+${bindir}/kexi \
+\
 ${datadir}/apps/kexi \
 ${datadir}/kde4/services/kexi* \
 ${datadir}/kde4/servicetypes/kexi* \
 ${datadir}/config/kexirc \
 \
+${libdir}/libkexi*.so.* \
 ${libdir}/kde4/kexi* \
 "
 
