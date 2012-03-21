@@ -6,7 +6,5 @@ do_configure_prepend() {
   cd ${S}
   if [ -d "./doc" ]; then
     rm -rf ./doc
-  else
-    die "kde-without-docs.bbclass: No doc directory found, aborting!"
   fi
 }
