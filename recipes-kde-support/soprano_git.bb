@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 
 inherit kde_cmake
 
-DEPENDS = "virtuoso raptor"
+DEPENDS = "virtuoso raptor libiodbc"
 
 RDEPENDS_${PN} = "virtuoso raptor rasqal redland"
 
@@ -29,5 +29,6 @@ EXTRA_OECMAKE =+ "\
 		 "
 
 PV = "2.7.53+git${SRCPV}"
+PR = "r1"
 
 S = "${WORKDIR}/git"
