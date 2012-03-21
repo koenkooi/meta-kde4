@@ -3,7 +3,10 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c262c13b60ebefe3060aed37d334ab6"
 
 inherit qt4x11 cmake
 
-SRC_URI = "https://launchpad.net/ubuntu/+archive/primary/+files/qimageblitz_0.0.6.orig.tar.bz2"
+SRC_URI = "https://launchpad.net/ubuntu/+archive/primary/+files/qimageblitz_0.0.6.orig.tar.bz2 \
+           file://fix-hardcode.patch \
+          "
+PR = "r1"
 
 SRC_URI[md5sum] = "0ae2f7d4e0876764a97ca73799f61df4"
 SRC_URI[sha256sum] = "9f102269dec50641440e23a449df215a0db9efef9a3969939d618c5e78a5010f"
@@ -21,5 +24,4 @@ EXTRA_OECMAKE += "\
 		  -DQT_QTGUI_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT}/QtGui \
 		  -DQT_QTCORE_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT}/QtCore \
 		 "
-
 
