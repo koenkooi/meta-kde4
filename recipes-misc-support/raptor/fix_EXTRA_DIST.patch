@@ -1,0 +1,24 @@
+EXTRA_DIST must be set with `=' before using `+='
+
+Signed-off-by: Robert Yang <liezhi.yang@windriver.com>
+
+Upstream-Status: Pending
+---
+ docs/Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/docs/Makefile.am b/docs/Makefile.am
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -111,7 +111,7 @@ include $(top_srcdir)/gtk-doc.make
+ 
+ man_MANS = libraptor2.3
+ 
+-EXTRA_DIST+= \
++EXTRA_DIST = \
+ libraptor2.html \
+ raptor1-eol.html \
+ $(man_MANS) \
+-- 
+1.7.3.4
+
