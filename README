@@ -3,6 +3,7 @@ Layer purpose:		Support plasma active in OpenEmbedded
 Layer status:		Work in progress / unstable
 Layer dependencies:	meta-openembedded, openembedded-core
 Layer license:		MIT license (see COPYING.MIT)
+Incompatible with:	Poky
 Layer maintainers:
 Samuel Stirtzel <s.stirtzel@googlemail.com>
 
@@ -19,7 +20,7 @@ This layer needs kdelibsX-dev or kdelibsX.devel installed (either kdelibs4 or kd
 
 Please note that it is a good advice to delete the tmp and sstate directories when adding or removing layers,
 in the meta-kde case there will be problems with dependencies (qt4) otherwise.
-(alternatively it would be faster to rebuild just qt with "bitbake -ccleansstate qt4-x11-free && bitbake qt4-x11-free")
+(Alternatively it would be faster to rebuild just Qt with "bitbake -ccleansstate qt4-x11-free && bitbake qt4-x11-free")
 
 FAQ / Troubleshooting:
 1.
@@ -31,3 +32,7 @@ FAQ / Troubleshooting:
   A: This layer is still work in progress, breakage can happen at any time.
      Contact a layer maintainer, if the problem is easy to fix send a patch.
      If the error is not that simple, wait until the issue is fixed (or disable this layer if parsing fails).
+
+3.
+  Q; Why is this layer incompatible with Poky?
+  A: Poky has no giflib recipe.
