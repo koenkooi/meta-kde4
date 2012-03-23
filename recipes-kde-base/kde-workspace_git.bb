@@ -3,8 +3,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 inherit kde_cmake kde_without_docs perlnative
 
-#if you use x86 replace virtual/egl with virtual/gl
-DEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies virtual/egl"
+# Gracefully depend on virtual/egl if needed.
+STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies"
+DEPENDS = "${STDDEPENDS} virtual/libgl"
+DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
+
+# Builds will behave differently when libgl or egl is used
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 RDEPENDS_${PN} = "libkactivities4 soprano"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;tag=v4.8.0 \
