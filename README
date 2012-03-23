@@ -36,3 +36,4 @@ FAQ / Troubleshooting:
 3.
   Q; Why is this layer incompatible with Poky?
   A: Poky has no giflib recipe.
+  TODO: Add giflib to Poky or add a compatibility layer for poky
