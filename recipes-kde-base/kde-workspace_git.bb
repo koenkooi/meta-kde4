@@ -24,6 +24,15 @@ PV = "4.8.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
+PACKAGES =+ "\
+	     ${PN}-cursors-oxygen-black \
+	     ${PN}-cursors-oxygen-blue \
+	     ${PN}-cursors-oxygen-white \
+	     ${PN}-cursors-oxygen-yellow \
+	     ${PN}-cursors-oxygen-zion \
+	    "
+
+
 FILES_${PN} += "\
 		${libdir}/libkdeinit4_*.so \
 		${libdir}/libkickoff.so \
@@ -41,7 +50,8 @@ FILES_${PN} += "\
 		${datadir}/config.kcfg/* \
 		${datadir}/kde4/* \
 		${datadir}/wallpapers/* \
-		${datadir}/icons/* \
+		${datadir}/icons/oxygen/* \
+		${datadir}/icons/hicolor/* \
 		${datadir}/autostart/* \
 		${datadir}/dbus-1/* \
 		\
@@ -59,6 +69,11 @@ FILES_${PN}-dbg += "\
 
 FILES_${PN}-dev += "${datadir}/cmake/*"
 
+FILES_${PN}-cursors-oxygen-black = "${datadir}/icons/Oxygen_Black/*"
+FILES_${PN}-cursors-oxygen-blue = "${datadir}/icons/Oxygen_Blue/*"
+FILES_${PN}-cursors-oxygen-white = "${datadir}/icons/Oxygen_White/*"
+FILES_${PN}-cursors-oxygen-yellow = "${datadir}/icons/Oxygen_Yellow/*"
+FILES_${PN}-cursors-oxygen-zion = "${datadir}/icons/Oxygen_Zion/*"
 
 EXTRA_OECMAKE += "\
 		  -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
