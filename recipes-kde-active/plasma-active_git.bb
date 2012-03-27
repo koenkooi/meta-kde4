@@ -11,9 +11,9 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #finalized (and WORKING) depends list
 DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native perl-native"
 
-RDEPENDS_${PN} = "kde-workspace kde-runtime libkactivities4 oxygen-icons"
+RDEPENDS_${PN} = "kde-workspace kde-runtime libkactivities4"
 
-RRECOMMENDS_${PN} = "startactive"
+RRECOMMENDS_${PN} = "startactive oxygen-icons"
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master \
 	   file://Fix-Qt-inputmethid-plugin-install-path.patch"
