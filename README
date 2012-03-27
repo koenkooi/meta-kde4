@@ -36,4 +36,5 @@ FAQ / Troubleshooting:
 3.
   Q; Why is this layer incompatible with Poky?
   A: Poky has no giflib recipe.
-  TODO: Add giflib to Poky or add a compatibility layer for poky
+    Solving this issue: Either add the meta-openembedded layer to Pokys layer configuration,
+    or provide a giflib recipe copy in your personal overlay.

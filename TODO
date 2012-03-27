@@ -19,5 +19,4 @@ all recipes:
 
 
 Poky:
--Allow users to test and use meta-kde
--Build test the repository with Poky
+-Wait until meta-openembedded has less overhead ;)
