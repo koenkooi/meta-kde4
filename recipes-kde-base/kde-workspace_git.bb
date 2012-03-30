@@ -15,7 +15,8 @@ RDEPENDS_${PN} = "libkactivities4 soprano"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;tag=v4.8.0 \
 	   file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
-	   file://Opt-out-python-scriptengine.patch"
+	   file://Opt-out-python-scriptengine.patch \
+	   file://Fix-path-to-X11-libraries.patch"
 
 
 SRCREV = "0ad49f2e4392b75ce16c5a08dcac99caf8cabe0d"
@@ -23,6 +24,12 @@ SRCREV = "0ad49f2e4392b75ce16c5a08dcac99caf8cabe0d"
 PV = "4.8.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
+
+do_install_prepend() {
+# KDE needs "real" cross compiling support, but this works for now
+  echo "Replace messed up binary path in the startkde script"
+  sed -i "s|${STAGING_DIR_TARGET}||" ${S}/build/startkde
+}
 
 PACKAGES =+ "\
 	     ${PN}-cursors-oxygen-black \

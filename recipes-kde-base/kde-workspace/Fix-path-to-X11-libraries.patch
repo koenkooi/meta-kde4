@@ -1,0 +1,28 @@
+From 058e78e246c4a803f3128bb6e89b7dd41b3be594 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Fri, 30 Mar 2012 11:06:28 +0200
+Subject: [PATCH] Fix path to X11 libraries.
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ ConfigureChecks.cmake |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/ConfigureChecks.cmake b/ConfigureChecks.cmake
+index fe06d9e..3382552 100644
+--- a/ConfigureChecks.cmake
++++ b/ConfigureChecks.cmake
+@@ -47,7 +47,9 @@ endif (NOT some_x_program)
+ get_filename_component(proto_xbindir "${some_x_program}" PATH)
+ get_filename_component(XBINDIR "${proto_xbindir}" ABSOLUTE)
+ get_filename_component(xrootdir "${XBINDIR}" PATH)
+-set(XLIBDIR "${xrootdir}/lib/X11")
++if(NOT DEFINED XLIBDIR)
++  set(XLIBDIR "${xrootdir}/lib/X11")
++endif(NOT DEFINED XLIBDIR)
+ 
+ check_function_exists(getpassphrase HAVE_GETPASSPHRASE)
+ check_function_exists(vsyslog HAVE_VSYSLOG)
+-- 
+1.7.5.4
+
