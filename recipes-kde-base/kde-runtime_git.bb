@@ -14,6 +14,8 @@ PV = "4.8.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
+PACKAGES =+ "${PN}-declarative-scriptengine"
+
 FILES_${PN} += "\
 		${libdir}/attica_kde.so \
 		${libdir}/libkdeinit4_*.so \
@@ -27,7 +29,16 @@ FILES_${PN} += "\
 		${sysconfdir}/* \
 	       "
 
-
+FILES_${PN}-declarative-scriptengine += "\
+					  ${libdir}/kde4/imports/org/kde/plasma/core/libcorebindingsplugin.so \
+					  ${libdir}/kde4/imports/org/kde/plasma/core/qmldir \
+					  ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/libgraphicslayoutsbindingsplugin.so \
+					  ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/qmldir \
+					  ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/libgraphicswidgetsbindingsplugin.so \
+					  ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/qmldir \
+					  ${libdir}/kde4/plasma_appletscript_declarative.so \
+					  ${datadir}/kde4/services/plasma-scriptengine-applet-declarative.desktop \
+					"
 FILES_${PN}-dev += "\
 		    ${datadir}/apps/cmake/* \
 		   "

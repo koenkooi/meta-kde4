@@ -11,7 +11,7 @@ DESCRIPTION = "This recipe builds the development version of plasma active / mob
 #finalized (and WORKING) depends list
 DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native perl-native"
 
-RDEPENDS_${PN} = "kde-workspace kde-runtime libkactivities4"
+RDEPENDS_${PN} = "kde-workspace kde-runtime kde-runtime-declarative-scriptengine libkactivities4"
 
 RRECOMMENDS_${PN} = "startactive oxygen-icons"
 
