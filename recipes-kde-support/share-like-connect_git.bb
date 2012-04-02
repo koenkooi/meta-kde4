@@ -5,11 +5,21 @@ DEPENDS = "kdelibs4 libkactivities4"
 
 inherit kde_cmake
 
-SRC_URI = "git://anongit.kde.org/share-like-connect.git;branch=master"
-SRCREV = "2d19bb9d148a3293b18355bb8fd8d777d680a1b1"
+# This tag is very odd, it will cause bitbake to create a directory in the workdir of this recipe with the name 2.0+${SRCREV}
+# But other than that no misbehaviour has been spotted
+SRC_URI = "git://anongit.kde.org/share-like-connect.git;tag=Active/2.0"
+SRCREV = "ab39e67ebdb8f67da447fe13bb0cd952d24a2df9"
 
-PV = "Active/2.0+git${SRCPV}"
+PV = "Active-2.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-# RECIPE IS CURRENTLY BROKEN
+FILES_${PN} += "\
+		${libdir}/libsharelikeconnect.so \
+		${libdir}/kde4/*.so \
+		${libdir}/kde4/imports/* \
+		\
+		${datadir}/* \
+	       "
+
+FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
