@@ -13,13 +13,13 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 RDEPENDS_${PN} = "libkactivities4 soprano"
 
-SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;tag=v4.8.0 \
+SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
 	   file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
 	   file://Opt-out-python-scriptengine.patch \
 	   file://Fix-path-to-X11-libraries.patch"
 
-
-SRCREV = "0ad49f2e4392b75ce16c5a08dcac99caf8cabe0d"
+## Tag v4.8.0
+SRCREV = "e80df74d9936428001d630a8a927c908507b2e1f"
 
 PV = "4.8.0+git${SRCPV}"
 

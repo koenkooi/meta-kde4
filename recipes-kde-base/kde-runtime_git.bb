@@ -6,8 +6,10 @@ RDEPENDS_${PN} = "soprano kdelibs4"
 
 inherit kde_without_docs kde_cmake
 
-SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;tag=v4.8.0"
-SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"
+SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master"
+
+## Tag v4.8.0
+SRCREV = "6068720132e0d9eb5c6febd17462a32b4ee3b02c"
 
 PV = "4.8.0+git${SRCPV}"
 

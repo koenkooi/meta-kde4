@@ -6,7 +6,7 @@ inherit kde_cmake kde_exports kde_without_docs perlnative
 
 DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
 
-SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
+SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
 	  file://0002-Fix-openssl-check.patch \
 	  file://0003-Fix-FindKDE4Internals-cmake-file.patch \
@@ -14,7 +14,8 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;tag=v4.8.0 \
 	  file://0006-Fix-makekdewidget-executable-path.patch \
 	  "
 
-SRCREV = "dbb242558dd5dfc690e1428e0ca36245bcfc0c0c"
+## Tag v4.8.0
+SRCREV = "1439483a67135f483632f4c4cd239e96d2ed61fc"
 PV = "4.8.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"

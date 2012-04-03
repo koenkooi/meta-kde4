@@ -11,10 +11,11 @@ RDEPENDS_${PN} = "soprano shared-desktop-ontologies"
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
-SRC_URI = "git://anongit.kde.org/kactivities;protocol=git;tag=v4.8.0 \
+SRC_URI = "git://anongit.kde.org/kactivities;protocol=git;branch=master \
 	   file://Fix-cmake-destination-directory.patch"
 
-SRCREV = "f00250f697e517992fc54af324c2e3435bca9956"
+## Tag v4.8.0
+SRCREV = "f81dc67d40480d9738af58d5c950d9764d379d98"
 
 
 PV = "4.8.0+git${SRCPV}"
