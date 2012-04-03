@@ -4,6 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 inherit autotools gtk-doc
 
 DEPENDS = "db rasqal libtool"
+RDEPENDS_${PN} = "rasqal raptor"
 
 SRC_URI = "http://download.librdf.org/source/redland-1.0.15.tar.gz \
 	   file://No-docs-and-NOCONFIGURE.patch \

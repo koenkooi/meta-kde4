@@ -4,6 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 inherit autotools gtk-doc
 
 DEPENDS = "raptor"
+RDEPENDS_${PN} = "raptor"
 
 SRC_URI = "git://github.com/dajobe/rasqal.git;branch=master \
 	   file://No-docs-and-NOCONFIGURE.patch \
