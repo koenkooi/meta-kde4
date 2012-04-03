@@ -3,6 +3,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
 inherit autotools
 
+DEPENDS = "openssh"
+
 SRC_URI = "http://netcologne.dl.sourceforge.net/project/virtuoso/virtuoso/6.1.4/virtuoso-opensource-6.1.4.tar.gz \
 	   file://fix-weird-md5-error.diff \
 	   file://config-cross.diff \
