@@ -3,6 +3,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
 inherit autotools
 
+DEPENDS = "libxml2"
+
 SRC_URI = "git://github.com/dajobe/raptor.git;branch=master \
 	   file://No-docs-and-NOCONFIGURE.patch \
 	   file://fix_EXTRA_DIST.patch \
