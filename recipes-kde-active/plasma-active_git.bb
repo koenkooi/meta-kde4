@@ -1,7 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-inherit kde_cmake
+inherit kde_cmake kde_rdepends
 
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 

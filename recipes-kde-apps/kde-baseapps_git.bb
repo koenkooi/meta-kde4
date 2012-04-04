@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 DEPENDS = "kdelibs4 soprano"
 
-inherit kde_without_docs kde_cmake
+inherit kde_without_docs kde_rdepends kde_cmake
 
 SRC_URI = "git://anongit.kde.org/kde-baseapps;protocol=git;tag=v4.8.0 \
 	   file://Convert-Phonon-to-phonon.patch"

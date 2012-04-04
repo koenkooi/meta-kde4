@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://splash/main.qml;beginline=2;endline=18;md5=ab5c18ec5c
 
 DEPENDS = "kdelibs4"
 
-inherit kde_cmake
+inherit kde_cmake kde_rdepends
 
 SRC_URI = "svn://anonsvn.kde.org/home/kde;module=trunk/playground/base/plasma/kde-artwork-active;proto=svn"
 SRCREV = "1266939"

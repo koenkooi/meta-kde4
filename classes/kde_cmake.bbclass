@@ -1,21 +1,7 @@
 # This file is inherited by all KDE CMake related recipes in meta-kde
-inherit qt4x11 cmake
 
-RDEPENDS_${PN} += "\
-		   libqtcore4 \
-		   libqtgui4 \
-		   libqtdbus4 \
-		   libqtwebkit4 \
-		   libqtdeclarative4 \
-		   libqtsvg4 \
-		   \
-		   qt4-dbus \
-		   qt4-qml-plugins \
-		   \
-		   qt4-plugin-script-dbus \
-		   qt4-plugin-imageformat-svg \
-		   qt4-plugin-iconengine-svgicon \
-		  "
+# Please note variable order is important for this inherit!
+inherit qt4x11 cmake
 
 do_generate_toolchain_file() {
 	cat > ${WORKDIR}/toolchain.cmake <<EOF
@@ -105,7 +91,7 @@ set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
 # Qt Stuff for testing
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} )
 
-# This will now allow us to instll to the right directory instead of some bogus dirs found by FindKDE4Internal.cmake
+# This will allow us to install to the right directory instead of some bogus dirs found by FindKDE4Internal.cmake
 if( NOT DEFINED OE_CROSSCOMPILING)
   set( OE_CROSSCOMPILING TRUE )
 endif( NOT DEFINED OE_CROSSCOMPILING )

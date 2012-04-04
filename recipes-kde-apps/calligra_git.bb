@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=1e7512b07f133ba3841965a175302b84"
 
 DEPENDS = "kdelibs4 okular"
 
-inherit kde_cmake perlnative
+inherit kde_cmake kde_rdepends perlnative
 
 SRC_URI = "git://anongit.kde.org/calligra.git;protocol=git;tag=v2.3.87"
 SRCREV = "a18dfe605244c301dd3eef62777d4b90cf7c9827"
