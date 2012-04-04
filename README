@@ -38,3 +38,8 @@ FAQ / Troubleshooting:
   A: Poky has no giflib recipe.
     Solving this issue: Either add the meta-openembedded layer to Pokys layer configuration,
     or provide a giflib recipe copy in your personal overlay.
+
+4.
+  Q: A recipe fails do_configure with "Qt's moc NOT found!" what to do?
+  A: This is a known issue of kdelibs cmake file FindQt4.cmake, execute the task again and it will not fail.
+    See TODO for more details.
