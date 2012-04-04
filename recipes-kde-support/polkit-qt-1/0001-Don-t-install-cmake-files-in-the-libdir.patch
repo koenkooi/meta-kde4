@@ -1,0 +1,26 @@
+From 01a344f012cf487be610e13ec4265b96ea6632d2 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 4 Apr 2012 16:25:57 +0200
+Subject: [PATCH] Don't install cmake files in the libdir
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cc67452..74fc807 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,7 +129,7 @@ macro_write_basic_cmake_version_file(${CMAKE_BINARY_DIR}/PolkitQt-1ConfigVersion
+ if(USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
+    set(_PolkitQt-1Config_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/PolkitQt-1)
+ else(USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
+-   set(_PolkitQt-1Config_INSTALL_DIR ${LIB_INSTALL_DIR}/PolkitQt-1/cmake)
++   set(_PolkitQt-1Config_INSTALL_DIR ${DATA_INSTALL_DIR}/cmake/modules)
+ endif(USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR)
+ 
+ install(FILES ${CMAKE_BINARY_DIR}/PolkitQt-1ConfigVersion.cmake
+-- 
+1.7.5.4
+
