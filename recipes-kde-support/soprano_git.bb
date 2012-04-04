@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 
 inherit kde_cmake
 
-DEPENDS = "virtuoso raptor libiodbc"
+DEPENDS = "redland virtuoso raptor libiodbc"
 
 RDEPENDS_${PN} = "virtuoso raptor rasqal redland"
 
@@ -25,6 +25,7 @@ FILES_${PN}-dev += "${datadir}/soprano/cmake/*"
 EXTRA_OECMAKE =+ "\
 		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
 		  -DBUILD_RAPTOR_PARSER=TRUE \
+		  -DBUILD_REDLAND_BACKEND=TRUE \
 		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_DIR_TARGET}${bindir_crossscripts}/redland-config \
 		 "
 
