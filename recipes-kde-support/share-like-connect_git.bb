@@ -7,8 +7,10 @@ inherit kde_cmake
 
 # This tag is very odd, it will cause bitbake to create a directory in the workdir of this recipe with the name 2.0+${SRCREV}
 # But other than that no misbehaviour has been spotted
-SRC_URI = "git://anongit.kde.org/share-like-connect.git;tag=Active/2.0"
-SRCREV = "ab39e67ebdb8f67da447fe13bb0cd952d24a2df9"
+SRC_URI = "git://anongit.kde.org/share-like-connect.git;branch=master"
+
+## Tag Active/2.0
+SRCREV = "9ed8128284ab9fcab806455bccf0344dd21afbd1"
 
 PV = "Active-2.0+git${SRCPV}"
 
