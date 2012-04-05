@@ -7,7 +7,9 @@ inherit kde_without_docs kde_rdepends kde_cmake
 
 SRC_URI = "git://anongit.kde.org/kde-baseapps;protocol=git;branch=master \
 	   file://Convert-Phonon-to-phonon.patch"
-SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"
+
+## Tag v4.8.0
+SRCREV = "a7a128232033f284d41890a6967fc0641925b251"
 
 PV = "4.8.0+git${SRCPV}"
 
