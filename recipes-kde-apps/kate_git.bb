@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://kate/COPYING.LIB;md5=156642aa865c263a96e2cdd7a5cc8570
 
 DEPENDS = "kdelibs4"
 
-inherit kde_cmake kde_rdepends perlnative
+inherit kde_cmake kde_without_docs kde_rdepends perlnative
 
 SRC_URI = "git://anongit.kde.org/kate;protocol=git;branch=master"
 
