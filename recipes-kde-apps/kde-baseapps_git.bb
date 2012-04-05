@@ -5,7 +5,7 @@ DEPENDS = "kdelibs4 soprano"
 
 inherit kde_without_docs kde_rdepends kde_cmake
 
-SRC_URI = "git://anongit.kde.org/kde-baseapps;protocol=git;tag=v4.8.0 \
+SRC_URI = "git://anongit.kde.org/kde-baseapps;protocol=git;branch=master \
 	   file://Convert-Phonon-to-phonon.patch"
 SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"
 

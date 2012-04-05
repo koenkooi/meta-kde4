@@ -5,8 +5,10 @@ DEPENDS = "kdelibs4"
 
 inherit kde_cmake kde_rdepends perlnative
 
-SRC_URI = "git://anongit.kde.org/kate;protocol=git;tag=v4.8.0"
-SRCREV = "a90b84b2c07181044a61199e707e40cbb3d0db18"
+SRC_URI = "git://anongit.kde.org/kate;protocol=git;branch=master"
+
+## Tag 4.8.0
+SRCREV = "78edc645422be447e7d451ed86e2fe690ae303e1"
 
 PV = "4.8.0+git${SRCPV}"
 

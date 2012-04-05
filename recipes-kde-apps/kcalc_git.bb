@@ -5,9 +5,11 @@ DEPENDS = "kdelibs4"
 
 inherit kde_cmake kde_rdepends kde_without_docs perlnative
 
-SRC_URI = "git://anongit.kde.org/kcalc;protocol=git;tag=v4.8.0 \
+SRC_URI = "git://anongit.kde.org/kcalc;protocol=git;branch=master \
 	   file://Make-docs-optional.patch"
-SRCREV = "f4cfedb09e5888801055e4464fc15afb2cdd5550"
+
+## Tag 4.8.0
+SRCREV = "c21fff5322c266d025e1f600044b2423310f1f5f"
 
 PV = "4.8.0+git${SRCPV}"
 

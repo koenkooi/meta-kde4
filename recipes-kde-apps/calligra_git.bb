@@ -5,8 +5,10 @@ DEPENDS = "kdelibs4 okular"
 
 inherit kde_cmake kde_rdepends perlnative
 
-SRC_URI = "git://anongit.kde.org/calligra.git;protocol=git;tag=v2.3.87"
-SRCREV = "a18dfe605244c301dd3eef62777d4b90cf7c9827"
+SRC_URI = "git://anongit.kde.org/calligra.git;protocol=git;branch=master"
+
+## Tag 2.3.87
+SRCREV = "92ff51b5c0f388729f466041b34ab165a7d80987"
 
 PV = "2.3.87+git${SRCPV}"
 

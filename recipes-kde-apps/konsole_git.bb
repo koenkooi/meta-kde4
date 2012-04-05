@@ -7,9 +7,11 @@ RDEPENDS_${PN} = "kde-baseapps"
 
 inherit kde_without_docs kde_rdepends kde_cmake
 
-SRC_URI = "git://anongit.kde.org/konsole.git;protocol=git;tag=v4.8.0\ 
+SRC_URI = "git://anongit.kde.org/konsole.git;protocol=git;branch=master \
 	   file://Make-docs-optional.patch"
-SRCREV = "37a52f48ebd4850d07cd8fe7277e6fa7a653c2ae"
+
+## Tag 4.8.0
+SRCREV = "dc6ac6855cf6c57589fd322eecf0d3e590b3779a"
 
 PV = "4.8.0+git${SRCPV}"
 
