@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 inherit kde_cmake kde_without_docs kde_rdepends perlnative
 
 # Gracefully depend on virtual/egl if needed.
-STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano shared-desktop-ontologies"
+STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano"
 DEPENDS = "${STDDEPENDS} virtual/libgl"
 DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
 

@@ -18,3 +18,8 @@ SRC_URI[sha256sum] = "6efaf4caed8b5467390dc6ae62c678b28fd753df524c257f0a938c2a7b
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
+
+do_install_prepend() {
+# Replace hardcoded /usr/ string
+  sed -i "s|/usr/share|${STAGING_DATADIR}|" ${S}/build/SharedDesktopOntologiesConfig.cmake
+}
