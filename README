@@ -3,12 +3,14 @@ Layer purpose:		Support plasma active in OpenEmbedded
 Layer status:		Work in progress / unstable
 Layer dependencies:	meta-openembedded, openembedded-core
 Layer license:		MIT license (see COPYING.MIT)
-Incompatible with:	Poky
+Layer issues with:	Poky
 Layer maintainers:
 Samuel Stirtzel <s.stirtzel@googlemail.com>
 
 Contributors:
 Copyright (C) 2011, 2012 - Samuel Stirtzel
+Copyright (C) 2012 - Robert Yang
+Copyright (C) 2012 - Kai Kang
 
 Thanks to:
 Andreas Müller
@@ -25,7 +27,8 @@ in the meta-kde case there will be problems with dependencies (qt4) otherwise.
 FAQ / Troubleshooting:
 1.
   Q: How can I contribute my patches / recipes to this layer?
-  A: Send a merge request to one of the layer maintainers, don't forget to add your name to the contributors list.
+  A: Send a patch or merge request to the meta-oe mailing list with [meta-kde] in the subject field.
+     Don't forget to add your name to the contributors list.
 
 2.
   Q: A recipe does not build, breaks parsing, what to do?
@@ -34,12 +37,12 @@ FAQ / Troubleshooting:
      If the error is not that simple, wait until the issue is fixed (or disable this layer if parsing fails).
 
 3.
-  Q; Why is this layer incompatible with Poky?
+  Q; Why does this layer have issues with Poky?
   A: Poky has no giflib recipe.
-    Solving this issue: Either add the meta-openembedded layer to Pokys layer configuration,
-    or provide a giflib recipe copy in your personal overlay.
+     Solving this issue: Either add the meta-openembedded layer to Pokys layer configuration,
+     or provide a giflib recipe copy in your personal overlay.
 
 4.
   Q: A recipe fails do_configure with "Qt's moc NOT found!" what to do?
   A: This is a known issue of kdelibs cmake file FindQt4.cmake, execute the task again and it will not fail.
-    See TODO for more details.
+     See TODO for more details.
