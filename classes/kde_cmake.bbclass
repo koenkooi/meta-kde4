@@ -64,10 +64,10 @@ set( WITH_OpenEXR OFF CACHE BOOL "Disabled" )
 ##----
 
 # This was needed because kdelibs native needs Qt QSSL which needs openssl which is not ported for native environment.
-set( MAKEKDEWIDGETS_EXECUTABLE /usr/bin/makekdewidgets CACHE PATH "" )
-set( KDE4_MAKEKDEWIDGETS_EXECUTABLE /usr/bin/makekdewidgets CACHE PATH "" )
-set( KDE4_KCFGC_EXECUTABLE /usr/bin/kconfig_compiler CACHE PATH "" )
-set( KDE4_AUTOMOC_EXECUTABLE /usr/bin/automoc4 CACHE PATH "" )
+set( MAKEKDEWIDGETS_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/makekdewidgets CACHE PATH "" )
+set( KDE4_MAKEKDEWIDGETS_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/makekdewidgets CACHE PATH "" )
+set( KDE4_KCFGC_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/kconfig_compiler CACHE PATH "" )
+set( KDE4_AUTOMOC_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/automoc4 CACHE PATH "" )
 
 
 # This will prevent KDElibs from installing files to /usr/etc instead of /etc

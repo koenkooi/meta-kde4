@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 inherit kde_cmake kde_exports kde_without_docs kde_rdepends perlnative
 
-DEPENDS = "automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
+DEPENDS = "kdelibs4-native automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
