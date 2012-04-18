@@ -8,7 +8,6 @@ inherit task
 RDEPENDS_${PN} += "\
     task-xserver \
     \
-    consolekit \
     strace \
     \
     dbus-x11 \
