@@ -10,6 +10,12 @@ IMAGE_INSTALL += "\
     task-kde-image \
     task-kde-base \
     \
+    oxygen-icons \
+    oxygen-fonts \
+	kde-wallpapers \
+    \
+    shared-mime-info \
+    \
     kate konsole \
 "
 

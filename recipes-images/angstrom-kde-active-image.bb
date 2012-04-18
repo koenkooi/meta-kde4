@@ -18,7 +18,6 @@ IMAGE_INSTALL += "\
     task-kde-active \
     \
     ntp-systemd \
-    libgles-omap3-es3 \
     \
     kate konsole \
 "
