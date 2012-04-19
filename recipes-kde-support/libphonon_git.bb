@@ -8,7 +8,8 @@ inherit kde_cmake
 SRC_URI = "git://anongit.kde.org/phonon.git;protocol=git;branch=master \
 	   file://0001-Patch-out-Qt-visibility-check.patch \
 	  "
-SRCREV = "b93727e0eac9faeaf073e60d2d6799d39a17ae23"
+## 2012/JAN/10 this SRCREV should be around the 4.8.0 tag time
+SRCREV = "95db88df8510bcf26e3efa6f798732a79a9ecf72"
 
 PV = "4.6.0+git${SRCPV}"
 
@@ -21,6 +22,8 @@ EXTRA_OECMAKE += "\
 		 -DAUTOMOC4_EXECUTABLE=${STAGING_BINDIR_NATIVE}/automoc4 \
 		 \
 		 "
+
+FILES_${PN} += "${datadir}/dbus-1/"
 
 
 BBCLASSEXTEND = "native"
