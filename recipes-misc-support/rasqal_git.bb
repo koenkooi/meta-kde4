@@ -30,3 +30,4 @@ do_configure() {
 	export NOCONFIGURE="no"; ./autogen.sh
 	oe_runconf
 }
+PARALLEL_MAKE = ""
