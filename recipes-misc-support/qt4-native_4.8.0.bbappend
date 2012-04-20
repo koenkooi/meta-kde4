@@ -5,4 +5,4 @@ EXTRA_OECONF += "-no-pch -no-sm -openssl"
 
 TOBUILD += "src/phonon"
 
-PRINC = "1"
+PRINC := "${@int(PRINC) + 1}"
