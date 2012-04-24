@@ -18,10 +18,10 @@ IMAGE_INSTALL += "\
     \
     oxygen-icons \
     oxygen-fonts \
-	kde-wallpapers \
+    kde-wallpapers \
     \
     ntp-systemd \
-	shared-mime-info \
+    shared-mime-info \
     \
     kate konsole \
 "
