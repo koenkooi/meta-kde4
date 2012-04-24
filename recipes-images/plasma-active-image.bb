@@ -10,6 +10,10 @@ IMAGE_INSTALL += "\
     task-kde-image \
     task-kde-base \
     task-kde-active \
+    \
+    oxygen-icons \
+    oxygen-fonts \
+    kde-wallpapers \
 "
 
 LICENSE = "MIT"
