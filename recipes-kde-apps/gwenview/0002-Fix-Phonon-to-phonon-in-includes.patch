@@ -1,0 +1,32 @@
+From ed8c9a54c1f445ee1649ead2f06ff56a4f6966aa Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 26 Apr 2012 14:15:16 +0200
+Subject: [PATCH] Fix Phonon to phonon in includes
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ lib/documentview/videoviewadapter.cpp |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/documentview/videoviewadapter.cpp b/lib/documentview/videoviewadapter.cpp
+index 9f97394..7497cd0 100644
+--- a/lib/documentview/videoviewadapter.cpp
++++ b/lib/documentview/videoviewadapter.cpp
+@@ -22,10 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Cambridge, MA 02110-1301, USA
+ #include "videoviewadapter.moc"
+ 
+ // Qt
+-#include <Phonon/AudioOutput>
+-#include <Phonon/MediaObject>
+-#include <Phonon/Path>
+-#include <Phonon/VideoWidget>
++#include <phonon/AudioOutput>
++#include <phonon/MediaObject>
++#include <phonon/Path>
++#include <phonon/VideoWidget>
+ #include <QAction>
+ #include <QGraphicsLinearLayout>
+ #include <QGraphicsProxyWidget>
+-- 
+1.7.5.4
+
