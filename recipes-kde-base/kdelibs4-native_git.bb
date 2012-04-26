@@ -11,11 +11,11 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=v4.8.0 \
 	  file://0002-Fix-openssl-check.patch \
 	  file://0003-Fix-FindKDE4Internals-cmake-file.patch \
 	  file://0004-Fix-the-path-to-Icemaker.patch \
-	  file://0005-Remove-docs-so-they-don-t-get-pulled-in-elsewhere.patch \
 	  "
 
-SRCREV = "1439483a67135f483632f4c4cd239e96d2ed61fc"
-PV = "4.8.0+git${SRCPV}"
+## Tag v4.8.2
+SRCREV = "d2ce1819baa85ad0e895971ca25232327e9fc91e"
+PV = "4.8.2+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
