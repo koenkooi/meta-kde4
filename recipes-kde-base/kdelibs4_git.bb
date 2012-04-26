@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 inherit kde_cmake kde_exports kde_without_docs kde_rdepends perlnative
 
-DEPENDS = "kdelibs4-native automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native"
+DEPENDS = "kdelibs4-native automoc4-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native aspell"
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 	  file://0001-Don-t-build-documentation-disable-Strigi.patch \
@@ -14,9 +14,9 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 	  file://0006-Fix-makekdewidget-executable-path.patch \
 	  "
 
-## Tag v4.8.0
-SRCREV = "1439483a67135f483632f4c4cd239e96d2ed61fc"
-PV = "4.8.0+git${SRCPV}"
+## Tag v4.8.2
+SRCREV = "d2ce1819baa85ad0e895971ca25232327e9fc91e"
+PV = "4.8.2+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
