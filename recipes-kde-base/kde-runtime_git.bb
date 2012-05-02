@@ -2,7 +2,7 @@ LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 DEPENDS = "kdelibs4 libkactivities4 soprano shared-desktop-ontologies"
-RDEPENDS_${PN} = "soprano kdelibs4"
+RDEPENDS_${PN} = "soprano kdelibs4 ${PN}-declarative-scriptengine"
 
 inherit kde_without_docs kde_rdepends kde_cmake
 

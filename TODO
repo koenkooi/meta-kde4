@@ -13,6 +13,9 @@ plasma-active:
 kde-workspace:
 -Fix host includes, indicated in log.do_comile "-I/usr/include/KDE"
 
+okular:
+-Fix build error that is related to kconfig_compiler or Qt settings "Okular::Settings is not defined"
+
 all recipes:
 -Add proper packaging, currently there is almost no recipe packaging.
 -Check if licenses really match, most licenses are matching, but not all may.
