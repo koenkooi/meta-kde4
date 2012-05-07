@@ -1,13 +1,7 @@
 Currently to be done:
 
 plasma-active:
--Fix the CMake error at kde-workspace that pretents that Qt can't be found when it actually found a bogus value in the cached variables
---Very mysterious error that only happens after ccleansstate?
---Error message is:
-| -- Qt's moc NOT found!
-| -- Qt's uic NOT found!
-| -- Qt's rcc NOT found!
---But Qt is actually found, re running the task will not give this error again!
+-Fix QDeclarativeAppletscript Scriptengine error.
 -runtest on OpenEmbedded compatible hardware
 
 kde-workspace:
