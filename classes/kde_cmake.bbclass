@@ -24,8 +24,8 @@ set( CMAKE_CROSSCOMPILING TRUE )
 # only search in the paths provided so cmake doesnt pick
 # up libraries and tools from the native build machine
 # Please note: variable order is important!
-set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_TARGET} ${STAGING_DIR_NATIVE} )
-set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
+set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_TARGET} )
+set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER )
 set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
 
