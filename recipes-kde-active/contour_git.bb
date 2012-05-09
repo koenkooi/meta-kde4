@@ -5,9 +5,9 @@ inherit kde_cmake kde_rdepends
 
 DEPENDS = "kde-workspace kde-runtime soprano shared-desktop-ontologies kdelibs4 libkactivities4"
 
-RDEPENDS_${PN} = "plasma-contour-config kde-runtime shared-desktop-ontologies soprano libkactivities4"
+RDEPENDS_${PN} = "kde-runtime shared-desktop-ontologies soprano libkactivities4"
 
-RRECOMMENDS_${PN} = "kde-wallpapers"
+RRECOMMENDS_${PN} = "kde-wallpapers plasma-contour-config"
 
 SRC_URI = "git://anongit.kde.org/contour.git;branch=master"
 SRCREV = "24b721c30aa36943e17ecc5ab2617ff4bc67cb2a"
