@@ -1,0 +1,26 @@
+From f6b097e6d845e7855cca6acf9636ef4672f0ff1c Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 9 May 2012 10:17:46 +0200
+Subject: [PATCH] Opt out docs
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9f81f5d..3656025 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,7 @@ configure_file(config-ksnapshot.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ksnap
+ 
+ ########### next target ###############
+ 
+-add_subdirectory( doc )
++macro_optional_add_subdirectory( doc )
+ 
+ set(ksnapshot_file_SRCS
+    expblur.cpp
+-- 
+1.7.5.4
+
