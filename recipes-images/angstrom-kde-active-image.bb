@@ -6,7 +6,7 @@ DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
 #  There is currently a WIP to allow poky users to skip parsing on this recipe
 
 
-require recipes-images/angstrom/systemd-image.bb
+include recipes-images/angstrom/systemd-image.bb
 
 export IMAGE_BASENAME = "ansgstrom-kde-active-image"
 
