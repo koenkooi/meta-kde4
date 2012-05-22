@@ -40,3 +40,4 @@ do_install() {
 	install -d ${SYSROOT_DESTDIR}${bindir_crossscripts}/
 	install -m 755 ${D}${bindir}/redland-config ${SYSROOT_DESTDIR}${bindir_crossscripts}/
 }
+BBCLASSEXTEND = "native"

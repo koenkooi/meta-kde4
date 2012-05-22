@@ -31,3 +31,4 @@ do_configure() {
 	oe_runconf
 }
 PARALLEL_MAKE = ""
+BBCLASSEXTEND = "native"
