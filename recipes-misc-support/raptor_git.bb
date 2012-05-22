@@ -27,3 +27,4 @@ do_configure() {
 	autoreconf -fi
 	oe_runconf
 }
+BBCLASSEXTEND = "native"

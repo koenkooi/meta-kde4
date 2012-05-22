@@ -30,3 +30,4 @@ FILES_${PN} += "${libdir}/*.so"
 
 
 S = "${WORKDIR}/${BPN}-opensource-${PV}"
+BBCLASSEXTEND = "native"

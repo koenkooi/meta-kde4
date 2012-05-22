@@ -12,3 +12,4 @@ SRC_URI[sha256sum] = "d7002cc7e566785f1203f6096dcb49b0aad02a9d9946a8eca5d663ac1a
 EXTRA_OECONF =+ "\
 		 --disable-gui \
 	        "
+BBCLASSEXTEND = "native"
