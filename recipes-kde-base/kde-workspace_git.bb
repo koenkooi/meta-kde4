@@ -12,6 +12,7 @@ DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 RDEPENDS_${PN} = "libkactivities4 soprano"
+RRECOMMENDS_${PN} = "setxkbmap"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
 	   file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
