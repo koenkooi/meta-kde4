@@ -1,17 +1,14 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-inherit kde_cmake kde_rdepends
+inherit kde_cmake kde_rdepends perlnative
 
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 
-#depends list from kubuntu "apt-get build-dep plasma-mobile"
-#DEPENDS = "automoc cmake cmake-data emacsen-common kde-workspace-dev kdelibs5-dev libcurl3 libkactivities5 libkdeclarative5 libkimproxy4 libkutils4 liblsofui4 libphonon-dev libsoprano-dev libxmlrpc-core-c3-0 quilt" 
-
 #finalized (and WORKING) depends list
-DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native perl-native"
+DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native qt-mobility-x11"
 
-RDEPENDS_${PN} = "kde-workspace kde-runtime kde-runtime-declarative-scriptengine libkactivities4"
+RDEPENDS_${PN} = "kde-workspace kde-runtime kde-runtime-declarative-scriptengine libkactivities4 qt-mobility-x11"
 
 RRECOMMENDS_${PN} = "startactive oxygen-icons"
 
