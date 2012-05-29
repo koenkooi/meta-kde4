@@ -1,0 +1,38 @@
+From 48c4fed7ba3b22298a71aca1b80eb0dfb56a3da8 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Fri, 25 May 2012 10:54:17 +0200
+Subject: [PATCH] Disable doctools
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 040a24f..becc585 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,6 +31,8 @@ endif (KHTML_BUILD_TESTREGRESSION)
+ 
+ option(STATIC_LIBRARY "Build kdelibs as static libraries." FALSE)
+ 
++set (OPENEMBEDDED "we need no doctools" TRUE)
++
+ ################# write platform profile file which will be installed #################
+ include(CreateKDEPlatformProfile.cmake)
+ 
+@@ -295,9 +297,9 @@ if (QT_QT3SUPPORT_FOUND)
+ endif (QT_QT3SUPPORT_FOUND)
+ add_subdirectory( kfile )
+ add_subdirectory( kconf_update )
+-if(NOT WINCE)
++if(NOT WINCE AND NOT OPENEMBEDDED)
+ add_subdirectory( kdoctools  )
+-endif(NOT WINCE)
++endif(NOT WINCE AND NOT OPENEMBEDDED)
+ add_subdirectory( kioslave   )
+ add_subdirectory( knewstuff  )
+ add_subdirectory( kparts     )
+-- 
+1.7.5.4
+
