@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://main.cpp;beginline=2;endline=17;md5=ab7ff4858efc6ddd5
 
 inherit kde_cmake kde_rdepends
 
-DEPENDS = "kdelibs4"
+DEPENDS = "kdelibs4 perl-native"
 
 RDEPENDS_${PN} = "plasma-active kde-artwork-active contour"
 
