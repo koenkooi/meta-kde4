@@ -4,7 +4,8 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
 inherit kde_cmake kde_exports kde_without_docs kde_rdepends perlnative
 
-DEPENDS = "kdelibs4-native automoc4-native soprano-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib attica jpeg libpng bzip2 libpcre perl-native aspell"
+DEPENDS = "kdelibs4-native automoc4-native soprano-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib jasper attica jpeg libpng bzip2 libpcre perl-native aspell"
+RRECOMMENDS_${PN} = "jasper jpeg libpng giflib"
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
     file://0001-Disable-doctools.patch \
@@ -57,6 +58,7 @@ FILES_${PN}-dbg += "\
     ${libdir}/kde4/*/.debug/* \
     ${libdir}/kde4/*/*/.debug/* \
     ${libdir}/kde4/*plugins/kauth/helper/.debug/* \
+    ${libdir}/kde4/plugins/kauth/backend/.debug/* \
     "
 
 # kdelibs *must* be built out of tree
