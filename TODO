@@ -1,14 +1,13 @@
 Currently to be done:
 
 plasma-active:
--Fix QDeclarativeAppletscript Scriptengine error.
--runtest on OpenEmbedded compatible hardware
+-Fix overall slowness
 
 kde-workspace:
 -Fix host includes, indicated in log.do_comile "-I/usr/include/KDE"
 
 okular:
--Fix build error that is related to kconfig_compiler or Qt settings "Okular::Settings is not defined"
+-Fix build error that is related to kconfig_compiler "Okular::Settings is not defined"
 
 all recipes:
 -Add proper packaging, currently there is almost no recipe packaging.
