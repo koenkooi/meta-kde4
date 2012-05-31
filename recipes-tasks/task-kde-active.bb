@@ -10,4 +10,5 @@ RDEPENDS_${PN} += "\
     startactive \
     contour \
     plasma-contour-config \
+    share-like-connect \
 "
