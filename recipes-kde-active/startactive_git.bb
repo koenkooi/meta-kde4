@@ -10,7 +10,7 @@ RDEPENDS_${PN} = "plasma-active kde-artwork-active contour"
 SRC_URI = "git://anongit.kde.org/startactive.git;branch=master \
 	   file://setup-contour-intro.sh"
 
-SRCREV = "c3dd8c80a6d5caa76bab37a4453d48c384772141"
+SRCREV = "98d63dd03e4976c621e1c1bb697cde24df96d729"
 
 PV = "Active-Two+git${SRCPV}"
 
