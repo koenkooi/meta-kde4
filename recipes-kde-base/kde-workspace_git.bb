@@ -19,8 +19,8 @@ SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
 	   file://Opt-out-python-scriptengine.patch \
 	   file://Fix-path-to-X11-libraries.patch"
 
-## Tag v4.8.0
-SRCREV = "e80df74d9936428001d630a8a927c908507b2e1f"
+## Tag v4.8.0 + fix for gcc 4.7
+SRCREV = "f94eba53b98c53e71aa85fc2a775fcc736502891"
 
 PV = "4.8.0+git${SRCPV}"
 
