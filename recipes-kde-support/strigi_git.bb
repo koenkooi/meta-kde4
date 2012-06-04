@@ -6,7 +6,8 @@ inherit kde_cmake
 DEPENDS = "boost curl libxml2 expat binutils"
 #DEPENDS_virtclass-native = "libiconv-native"
 
-SRC_URI = "git://anongit.kde.org/strigi.git;branch=master"
+SRC_URI = "git://anongit.kde.org/strigi.git;branch=master \
+    file://gcc-4.7.patch"
 SRCREV = "28a7df0d99f8fde1c8c9f5868cbd7f9a278c4655"
 PV = "0.7.7+git${SRCPV}"
 
