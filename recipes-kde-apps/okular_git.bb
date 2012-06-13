@@ -1,31 +1,34 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
-DEPENDS = "kdelibs4"
+DEPENDS = "kdelibs4 qimageblitz"
 
-inherit kde_cmake kde_rdepends kde_without_docs
+inherit kde_cmake kde_rdepends kde_without_docs perlnative
 
 SRC_URI = "git://anongit.kde.org/okular.git;protocol=git;branch=master \
-	   file://Don-t-install-cmake-files-to-the-libdir.patch \
-	   file://Fix-Phonon-to-phonon.patch"
+    file://Fix-Phonon-to-phonon.patch \
+    file://Fix-typo-Namespace-to-NameSpace.patch"
 
-## Tag 4.8.0
-SRCREV = "51a77e6a5163f96fd7d20422cb8f07e44f24863f"
+## Tag 4.8.4
+SRCREV = "4a1b4ed736e0c5095246030e1e81d8282154880f"
 
-PV = "4.8.0+git${SRCPV}"
+PV = "4.8.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += "\
-		${libdir}/kde4/*.so \
-		\
-		${datadir}/ \
-		${datadir}/apps/okular/* \
-		${datadir}/config.kcfg \
-		${datadir}/kde4/* \
-		${datadir}/icons/* \
-	       "
+# Build out of tree
+OECMAKE_SOURCEPATH = ".."
+OECMAKE_BUILDPATH = "build"
 
-FILES_${PN}-dev += "${datadir}/apps/cmake/*"
+FILES_${PN} += "\
+    ${libdir}/kde4/*.so \
+    \
+    ${datadir}/ \
+    ${datadir}/apps/okular/* \
+    ${datadir}/config.kcfg \
+    ${datadir}/kde4/* \
+    ${datadir}/icons/*"
+
+FILES_${PN}-dev += "${libdir}/cmake/*"
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
