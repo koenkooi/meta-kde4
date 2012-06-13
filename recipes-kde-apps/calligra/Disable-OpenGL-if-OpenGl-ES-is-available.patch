@@ -1,0 +1,27 @@
+From fd4eb1a83471fcbee83b04d08ab0156357f631d6 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 13 Jun 2012 12:43:30 +0200
+Subject: [PATCH] Disable OpenGL if OpenGl/ES is available to prevent
+ redefinition errors
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22f5e8c..4edced3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -186,7 +186,7 @@ macro_bool_to_01(OPENEXR_FOUND HAVE_OPENEXR)
+ ## Look for OpenGL
+ ##
+ set(HAVE_OPENGL 0)
+-if (NOT WIN32)
++if (NOT WIN32 AND NOT NO_OPENGL)
+ macro_optional_find_package(OpenGL)
+ 
+ if(OPENGL_FOUND)
+-- 
+1.7.9.5
+
