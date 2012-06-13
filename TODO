@@ -1,13 +1,20 @@
 Currently to be done:
 
+plasma (desktop and active)
+-Fix jpg images that cannot be displayed as backgound image
+
 plasma-active:
 -Fix overall slowness
 
 kde-workspace:
 -Fix host includes, indicated in log.do_comile "-I/usr/include/KDE"
 
-okular:
--Fix build error that is related to kconfig_compiler "Okular::Settings is not defined"
+calligra:
+-Get the Qt version to 4.8.2 or later as Qt 4.8.1 crashes several of calligras apps
+-Because of this issue calligra-words and stage will bot be build and other application can have trouble too
+
+rekonq:
+-Fix missing images (related to the jpg issue?)
 
 all recipes:
 -Add proper packaging, currently there is almost no recipe packaging.
