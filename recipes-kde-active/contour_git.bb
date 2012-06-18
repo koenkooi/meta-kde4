@@ -7,10 +7,11 @@ DEPENDS = "kde-workspace kde-runtime soprano shared-desktop-ontologies kdelibs4 
 
 RDEPENDS_${PN} = "kde-runtime shared-desktop-ontologies soprano libkactivities4"
 
-RRECOMMENDS_${PN} = "kde-wallpapers plasma-contour-config"
+RRECOMMENDS_${PN} = "kde-wallpapers virtual/plasma-active-startscript"
 
 SRC_URI = "git://anongit.kde.org/contour.git;branch=master"
-SRCREV = "24b721c30aa36943e17ecc5ab2617ff4bc67cb2a"
+#2012-04-11
+SRCREV = "e0d27c737853298015dabe3fe9c1a4bc92c13cc0"
 
 PV = "Active-Two+git${SRCPV}"
 S = "${WORKDIR}/git"
