@@ -42,8 +42,6 @@ PACKAGES =+ "\
     "
 
 RPROVIDES_${PN}-startkde = "virtual/plasma-startscript"
-RCONFLICTS_${PN}-startkde = "virtual/plasma-active-startscript"
-
 
 FILES_${PN} += "\
     ${libdir}/libkdeinit4_*.so \

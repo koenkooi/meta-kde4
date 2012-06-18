@@ -8,7 +8,6 @@ DEPENDS = "kdelibs4 perl-native"
 RDEPENDS_${PN} = "plasma-active kde-artwork-active contour"
 
 #RPROVIDES_${PN} = "virtual/plasma-active-startscript"
-#RCONFLICTS_${PN} = "virtual/plasma-startscript"
 
 SRC_URI = "git://anongit.kde.org/startactive.git;branch=master \
 	   file://setup-contour-intro.sh"
