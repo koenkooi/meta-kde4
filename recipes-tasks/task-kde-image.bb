@@ -24,4 +24,5 @@ RDEPENDS_${PN} += "\
     upower udisks \
     bash \
     tzdata \
+    shared-mime-info \
 "
