@@ -13,9 +13,9 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=v4.8.0 \
 	  "
 #file://0003-Fix-FindKDE4Internals-cmake-file.patch \
 
-## Tag v4.8.2
-SRCREV = "d2ce1819baa85ad0e895971ca25232327e9fc91e"
-PV = "4.8.2+git${SRCPV}"
+## Tag v4.8.4
+SRCREV = "3425961d216b629214fd1d32e905219f4de2ef71"
+PV = "4.8.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
