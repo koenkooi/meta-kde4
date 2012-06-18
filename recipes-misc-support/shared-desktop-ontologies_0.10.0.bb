@@ -10,10 +10,9 @@ FILES_${PN} += "\
 		/usr/share/cmake/* \
 	       "
 
-SRC_URI = "http://kent.dl.sourceforge.net/project/oscaf/shared-desktop-ontologies/0.9/shared-desktop-ontologies-0.9.0.tar.bz2"
-
-SRC_URI[md5sum] = "8cd0950dc66eb5fbe560ac7fdb416e04"
-SRC_URI[sha256sum] = "6efaf4caed8b5467390dc6ae62c678b28fd753df524c257f0a938c2a7b6ac526"
+SRC_URI = "http://kent.dl.sourceforge.net/project/oscaf/shared-desktop-ontologies/0.10.0/shared-desktop-ontologies-0.10.0.tar.bz2"
+SRC_URI[md5sum] = "bfb7b5acbb43e5e45466c87dbe9c45b7"
+SRC_URI[sha256sum] = "b11901f016b54c8d00917cd167cf8585245ad266125880118f91e75ee52ac503"
 
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
