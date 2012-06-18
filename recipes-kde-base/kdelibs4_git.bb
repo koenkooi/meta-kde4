@@ -17,13 +17,15 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 
 #     file://0003-Fix-FindKDE4Internals-cmake-file.patch \
 
-## Tag v4.8.2
-SRCREV = "d2ce1819baa85ad0e895971ca25232327e9fc91e"
-PV = "4.8.2+git${SRCPV}"
+## Tag v4.8.4
+SRCREV = "3425961d216b629214fd1d32e905219f4de2ef71"
+PV = "4.8.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake ${S}/build/KDELibsDependencies.cmake"
+KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake \
+${S}/build/KDELibsDependencies.cmake \
+${S}/build/experimental/libkdeclarative/CMakeFiles/Export/_usr/lib/cmake/KDeclarative/KDeclarativeLibraryTargets-relwithdebinfo.cmake"
 
 FILES_${PN} =+ "\
     ${libdir}/libkdeinit4_*.so \
@@ -49,6 +51,7 @@ FILES_${PN}-dev += "\
     ${bindir}/kde4-config \
     \
     ${datadir}/apps/cmake/* \
+    ${libdir}/cmake/KDeclarative/*.cmake \
     \
     ${libdir}/kde4/plugins/script/libkrossqtsplugin.so \
     "
