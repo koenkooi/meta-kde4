@@ -1,17 +1,17 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-DEPENDS = "kdelibs4 libkactivities4 soprano exiv2 soprano-native shared-desktop-ontologies"
+DEPENDS = "kdelibs4 libkactivities4 kdepimlibs soprano exiv2 soprano-native shared-desktop-ontologies"
 RDEPENDS_${PN} = "soprano kdelibs4 ${PN}-declarative-scriptengine exiv2"
 
 inherit kde_without_docs kde_rdepends kde_cmake
 
 SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master"
 
-## Tag v4.8.2
-SRCREV = "3448ee95c4872c4486b4f8f914010fb5f30f7246"
+## Tag v4.8.4 + fix for ./plasma/declarativeimports/plasmaextracomponents
+SRCREV = "852bdfe59b0935e422ea75f57cb81074d635bd42"
 
-PV = "4.8.2+git${SRCPV}"
+PV = "4.8.4+git${SRCPV}"
 
 
 S = "${WORKDIR}/git"
