@@ -23,6 +23,8 @@ IMAGE_INSTALL += "\
     ntp-systemd \
     shared-mime-info \
     \
+    udisks-systemd \
+    \
     declarative-plasmoids \
     kate konsole ksnapshot \
 "
