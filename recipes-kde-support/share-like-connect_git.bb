@@ -5,8 +5,7 @@ DEPENDS = "kdelibs4 kde-runtime libkactivities4"
 
 inherit kde_cmake
 
-# This tag is very odd, it will cause bitbake to create a directory in the workdir of this recipe with the name 2.0+${SRCREV}
-# But other than that no misbehaviour has been spotted
+
 SRC_URI = "git://anongit.kde.org/share-like-connect.git;branch=master"
 
 ## Tag Active/2.0
