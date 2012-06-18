@@ -6,13 +6,17 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 inherit task
 
 RDEPENDS_${PN} += "\
-kate \
-konsole \
-kcalc \
+ark \
 bangarang \
-okular \
-kde-baseapps \
 declarative-plasmoids \
+gwenview \
+kate \
+kcalc \
+kde-baseapps \
+konsole \
+ksnapshot \
+okular \
+rekonq \
 \
 calligra \
 calligra-braindump \
@@ -20,6 +24,8 @@ calligra-flow \
 calligra-karbon \
 calligra-kexi \
 calligra-krita \
+calligra-plan \
+calligra-sheets \
 calligra-stage \
 calligra-words \
 "
