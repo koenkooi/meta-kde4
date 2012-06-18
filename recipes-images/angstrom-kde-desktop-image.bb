@@ -14,16 +14,17 @@ IMAGE_FEATURES += "package-management"
 IMAGE_INSTALL += "\
     task-kde-image \
     task-kde-base \
+    task-kde-apps \
+    \
+    virtual/plasma-startscript \
     \
     oxygen-icons \
     oxygen-fonts \
     kde-wallpapers \
     \
-    ntp-systemd \
-    shared-mime-info \
+    udisks-systemd \
     \
-    declarative-plasmoids \
-    kate konsole ksnapshot \
+    ntp-systemd \
 "
 
 LICENSE = "MIT"
