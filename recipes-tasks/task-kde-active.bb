@@ -7,7 +7,6 @@ inherit task
 
 RDEPENDS_${PN} += "\
     plasma-active \
-    startactive \
     contour \
     plasma-contour-config \
     share-like-connect \
