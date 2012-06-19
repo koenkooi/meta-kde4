@@ -10,7 +10,7 @@ SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
 	   file://WORKAROUND-export-visibility.patch \
 	  "
 
-SRCREV = "2f5381c4c449f5c0b1390f7eaf00ef9216f8b5fa"
+SRCREV = "2321148537033c69c0f358b928486a1b1b003753"
 
 EXTRA_OECMAKE =+ "\
 		  -DBUILD_VIRTUOSO_BACKEND=TRUE \
@@ -19,7 +19,7 @@ EXTRA_OECMAKE =+ "\
 		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_DIR_TARGET}${bindir_crossscripts}/redland-config \
 		 "
 
-PV = "2.7.53+git${SRCPV}"
+PV = "2.8.0+git${SRCPV}"
 PR = "r1"
 
 S = "${WORKDIR}/git"
