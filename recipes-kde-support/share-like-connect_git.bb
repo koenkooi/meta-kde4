@@ -9,7 +9,7 @@ inherit kde_cmake
 SRC_URI = "git://anongit.kde.org/share-like-connect.git;branch=master"
 
 ## Tag Active/2.0
-SRCREV = "9ed8128284ab9fcab806455bccf0344dd21afbd1"
+SRCREV = "dac3ad67f7b07c277152508a1a4144043075b50e"
 
 PV = "Active-2.0+git${SRCPV}"
 
