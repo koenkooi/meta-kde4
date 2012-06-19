@@ -44,3 +44,8 @@ FAQ / Troubleshooting:
   A: There are some recipes needed from meta-openembedded.
      Solving this issue: Either add the meta-openembedded layer to Pokys layer configuration,
      or provide a recipe copy in your personal overlay.
+4.
+  Q: How to report bugs / request features?
+  A: Send your bugreports / feature requests to the openembedded-developer mailing list.
+     Include the [meta-kde] tag in the subject for easier readability.
+     You can find the mailing list here: http://lists.linuxtogo.org/cgi-bin/mailman/listinfo/openembedded-devel
