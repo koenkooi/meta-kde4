@@ -7,6 +7,8 @@ DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
 
 include recipes-images/angstrom/systemd-image.bb
 
+CONMANPKGS=""
+
 export IMAGE_BASENAME = "ansgstrom-kde-desktop-image"
 
 IMAGE_FEATURES += "package-management"
@@ -24,7 +26,11 @@ IMAGE_INSTALL += "\
     \
     udisks-systemd \
     \
+    networkmanager \
+    kde-networkmanagement \
+    \
     ntp-systemd \
 "
 
+# the _recipe_ license, the contents of the image is provided under different licenses
 LICENSE = "MIT"
