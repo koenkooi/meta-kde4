@@ -5,7 +5,7 @@ inherit kde_cmake kde_rdepends
 
 DEPENDS = "kde-workspace kde-runtime soprano shared-desktop-ontologies kdelibs4 libkactivities4"
 
-RDEPENDS_${PN} = "kde-runtime shared-desktop-ontologies soprano libkactivities4"
+RDEPENDS_${PN} = " kde-workspace libkactivities4 plasma-active shared-desktop-ontologies"
 
 RRECOMMENDS_${PN} = "kde-wallpapers virtual/plasma-active-startscript"
 
