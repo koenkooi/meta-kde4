@@ -11,7 +11,6 @@ RDEPENDS_${PN} += "\
     strace \
     \
     dbus-x11 \
-    shared-mime-info \
     xauth \
     xdg-utils \
     xhost \
