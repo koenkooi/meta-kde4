@@ -10,7 +10,7 @@ ${S}/build/NepomukCoreConfig.cmake"
 
 
 SRC_URI = "git://anongit.kde.org/nepomuk-core.git;branch=master"
-SRCREV = "0651e8c8a7213e4dcc239ecdda1be0159d9ff306"
+SRCREV = "31d3504334f52c9cd7d24d6fe500054ef9301f5d"
 
 # nepomuk *must* be built out of tree
 OECMAKE_SOURCEPATH = ".."
@@ -21,7 +21,7 @@ EXTRA_OECMAKE =+ "\
     "
 
 
-PV = "4.8.90+git${SRCPV}"
+PV = "4.9.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
