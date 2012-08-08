@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 inherit kde_cmake kde_without_docs kde_rdepends perlnative
 
 # Gracefully depend on virtual/egl if needed.
-STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano"
+STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano python"
 DEPENDS = "${STDDEPENDS} virtual/libgl"
 DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
 
@@ -16,13 +16,12 @@ RRECOMMENDS_${PN} = "setxkbmap"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
     file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
-    file://Opt-out-python-scriptengine.patch \
     file://Fix-path-to-X11-libraries.patch"
 
-## Tag v4.8.4
-SRCREV = "577aad48fa1be2ad577cfda60c5d41c4d5149a81"
+## Tag v4.9.0
+SRCREV = "df6a86044ffd3d8f02dc0b15348d3475338cad10"
 
-PV = "4.8.4+git${SRCPV}"
+PV = "4.9.0+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
