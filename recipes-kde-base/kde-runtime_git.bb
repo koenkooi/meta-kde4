@@ -8,10 +8,10 @@ inherit kde_without_docs kde_rdepends kde_cmake
 
 SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master"
 
-## Tag v4.8.4 + fix for nepomuk-core
-SRCREV = "caa7853d3dea17c9ef4f6b68b23be0ec4d5737bf"
+## Tag v4.9.0
+SRCREV = "bb752c3bf029e1fb0211fd4d1ffcc28ffeae5c26"
 
-PV = "4.8.4+git${SRCPV}"
+PV = "4.9.0+git${SRCPV}"
 
 
 S = "${WORKDIR}/git"
@@ -57,3 +57,7 @@ EXTRA_OECMAKE =+ "\
 		  \
 		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules \
 		 "
+
+# kde-runtime needs to be built out of source, see: http://www.mail-archive.com/release-team@kde.org/msg05797.html
+OECMAKE_SOURCEPATH = ".."
+OECMAKE_BUILDPATH = "build"
