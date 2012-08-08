@@ -14,8 +14,8 @@ RRECOMMENDS_${PN} = "virtual/plasma-active-startscript oxygen-icons"
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master \
 	   file://Fix-Qt-inputmethid-plugin-install-path.patch"
-#2012-06-11
-SRCREV = "63d85b2d61ddf1d649ea7d650d600e6b07efeae7"
+#2012-08-7
+SRCREV = "72a55cca2a42d2b71bfef7b33e0c334deb481ed2"
 PV = "2+git${SRCPV}"
 
 S = "${WORKDIR}/git"
