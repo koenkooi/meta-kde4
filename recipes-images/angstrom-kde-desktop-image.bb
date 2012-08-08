@@ -26,11 +26,13 @@ IMAGE_INSTALL += "\
     \
     udisks-systemd \
     \
-    networkmanager \
-    kde-networkmanagement \
     \
     ntp-systemd \
 "
+
+#    networkmanager \
+#    kde-networkmanagement \
+#To be done
 
 # the _recipe_ license, the contents of the image is provided under different licenses
 LICENSE = "MIT"
