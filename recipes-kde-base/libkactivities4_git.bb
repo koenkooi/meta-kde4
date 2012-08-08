@@ -17,11 +17,11 @@ OECMAKE_BUILDPATH = "build"
 SRC_URI = "git://anongit.kde.org/kactivities;protocol=git;branch=master \
 	   file://Fix-cmake-destination-directory.patch"
 
-## Tag v4.8.4 + kao fixes
-SRCREV = "a913ccdf8c084f69874507a7271b0bada28a61b3"
+## Tag v4.9.0
+SRCREV = "ebcda7241b8de3c6d5284ec946521e5695e2082d"
 
+PV = "4.9.0+git${SRCPV}"
 
-PV = "4.8.4+git${SRCPV}"
 
 S = "${WORKDIR}/git" 
 
