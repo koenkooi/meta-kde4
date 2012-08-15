@@ -18,14 +18,16 @@ ksnapshot \
 okular \
 rekonq \
 \
-calligra \
-calligra-braindump \
-calligra-flow \
-calligra-karbon \
-calligra-kexi \
-calligra-krita \
-calligra-plan \
-calligra-sheets \
-calligra-stage \
-calligra-words \
 "
+
+#Defect with Qt<4.8.2
+#calligra \
+#calligra-braindump \
+#calligra-flow \
+#calligra-karbon \
+#calligra-kexi \
+#calligra-krita \
+#calligra-plan \
+#calligra-sheets \
+#calligra-stage \
+#calligra-words \
