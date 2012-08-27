@@ -10,7 +10,7 @@ SRC_URI = "http://download.librdf.org/source/redland-1.0.15.tar.gz \
     file://No-docs-and-NOCONFIGURE.patch \
     "
 
-PR = "r1"
+PR = "r2"
 
 SRC_URI[md5sum] = "b0deb87f3c7d3237a3d587c1e0f2f266"
 SRC_URI[sha256sum] = "0e1f5825b6357c9b490da866c95ae1d895dbb5f445013d2511c37df822ee9ec6"
@@ -39,7 +39,16 @@ do_configure() {
 
 do_install() {
     oe_runmake install DESTDIR=${D}
-    install -d ${SYSROOT_DESTDIR}${bindir_crossscripts}/
-    install -m 755 ${D}${bindir}/redland-config ${SYSROOT_DESTDIR}${bindir_crossscripts}/
+    install -d ${D}${bindir_crossscripts}
+    install -m 755 ${D}${bindir}/redland-config ${D}${bindir_crossscripts}
 }
+
+
+#see http://patches.openembedded.org/patch/33965/
+SYSROOT_PREPROCESS_FUNCS += "redland_sysroot_preprocess"
+redland_sysroot_preprocess () {
+       sysroot_stage_dir ${D}${bindir_crossscripts} ${SYSROOT_DESTDIR}${bindir_crossscripts}
+}
+
+
 BBCLASSEXTEND = "native"
