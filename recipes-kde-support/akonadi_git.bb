@@ -28,8 +28,7 @@ OECMAKE_BUILDPATH = "build"
 EXTRA_OECMAKE += "-DMYSQLD_EXECUTABLE=${STAGING_DIR_TARGET}${libexecdir}/mysqld"
 
 # Feel free to add postgres
-PACKAGES += "${PN}-qt-sqllite-plugin ${PN}-qt-sqllite-plugin-dbg \
-    -DPOSTGRES_PATH=FALSE"
+PACKAGES += "${PN}-qt-sqllite-plugin ${PN}-qt-sqllite-plugin-dbg"
 
 FILES_${PN} += "${datadir}"
 
