@@ -5,7 +5,7 @@ DEPENDS = "kdelibs4"
 
 inherit kde_cmake kde_rdepends
 
-SRC_URI = "svn://anonsvn.kde.org/home/kde;module=trunk/playground/base/plasma/kde-artwork-active;proto=svn"
+SRC_URI = "svn://anonsvn.kde.org/home/kde;module=trunk/playground/base/plasma/kde-artwork-active;protocol=svn"
 SRCREV = "1266939"
 
 PV = "0.2+svnr${SRCPV}"
