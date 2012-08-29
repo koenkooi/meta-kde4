@@ -15,6 +15,8 @@ SRCREV = "dc6ac6855cf6c57589fd322eecf0d3e590b3779a"
 
 PV = "4.8.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "\
@@ -25,5 +27,7 @@ FILES_${PN} += "\
 		${datadir}/* \
 	       "
 
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
