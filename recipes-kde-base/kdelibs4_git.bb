@@ -54,7 +54,6 @@ FILES_SOLIBSDEV = ""
 
 FILES_${PN}-dev += "\
     ${bindir}/kconfig_compiler \
-    ${bindir}/kde4-config \
     \
     ${datadir}/apps/cmake/* \
     ${libdir}/cmake/KDeclarative/*.cmake \
