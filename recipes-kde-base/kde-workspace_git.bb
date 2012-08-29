@@ -1,7 +1,7 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 
-inherit kde_cmake kde_without_docs kde_rdepends perlnative
+inherit kde_cmake kde_without_docs kde_rdepends perlnative kde_exports
 
 # Gracefully depend on virtual/egl if needed.
 STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano python"
@@ -23,9 +23,11 @@ SRCREV = "df6a86044ffd3d8f02dc0b15348d3475338cad10"
 
 PV = "4.9.0+git${SRCPV}"
 
-PR = "r2"
+PR = "r3"
 
 S = "${WORKDIR}/git"
+
+KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/lib/cmake/KDE4Workspace/KDE4WorkspaceLibraryTargets-relwithdebinfo.cmake"
 
 do_install_prepend() {
 # KDE needs "real" cross compiling support, but this works for now
