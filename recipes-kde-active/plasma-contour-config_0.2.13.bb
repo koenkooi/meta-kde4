@@ -7,7 +7,10 @@ SRC_URI = "ftp://ftp.kde.org/pub/kde/stable/active/2.0/src/plasma-contour-config
 DEPENDS = "contour"
 RDEPENDS_${PN} = "kde-workspace-startkde"
 
-RPROVIDES_${PN} = "virtual/plasma-active-startscript"
+
+RPROVIDES_${PN} = "plasma-startscript"
+RREPLACES_${PN} = "plasma-startscript"
+RCONFLICTS_${PN} = "plasma-startscript"
 
 SRC_URI[md5sum] = "f0f24f3847c86d2e4c2b255562ce106b"
 SRC_URI[sha256sum] = "3081fbc28452ff4d63a28a0ae07da1505d461672e6553c44a7c839271a957478"
