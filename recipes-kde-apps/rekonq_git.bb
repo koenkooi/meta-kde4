@@ -15,7 +15,12 @@ SRCREV = "ad43da132541f81e38f75c102dc72b476b0677dd"
 
 PV = "0.9.61+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "${libdir}/libkdeinit4_rekonq.so \
     ${datadir}"
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
