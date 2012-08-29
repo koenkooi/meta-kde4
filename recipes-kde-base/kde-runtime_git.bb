@@ -13,50 +13,57 @@ SRCREV = "bb752c3bf029e1fb0211fd4d1ffcc28ffeae5c26"
 
 PV = "4.9.0+git${SRCPV}"
 
+PR = "r1"
 
 S = "${WORKDIR}/git"
 
 PACKAGES =+ "${PN}-declarative-scriptengine"
 
 FILES_${PN} += "\
-		${libdir}/attica_kde.so \
-		${libdir}/libkdeinit4_*.so \
-		${libdir}/libknotifyplugin.so \
-		${libdir}/libnepomukcommon.so \
-		${libdir}/kde4/* \
-		\
-		${datadir}/* \
-		\
-		${sysconfdir}/* \
-	       "
+    ${libdir}/attica_kde.so \
+    ${libdir}/libkdeinit4_*.so \
+    ${libdir}/libknotifyplugin.so \
+    ${libdir}/libnepomukcommon.so \
+    ${libdir}/kde4/* \
+    \
+    ${datadir}/* \
+    \
+    ${sysconfdir}/* \
+    "
 
 FILES_${PN}-declarative-scriptengine += "\
-					  ${libdir}/kde4/imports/org/kde/plasma/core/libcorebindingsplugin.so \
-					  ${libdir}/kde4/imports/org/kde/plasma/core/qmldir \
-					  ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/libgraphicslayoutsbindingsplugin.so \
-					  ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/qmldir \
-					  ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/libgraphicswidgetsbindingsplugin.so \
-					  ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/qmldir \
-					  ${libdir}/kde4/plasma_appletscript_declarative.so \
-					  ${datadir}/kde4/services/plasma-scriptengine-applet-declarative.desktop \
-					"
+    ${libdir}/kde4/imports/org/kde/plasma/core/libcorebindingsplugin.so \
+    ${libdir}/kde4/imports/org/kde/plasma/core/qmldir \
+    ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/libgraphicslayoutsbindingsplugin.so \
+    ${libdir}/kde4/imports/org/kde/plasma/graphicslayouts/qmldir \
+    ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/libgraphicswidgetsbindingsplugin.so \
+    ${libdir}/kde4/imports/org/kde/plasma/graphicswidgets/qmldir \
+    ${libdir}/kde4/plasma_appletscript_declarative.so \
+    ${datadir}/kde4/services/plasma-scriptengine-applet-declarative.desktop \
+    "
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
+
 FILES_${PN}-dev += "\
-		    ${datadir}/apps/cmake/* \
-		   "
+    ${libdir}/libkwalletbackend.so \
+    ${libdir}/libmolletnetwork.so \
+    ${datadir}/apps/cmake/* \
+    "
 
 FILES_${PN}-dbg += "\
-		    ${libdir}/kde4/.debug/* \
-		    ${libdir}/kde4/libexec/.debug/* \
-		    ${libdir}/kde4/imports/org/kde/*/.debug/* \
-		    ${libdir}/kde4/imports/org/kde/plasma/*/.debug/* \
-		    ${libdir}/kde4/platformimports/touch/org/kde/plasma/components/.debug/* \
-		   "
+    ${libdir}/kde4/.debug/* \
+    ${libdir}/kde4/libexec/.debug/* \
+    ${libdir}/kde4/imports/org/kde/*/.debug/* \
+    ${libdir}/kde4/imports/org/kde/plasma/*/.debug/* \
+    ${libdir}/kde4/platformimports/touch/org/kde/plasma/components/.debug/* \
+    "
 
 EXTRA_OECMAKE =+ "\
-		  -DKDEBASE_DISABLE_MULTIMEDIA=ON \
-		  \
-		  -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules \
-		 "
+    -DKDEBASE_DISABLE_MULTIMEDIA=ON \
+    \
+    -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules \
+    "
 
 # kde-runtime needs to be built out of source, see: http://www.mail-archive.com/release-team@kde.org/msg05797.html
 OECMAKE_SOURCEPATH = ".."
