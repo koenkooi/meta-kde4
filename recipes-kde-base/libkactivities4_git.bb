@@ -9,7 +9,7 @@ ${S}/build/ontologies/kao.ontology"
 inherit kde_exports kde_rdepends kde_cmake
 
 DEPENDS = "kdelibs4 soprano shared-desktop-ontologies"
-RDEPENDS_${PN} = "soprano shared-desktop-ontologies"
+RDEPENDS_${PN} = "soprano shared-desktop-ontologies qt4-plugin-sqldriver-sqlite"
 
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
