@@ -10,17 +10,19 @@ DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl
 
 RDEPENDS_${PN} = "kde-workspace kde-runtime kde-runtime-declarative-scriptengine libkactivities4 qt-mobility-x11"
 
-RRECOMMENDS_${PN} = "virtual/plasma-active-startscript oxygen-icons"
+RRECOMMENDS_${PN} = "oxygen-icons"
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master \
-	   file://Fix-Qt-inputmethid-plugin-install-path.patch"
+	   file://Fix-Qt-inputmethod-plugin-install-path.patch"
 #2012-08-7
 SRCREV = "72a55cca2a42d2b71bfef7b33e0c334deb481ed2"
 PV = "2+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
-FILES_${PN} =+ "\
+FILES_${PN} += "\
     ${libdir}/libkdeinit4_plasma-device.so \
     ${libdir}/libkdeinit4_plasma-keyboardcontainer.so \
     ${libdir}/libkdeinit4_plasma-widgetstrip.so\
@@ -47,14 +49,20 @@ FILES_${PN} =+ "\
     ${sysconfdir}/* \
     "
 
-FILES_${PN}-dbg =+ "\
+FILES_${PN}-dbg += "\
     ${libdir}/kde4/.debug/* \
     ${libdir}/qt4/plugins/inputmethods/.debug/* \
-    ${libdir}/kde4/imports/org/kde/*/.debug/*.so \
-    ${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/.debug/libmobilecomponentsplugin.so \
-    ${libdir}/kde4/imports/org/kde/active/settings/.debug \
-    ${libdir}/kde4/libexec/.debug/activedatetimehelper \
+    ${libdir}/kde4/imports/org/kde/*/.debug/* \
+    ${libdir}/kde4/imports/org/kde/plasma/mobilecomponents/.debug/* \
+    ${libdir}/kde4/imports/org/kde/active/settings/.debug/* \
+    ${libdir}/kde4/libexec/.debug/* \
     "
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
+
+FILES_${PN}-dev += "${libdir}/libactiveapp.so"
+
 # build out of tree
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
