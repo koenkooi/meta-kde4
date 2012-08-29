@@ -11,7 +11,7 @@ DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
 # Builds will behave differently when libgl or egl is used
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-RDEPENDS_${PN} = "libkactivities4 soprano"
+RDEPENDS_${PN} = "libkactivities4 soprano python"
 RRECOMMENDS_${PN} = "setxkbmap"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
@@ -128,7 +128,6 @@ FILES_${PN}-cursors-oxygen-zion = "${datadir}/icons/Oxygen_Zion/*"
 
 EXTRA_OECMAKE += "\
     -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
-    -DWITHOUT_PYTHON=TRUE \
     -DHONORS_SOCKET_PERMS_EXITCODE=0 \
     -DKDE_WORKSPACE_WORKAROUND=TRUE \
     -DKActivities_DIR=${STAGING_DATADIR}/apps/cmake/modules/ \
