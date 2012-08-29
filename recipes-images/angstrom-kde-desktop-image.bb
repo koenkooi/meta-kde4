@@ -18,7 +18,7 @@ IMAGE_INSTALL += "\
     task-kde-base \
     task-kde-apps \
     \
-    virtual/plasma-startscript \
+    plasma-startscript \
     \
     oxygen-icons \
     oxygen-fonts \
