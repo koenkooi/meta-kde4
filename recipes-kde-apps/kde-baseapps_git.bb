@@ -13,16 +13,27 @@ SRCREV = "a7a128232033f284d41890a6967fc0641925b251"
 
 PV = "4.8.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
 FILES_${PN} += "\
-		${libdir}/kde4/*.so \
-		${libdir}/libkdeinit4*.so \
-		\
-		${datadir}/* \
-	       "
+    ${libdir}/kde4/*.so \
+    ${libdir}/libkdeinit4*.so \
+    \
+    ${datadir}/* \
+    "
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
+
+FILES_${PN}-dev += "${libdir}/libdolphinprivate.so \
+    ${libdir}/libkbookmarkmodel_private.so \
+    ${libdir}/libkonq.so \
+    ${libdir}/libkonqsidebarplugin.so \
+    "
