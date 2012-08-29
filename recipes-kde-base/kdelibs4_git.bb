@@ -21,6 +21,8 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
 SRCREV = "bfdb17858efeeabf74ccb4a4010e250bcde6aa42"
 PV = "4.9.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 KDE_EXPORT_FILES = "${S}/build/CMakeFiles/Export/_usr/share/apps/cmake/modules/KDELibs4LibraryTargets-relwithdebinfo.cmake \
@@ -44,7 +46,11 @@ FILES_${PN} =+ "\
     ${datadir}/dbus-1/* \
     \
     ${sysconfdir}/* \
-        "
+    "
+
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
 
 FILES_${PN}-dev += "\
     ${bindir}/kconfig_compiler \
@@ -54,6 +60,46 @@ FILES_${PN}-dev += "\
     ${libdir}/cmake/KDeclarative/*.cmake \
     \
     ${libdir}/kde4/plugins/script/libkrossqtsplugin.so \
+    \
+    \
+    ${libdir}/libkcmutils.so \
+    ${libdir}/libkde3support.so \
+    ${libdir}/libkdeclarative.so \
+    ${libdir}/libkdecore.so \
+    ${libdir}/libkdefakes.so \
+    ${libdir}/libkdesu.so \
+    ${libdir}/libkdeui.so \
+    ${libdir}/libkdewebkit.so \
+    ${libdir}/libkdnssd.so \
+    ${libdir}/libkemoticons.so \
+    ${libdir}/libkfile.so \
+    ${libdir}/libkhtml.so \
+    ${libdir}/libkidletime.so \
+    ${libdir}/libkimproxy.so \
+    ${libdir}/libkio.so \
+    ${libdir}/libkjs.so \
+    ${libdir}/libkjsapi.so \
+    ${libdir}/libkjsembed.so \
+    ${libdir}/libkmediaplayer.so \
+    ${libdir}/libknewstuff2.so \
+    ${libdir}/libknewstuff3.so \
+    ${libdir}/libknotifyconfig.so \
+    ${libdir}/libkntlm.so \
+    ${libdir}/libkparts.so \
+    ${libdir}/libkprintutils.so \
+    ${libdir}/libkpty.so \
+    ${libdir}/libkrosscore.so \
+    ${libdir}/libkrossui.so \
+    ${libdir}/libktexteditor.so \
+    ${libdir}/libkunitconversion.so \
+    ${libdir}/libkunittest.so \
+    ${libdir}/libkutils.so \
+    ${libdir}/libnepomuk.so \
+    ${libdir}/libnepomukquery.so \
+    ${libdir}/libnepomukutils.so \
+    ${libdir}/libplasma.so \
+    ${libdir}/libsolid.so \
+    ${libdir}/libthreadweaver.so \
     "
 
 FILES_${PN}-dbg += "\
