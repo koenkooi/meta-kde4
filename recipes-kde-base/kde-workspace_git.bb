@@ -23,7 +23,7 @@ SRCREV = "df6a86044ffd3d8f02dc0b15348d3475338cad10"
 
 PV = "4.9.0+git${SRCPV}"
 
-PR = "r1"
+PR = "r2"
 
 S = "${WORKDIR}/git"
 
@@ -42,14 +42,9 @@ PACKAGES =+ "\
     ${PN}-cursors-oxygen-zion \
     "
 
-PACKAGE_ARCH_${PN}-startkde = "allarch"
-PACKAGE_ARCH_${PN}-cursors-oxygen-black = "allarch"
-PACKAGE_ARCH_${PN}-cursors-oxygen-blue = "allarch"
-PACKAGE_ARCH_${PN}-cursors-oxygen-white = "allarch"
-PACKAGE_ARCH_${PN}-cursors-oxygen-yellow = "allarch"
-PACKAGE_ARCH_${PN}-cursors-oxygen-zion = "allarch"
-
-RPROVIDES_${PN}-startkde = "virtual/plasma-startscript"
+RPROVIDES_${PN}-startkde = "plasma-startscript"
+RREPLACES_${PN}-startkde = "plasma-startscript"
+RCONFLICTS_${PN}-startkde = "plasma-startscript"
 
 FILES_${PN} += "\
     ${libdir}/libkdeinit4_*.so \
