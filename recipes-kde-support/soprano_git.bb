@@ -12,7 +12,7 @@ SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
 	   file://WORKAROUND-export-visibility.patch \
 	  "
 
-SRCREV = "2321148537033c69c0f358b928486a1b1b003753"
+SRCREV = "649dc0a271f0a291cbaa0da04554c4a5f5ebdfab"
 
 #Note: the cmake patch for redland could be resolved with a TryRun.cmake file, however since the cmake file will be installed for other programs it would be needed at every program using it.
 
@@ -29,7 +29,7 @@ EXTRA_OECMAKE =+ "\
 		  -DREDLAND_CONFIG_EXECUTABLE=${STAGING_DIR_TARGET}${bindir_crossscripts}/redland-config \
 		 "
 
-PV = "2.8.0+git${SRCPV}"
+PV = "2.8.5+git${SRCPV}"
 PR = "r1"
 
 S = "${WORKDIR}/git"
