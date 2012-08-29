@@ -7,23 +7,24 @@ DEPENDS = "kde-workspace kde-runtime soprano shared-desktop-ontologies kdelibs4 
 
 RDEPENDS_${PN} = " kde-workspace libkactivities4 plasma-active shared-desktop-ontologies"
 
-RRECOMMENDS_${PN} = "kde-wallpapers virtual/plasma-active-startscript"
+RRECOMMENDS_${PN} = "kde-wallpapers"
 
 SRC_URI = "git://anongit.kde.org/contour.git;branch=master"
 #2012-04-11
 SRCREV = "e0d27c737853298015dabe3fe9c1a4bc92c13cc0"
 
 PV = "Active-Two+git${SRCPV}"
+
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "\
-		${libdir}/kde4/*.so \
-		\
-		${datadir}/apps/contour/* \
-		${datadir}/apps/plasma/* \
-		${datadir}/kde4/* \
-		${datadir}/autostart/* \
-	       "
+    ${libdir}/kde4/*.so \
+    \
+    ${datadir}/apps/contour/* \
+    ${datadir}/apps/plasma/* \
+    ${datadir}/kde4/* \
+    ${datadir}/autostart/* \
+    "
 
 FILES_${PN}-dev += "${datadir}/cmake/*"
 
