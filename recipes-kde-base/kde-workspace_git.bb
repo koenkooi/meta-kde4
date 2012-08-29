@@ -23,6 +23,8 @@ SRCREV = "df6a86044ffd3d8f02dc0b15348d3475338cad10"
 
 PV = "4.9.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 do_install_prepend() {
@@ -40,12 +42,18 @@ PACKAGES =+ "\
     ${PN}-cursors-oxygen-zion \
     "
 
+PACKAGE_ARCH_${PN}-startkde = "allarch"
+PACKAGE_ARCH_${PN}-cursors-oxygen-black = "allarch"
+PACKAGE_ARCH_${PN}-cursors-oxygen-blue = "allarch"
+PACKAGE_ARCH_${PN}-cursors-oxygen-white = "allarch"
+PACKAGE_ARCH_${PN}-cursors-oxygen-yellow = "allarch"
+PACKAGE_ARCH_${PN}-cursors-oxygen-zion = "allarch"
+
 RPROVIDES_${PN}-startkde = "virtual/plasma-startscript"
 
 FILES_${PN} += "\
     ${libdir}/libkdeinit4_*.so \
     ${libdir}/libkickoff.so \
-    ${libdir}/libpowerdevilui.so \
     ${libdir}/kde4/*.so \
     ${libdir}/kde4/plugins/*/*.so \
     ${libdir}/kde4/libexec/* \
@@ -53,6 +61,7 @@ FILES_${PN} += "\
     ${libdir}/kconf_update_bin/kwin_* \
     ${libdir}/kconf_update_bin/plasma-* \
     ${libdir}/kconf_update_bin/krdb_clearlibrarypath \
+    ${libdir}/python2.7 \
     \
     ${datadir}/apps/* \
     ${datadir}/config/* \
@@ -71,15 +80,47 @@ FILES_${PN}-dbg += "\
     ${libdir}/kde4/.debug/* \
     ${libdir}/kde4/libexec/.debug/* \
     ${libdir}/kde4/plugins/*/.debug/* \
-    ${libdir}/strigi/.debug/strigita_font.so \
-    ${libdir}/libpowerdevilui.so \
+    ${libdir}/strigi/.debug/* \
     ${libdir}/kconf_update_bin/.debug/* \
     "
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
 
 FILES_${PN}-dev += "\
     ${datadir}/cmake/* \
     ${libdir}/cmake/KDE4Workspace/*.cmake \
+    \
+    \
+    ${libdir}libkdecorations.so \
+    ${libdir}libkephal.so \
+    ${libdir}libkfontinst.so \
+    ${libdir}libkfontinstui.so \
+    ${libdir}libkscreensaver.so \
+    ${libdir}libksgrd.so \
+    ${libdir}libksignalplotter.so \
+    ${libdir}libkwineffects.so \
+    ${libdir}libkwinglesutils.so \
+    ${libdir}libkwinglutils.so \
+    ${libdir}libkworkspace.so \
+    ${libdir}liblsofui.so \
+    ${libdir}liboxygenstyle.so \
+    ${libdir}liboxygenstyleconfig.so \
+    ${libdir}libplasma-geolocation-interface.so \
+    ${libdir}libplasma_applet-system-monitor.so \
+    ${libdir}libplasmaclock.so \
+    ${libdir}libplasmagenericshell.so \
+    ${libdir}libpowerdevilconfigcommonprivate.so \
+    ${libdir}libpowerdevilcore.so \
+    ${libdir}libprocesscore.so \
+    ${libdir}libprocessui.so \
+    ${libdir}libsolidcontrol.so \
+    ${libdir}libsolidcontrolifaces.so \
+    ${libdir}libsystemsettingsview.so \
+    ${libdir}libtaskmanager.so \
+    ${libdir}libweather_ion.so \
     "
+
 FILES_${PN}-startkde = "${bindir}/startkde"
 FILES_${PN}-cursors-oxygen-black = "${datadir}/icons/Oxygen_Black/*"
 FILES_${PN}-cursors-oxygen-blue = "${datadir}/icons/Oxygen_Blue/*"
