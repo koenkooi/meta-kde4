@@ -13,14 +13,19 @@ SRCREV = "dac3ad67f7b07c277152508a1a4144043075b50e"
 
 PV = "Active-2.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "\
-		${libdir}/libsharelikeconnect.so \
-		${libdir}/kde4/*.so \
-		${libdir}/kde4/imports/* \
-		\
-		${datadir}/* \
-	       "
+    ${libdir}/libsharelikeconnect.so \
+    ${libdir}/kde4/*.so \
+    ${libdir}/kde4/imports/* \
+    \
+    ${datadir}/* \
+    "
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
