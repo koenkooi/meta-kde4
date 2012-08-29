@@ -12,6 +12,8 @@ SRCREV = "78edc645422be447e7d451ed86e2fe690ae303e1"
 
 PV = "4.8.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 # kate *must* be built out of tree
@@ -19,11 +21,19 @@ OECMAKE_SOURCEPATH = ".."
 OECMAKE_BUILDPATH = "build"
 
 FILES_${PN} += "\
-		${libdir}/kde4/*.so \
-		${libdir}/libkdeinit4_kate.so \
-		${libdir}/libkdeinit4_kwrite.so \
-		\
-		${datadir}/* \
-	       "
+    ${libdir}/kde4/*.so \
+    ${libdir}/libkdeinit4*.so \
+    \
+    ${datadir}/* \
+    "
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
+
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
+
+FILES_${PN}-dev += "${libdir}/libkateinterfaces.so \
+    ${libdir}/libkatepartinterfaces.so \
+    ${libdir}/libktexteditor_codesnippets_core.so \
+    "
