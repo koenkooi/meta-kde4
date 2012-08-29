@@ -23,6 +23,8 @@ EXTRA_OECMAKE =+ "\
 
 PV = "4.9.0+git${SRCPV}"
 
+PR = "r1"
+
 S = "${WORKDIR}/git"
 
 FILES_${PN} += "${libdir}/libkdeinit4_nepomukserver.so \
@@ -33,5 +35,12 @@ FILES_${PN} += "${libdir}/libkdeinit4_nepomukserver.so \
 
 FILES_${PN}-dbg += "${libdir}/kde4/.debug"
 
-FILES_${PN}-dev += "${libdir}/cmake"
+
+# ${PN}-dev is currently "messy" so re-add all libraries by hand
+FILES_SOLIBSDEV = ""
+
+FILES_${PN}-dev += "${libdir}/cmake \
+    ${libdir}/libnepomukcore.so \
+    ${libdir}/libnepomuksync.so \
+    "
 
