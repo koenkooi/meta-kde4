@@ -92,33 +92,34 @@ FILES_${PN}-dev += "\
     ${libdir}/cmake/KDE4Workspace/*.cmake \
     \
     \
-    ${libdir}libkdecorations.so \
-    ${libdir}libkephal.so \
-    ${libdir}libkfontinst.so \
-    ${libdir}libkfontinstui.so \
-    ${libdir}libkscreensaver.so \
-    ${libdir}libksgrd.so \
-    ${libdir}libksignalplotter.so \
-    ${libdir}libkwineffects.so \
-    ${libdir}libkwinglesutils.so \
-    ${libdir}libkwinglutils.so \
-    ${libdir}libkworkspace.so \
-    ${libdir}liblsofui.so \
-    ${libdir}liboxygenstyle.so \
-    ${libdir}liboxygenstyleconfig.so \
-    ${libdir}libplasma-geolocation-interface.so \
-    ${libdir}libplasma_applet-system-monitor.so \
-    ${libdir}libplasmaclock.so \
-    ${libdir}libplasmagenericshell.so \
-    ${libdir}libpowerdevilconfigcommonprivate.so \
-    ${libdir}libpowerdevilcore.so \
-    ${libdir}libprocesscore.so \
-    ${libdir}libprocessui.so \
-    ${libdir}libsolidcontrol.so \
-    ${libdir}libsolidcontrolifaces.so \
-    ${libdir}libsystemsettingsview.so \
-    ${libdir}libtaskmanager.so \
-    ${libdir}libweather_ion.so \
+    ${libdir}/libkdecorations.so \
+    ${libdir}/libkephal.so \
+    ${libdir}/libkfontinst.so \
+    ${libdir}/libkfontinstui.so \
+    ${libdir}/libkscreensaver.so \
+    ${libdir}/libksgrd.so \
+    ${libdir}/libksignalplotter.so \
+    ${libdir}/libkwineffects.so \
+    ${libdir}/libkwinglesutils.so \
+    ${libdir}/libkwinglutils.so \
+    ${libdir}/libkworkspace.so \
+    ${libdir}/liblsofui.so \
+    ${libdir}/liboxygenstyle.so \
+    ${libdir}/liboxygenstyleconfig.so \
+    ${libdir}/libplasma-geolocation-interface.so \
+    ${libdir}/libplasma_applet-system-monitor.so \
+    ${libdir}/libplasmaclock.so \
+    ${libdir}/libplasmagenericshell.so \
+    ${libdir}/libpowerdevilconfigcommonprivate.so \
+    ${libdir}/libpowerdevilcore.so \
+    ${libdir}/libpowerdevilui.so \
+    ${libdir}/libprocesscore.so \
+    ${libdir}/libprocessui.so \
+    ${libdir}/libsolidcontrol.so \
+    ${libdir}/libsolidcontrolifaces.so \
+    ${libdir}/libsystemsettingsview.so \
+    ${libdir}/libtaskmanager.so \
+    ${libdir}/libweather_ion.so \
     "
 
 FILES_${PN}-startkde = "${bindir}/startkde"
