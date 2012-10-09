@@ -14,9 +14,9 @@ export IMAGE_BASENAME = "ansgstrom-kde-desktop-image"
 IMAGE_FEATURES += "package-management"
 
 IMAGE_INSTALL += "\
-    task-kde-image \
-    task-kde-base \
-    task-kde-apps \
+    packagegroup-kde-image \
+    packagegroup-kde-base \
+    packagegroup-kde-apps \
     \
     plasma-startscript \
     \

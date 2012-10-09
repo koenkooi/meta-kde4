@@ -12,9 +12,9 @@ export IMAGE_BASENAME = "ansgstrom-kde-active-image"
 IMAGE_FEATURES += "package-management"
 
 IMAGE_INSTALL += "\
-    task-kde-image \
-    task-kde-base \
-    task-kde-active \
+    packagegroup-kde-image \
+    packagegroup-kde-base \
+    packagegroup-kde-active \
     \
     oxygen-icons \
     oxygen-fonts \

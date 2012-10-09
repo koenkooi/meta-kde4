@@ -7,8 +7,8 @@ include recipes-core/images/core-image-core.bb
 IMAGE_FEATURES += "package-management debug-tweaks"
 
 IMAGE_INSTALL += "\
-    task-kde-image \
-    task-kde-base \
+    packagegroup-kde-image \
+    packagegroup-kde-base \
     \
     oxygen-icons \
     oxygen-fonts \
