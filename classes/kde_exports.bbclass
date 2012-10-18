@@ -9,21 +9,15 @@ do_install_prepend() {
 
     for tmp_destfile in ${tmp_files_array}
     do
-      echo "# Patching /usr/ to ${STAGING_DIR_TARGET}${prefix} for  ${tmp_destfile}"
-      cat ${tmp_destfile} | sed 's|"/usr/|"${STAGING_DIR_TARGET}${prefix}/|' > ${WORKDIR}/tmp_swapfile
-      cat ${WORKDIR}/tmp_swapfile > ${tmp_destfile}
-      rm ${WORKDIR}/tmp_swapfile
+      echo "# Patching /usr/ to \${STAGING_DIR_TARGET}\${prefix} for  ${tmp_destfile}"
+      sed -i 's|"/usr/|"${STAGING_DIR_TARGET}${prefix}/|'  ${tmp_destfile}
     done
 }
 
-def kde_exports_after_parse(d):
-	def systemd_check_vars():
-		if d.getVar('BB_WORKERCONTEXT', True) is not None:
-			return
-		kde_exports = d.getVar('KDE_EXPORT_FILES', 1) or ""
-		if kde_exports == "":
-			raise bb.build.FuncFailed, "\n\n%s inherits kde-exports.bbclass but doesn't set KDE_EXPORT_FILES" % bb_filename
-
 python __anonymous() {
-    kde_exports_after_parse(d)
+    if not bb.data.inherits_class('native', d) and not bb.data.inherits_class('cross', d):
+        kdeexports_check = d.getVar('KDE_EXPORT_FILES')
+        if not kdeexports_check:
+            bb_filename = d.getVar('FILE')
+            raise bb.build.FuncFailed, "\n\n\nERROR: %s inherits kde_exports but doesn't set KDE_EXPORT_FILES" % bb_filename
 }
