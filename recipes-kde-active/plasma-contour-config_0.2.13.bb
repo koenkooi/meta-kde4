@@ -1,6 +1,6 @@
-  # launchers
-  #install -d ${D}/usr/share/kde4/config/SuSE/default/tablet
-  #install -m 0644 ${S}/launchers/*.desktop ${D}/usr/share/kde4/config/SuSE/default/tablet
+# launchers
+#install -d ${D}/usr/share/kde4/config/SuSE/default/tablet
+#install -m 0644 ${S}/launchers/*.desktop ${D}/usr/share/kde4/config/SuSE/default/tablet
 LICENSE = "other"
 LIC_FILES_CHKSUM = "file://../COPYING;md5=04e38b5b333181d76524f6371acaf652"
 DEPENDS = "contour"
