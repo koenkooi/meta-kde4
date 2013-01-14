@@ -1,28 +1,41 @@
+## For a full depends list see log.do_configure
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=1e7512b07f133ba3841965a175302b84"
-
 DEPENDS = "kdelibs4 okular libeigen2 lcms2 exiv2 soprano shared-mime-info attica recordsxml2cpp-native icu"
-
-## For a full depends list see log.do_configure
-
-
-inherit kde_cmake kde_without_docs kde_rdepends perlnative
+## Tag 2.4.0
+SRCREV = "3182dfa2ebe5b15f27cd86a8858a94ee4babc9a3"
+PV = "2.4.0+git${SRCPV}"
 
 SRC_URI = "git://anongit.kde.org/calligra.git;protocol=git;branch=master \
     file://Disable-OpenGL-if-OpenGl-ES-is-available.patch"
 
-## Tag 2.4.0
-SRCREV = "3182dfa2ebe5b15f27cd86a8858a94ee4babc9a3"
-
-PV = "2.4.0+git${SRCPV}"
-
 S = "${WORKDIR}/git"
 
-# calligra *must* be built out of tree
-OECMAKE_SOURCEPATH = ".."
-OECMAKE_BUILDPATH = "build"
+inherit kde_cmake kde_without_docs kde_rdepends perlnative
 
 EXTRA_OECMAKE_omap3 += "-DNO_OPENGL=TRUE"
+
+PACKAGES =+ "\
+    ${PN}-braindump \
+    ${PN}-flow \
+    ${PN}-karbon \
+    ${PN}-kexi \
+    ${PN}-krita \
+    ${PN}-plan \
+    ${PN}-sheets \
+    ${PN}-stage \
+    ${PN}-words \
+    "
+
+RDEPENDS_${PN}-braindump = "${PN}"
+RDEPENDS_${PN}-flow = "${PN}"
+RDEPENDS_${PN}-karbon = "${PN}"
+RDEPENDS_${PN}-kexi = "${PN}"
+RDEPENDS_${PN}-krita = "${PN}"
+RDEPENDS_${PN}-plan = "${PN}"
+RDEPENDS_${PN}-sheets = "${PN}"
+RDEPENDS_${PN}-stage = "${PN}"
+RDEPENDS_${PN}-words = "${PN}"
 
 FILES_${PN} += "\
     \
@@ -43,37 +56,10 @@ FILES_${PN} += "\
     ${libdir}/kde4/*.so \
     ${libdir}/libkdeinit4_kthesaurus.so \
     "
-
 FILES_${PN}-dev += "${datadir}/apps/cmake/modules/FindCalligraLibs.cmake \
     ${datadir}/config.kcfg \
     "
-
 FILES_${PN}-dbg += "${libdir}/kde4/.debug/*"
-
-
-PACKAGES =+ "\
-    ${PN}-braindump \
-    ${PN}-flow \
-    ${PN}-karbon \
-    ${PN}-kexi \
-    ${PN}-krita \
-    ${PN}-plan \
-    ${PN}-sheets \
-    ${PN}-stage \
-    ${PN}-words \
-    "
-
-
-RDEPENDS_${PN}-braindump = "${PN}"
-RDEPENDS_${PN}-flow = "${PN}"
-RDEPENDS_${PN}-karbon = "${PN}"
-RDEPENDS_${PN}-kexi = "${PN}"
-RDEPENDS_${PN}-krita = "${PN}"
-RDEPENDS_${PN}-plan = "${PN}"
-RDEPENDS_${PN}-sheets = "${PN}"
-RDEPENDS_${PN}-stage = "${PN}"
-RDEPENDS_${PN}-words = "${PN}"
-
 FILES_${PN}-braindump = "\
     ${bindir}/braindump \
     \
@@ -81,7 +67,6 @@ FILES_${PN}-braindump = "\
     \
     ${libdir}/libbraindump*.so.* \
     "
-
 FILES_${PN}-flow = "\
     ${bindir}/calligraflow \
     \
@@ -95,7 +80,6 @@ FILES_${PN}-flow = "\
     ${libdir}/kde4/flow* \
     ${libdir}/libkdeinit4_calligraflow.so \
     "
-
 FILES_${PN}-karbon = "\
     ${bindir}/karbon \
     \
@@ -109,7 +93,6 @@ FILES_${PN}-karbon = "\
     ${libdir}/kde4/karbon* \
     ${libdir}/libkdeinit4_karbon.so \
     "
-
 FILES_${PN}-kexi = "\
     ${bindir}/kexi \
     ${bindir}/kexi_sqlite3_dump \
@@ -122,7 +105,6 @@ FILES_${PN}-kexi = "\
     ${libdir}/libkexi*.so.* \
     ${libdir}/kde4/kexi* \
     "
-
 FILES_${PN}-krita = "\
     ${bindir}/krita \
     \
@@ -135,7 +117,6 @@ FILES_${PN}-krita = "\
     ${libdir}/libkdeinit4_krita.so \
     ${libdir}/libkrita*.so.* \
     "
-
 FILES_${PN}-plan = "\
     ${bindir}/calligraplan \
     ${bindir}/calligraplanwork \
@@ -149,7 +130,6 @@ FILES_${PN}-plan = "\
     ${libdir}/libplan*.so.* \
     ${libdir}/librcps_plan.so.* \
     "
-
 FILES_${PN}-sheets = "\
     ${bindir}/calligrasheets \
     \
@@ -162,7 +142,6 @@ FILES_${PN}-sheets = "\
     ${libdir}/libcalligrasheets*.so.* \
     ${libdir}/libkdeinit4_calligrasheets.so \
 "
-
 FILES_${PN}-stage = "\
     ${bindir}/calligrastage \
     \
@@ -174,7 +153,6 @@ FILES_${PN}-stage = "\
     ${libdir}/kde4/calligrastage* \
     ${libdir}/libkdeinit4_calligrastage.so \
     "
-
 FILES_${PN}-words = "\
     ${bindir}/calligrawords \
     \
@@ -187,3 +165,7 @@ FILES_${PN}-words = "\
     ${libdir}/kde4/word* \
     ${libdir}/libkdeinit4_calligrawords.so \
     "
+
+# calligra *must* be built out of tree
+OECMAKE_SOURCEPATH = ".."
+OECMAKE_BUILDPATH = "build"

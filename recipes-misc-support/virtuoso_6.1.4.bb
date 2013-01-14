@@ -1,33 +1,30 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
-
-inherit autotools
-
 DEPENDS = "openssl"
 
 SRC_URI = "http://netcologne.dl.sourceforge.net/project/virtuoso/virtuoso/6.1.4/virtuoso-opensource-6.1.4.tar.gz \
-	   file://fix-weird-md5-error.diff \
-	   file://config-cross.diff \
-	   file://build-sanely.diff \
-	  "
-
+           file://fix-weird-md5-error.diff \
+           file://config-cross.diff \
+           file://build-sanely.diff \
+          "
 SRC_URI[md5sum] = "7110a0b4b171b84850d346f4fe648172"
 SRC_URI[sha256sum] = "153f92211a23e05dcf4bde4c94d2963d06321d00f213c50025d740b96140154e"
 
+S = "${WORKDIR}/${BPN}-opensource-${PV}"
+
+inherit autotools
 
 # These options will prevent the run testing of features while crosscompiling
 # Otherwise Autotools would notices it and give us an error.
 EXTRA_OECONF =+ "\
-		 --disable-all-vads \
-		 --disable-openldap \
-		 --disable-wbxml2 \
-		 --disable-imsg \
-		 --disable-hslookup \
-		 --disable-imagemagick \
-	        "
+                 --disable-all-vads \
+                 --disable-openldap \
+                 --disable-wbxml2 \
+                 --disable-imsg \
+                 --disable-hslookup \
+                 --disable-imagemagick \
+                "
 
 FILES_${PN} += "${libdir}/*.so"
 
-
-S = "${WORKDIR}/${BPN}-opensource-${PV}"
 BBCLASSEXTEND = "native"

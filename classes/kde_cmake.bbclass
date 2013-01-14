@@ -1,10 +1,13 @@
 # This file is inherited by all KDE CMake related recipes in meta-kde
+##----
 
 # Please note variable order is important for this inherit!
 inherit qt4x11 cmake
 
+addtask generate_toolchain_file after do_patch before do_configure
+
 do_generate_toolchain_file() {
-	cat > ${WORKDIR}/toolchain.cmake <<EOF
+        cat > ${WORKDIR}/toolchain.cmake <<EOF
 message(STATUS "Toolchain file found and load at: ${WORKDIR}/toolchain.cmake")
 # CMake system name must be something like "Linux".
 # This is important for cross-compiling.
@@ -17,10 +20,8 @@ set( CMAKE_C_FLAGS "${OECMAKE_C_FLAGS}" CACHE STRING "CFLAGS" )
 set( CMAKE_CXX_FLAGS "${OECMAKE_CXX_FLAGS}" CACHE STRING "CXXFLAGS" )
 set( CMAKE_C_FLAGS_RELEASE "${OECMAKE_C_FLAGS_RELEASE}" CACHE STRING "CFLAGS for release" )
 set( CMAKE_CXX_FLAGS_RELEASE "${OECMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "CXXFLAGS for release" )
-
 # We actually do cross compiling, but this should be already set automatically
 set( CMAKE_CROSSCOMPILING TRUE )
-
 # only search in the paths provided so cmake doesnt pick
 # up libraries and tools from the native build machine
 # Please note: variable order is important!
@@ -28,29 +29,22 @@ set( CMAKE_FIND_ROOT_PATH ${STAGING_DIR_TARGET} )
 set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER )
 set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
 set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
-
 # Use qt.conf settings
 set( ENV{QT_CONF_PATH} ${WORKDIR}/qt.conf )
-
 # We need to set the rpath to the correct directory as cmake does not provide any
 # directory as rpath by default
 set( CMAKE_INSTALL_RPATH ${OECMAKE_RPATH} )
-
 # Don't use native cmake modules
 set( CMAKE_MODULE_PATH ${STAGING_DATADIR}/cmake/Modules/ ${STAGING_DATADIR}/apps/cmake/modules/ )
-
 # add for non /usr/lib libdir, e.g. /usr/lib64
 set( CMAKE_LIBRARY_PATH ${libdir} )
-
 ##---- see http://techbase.kde.org/Getting_Started/Build/Windows/Cross-Compiling
 set( KDE_PREFIX ${D}${prefix} )
-
 # this one is used by FindKDE4.cmake to load FindKDE4Internal.cmake:
 set( KDE4_DATA_DIR    ${STAGING_DATADIR}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
 if(NOT DEFINED KDE_WORKSPACE_WORKAROUND)
   set( DATA_INSTALL_DIR ${datadir}/apps CACHE PATH "points to the apps directory of installed kdelibs" )
 endif(NOT DEFINED KDE_WORKSPACE_WORKAROUND)
-
 # disable some things:
 set( WITH_AVAHI OFF   CACHE BOOL "Disabled" )
 set( WITH_DNSSD OFF   CACHE BOOL "Disabled" )
@@ -59,24 +53,16 @@ set( WITH_FAM OFF     CACHE BOOL "Disabled" )
 set( WITH_GSSAPI OFF  CACHE BOOL "Disabled" )
 set( WITH_HSPELL OFF  CACHE BOOL "Disabled" )
 set( WITH_OpenEXR OFF CACHE BOOL "Disabled" )
-
-
-##----
-
 # Only native compiled tools can be executed at build time:
 set( MAKEKDEWIDGETS_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/makekdewidgets CACHE PATH "" )
 set( KDE4_MAKEKDEWIDGETS_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/makekdewidgets CACHE PATH "" )
 set( KDE4_KCFGC_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/kconfig_compiler CACHE PATH "" )
 set( KDE4_AUTOMOC_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/automoc4 CACHE PATH "" )
 set( SOPRANO_ONTO2VOCABULARYCLASS_EXECUTABLE ${STAGING_DIR_NATIVE}${bindir}/onto2vocabularyclass CACHE PATH "")
-
-
 # This will prevent KDElibs from installing files to /usr/etc instead of /etc
 set( SYSCONF_INSTALL_DIR ${sysconfdir} CACHE PATH "" )
-
 # This one is a totally useless dependency
 set( KDE4_KDECONFIG_EXECUTABLE TRUE CACHE PATH "" )
-
 set( QT_LIBRARY_DIR ${OE_QMAKE_LIBDIR_QT} )
 set( QT_INSTALL_LIBS ${OE_QMAKE_LIBDIR_QT} )
 set( QT_MOC_EXECUTABLE ${OE_QMAKE_MOC} )
@@ -88,17 +74,13 @@ set( QT_MKSPECS_DIR ${STAGING_DATADIR}/qt4/mkspecs )
 set( QT_QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/Qt )
 set( QT_QTGUI_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtGui )
 set( QT_QTCORE_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT}/QtCore )
-
 # Qt Stuff for testing
 set( QT_INCLUDE_DIR ${OE_QMAKE_INCDIR_QT} )
-
 # This will allow us to install to the right directory instead of some bogus dirs found by FindKDE4Internal.cmake
 if( NOT DEFINED OE_CROSSCOMPILING)
   set( OE_CROSSCOMPILING TRUE )
 endif( NOT DEFINED OE_CROSSCOMPILING )
-
 # Don't build the documentation
 set( BUILD_doc OFF )
 EOF
 }
-addtask generate_toolchain_file after do_patch before do_configure 

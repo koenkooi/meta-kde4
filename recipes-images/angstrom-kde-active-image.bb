@@ -1,16 +1,14 @@
-DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
-
 ## angstrom-kde-test-image is a test image of meta-kde for angstrom
 #--Requirements
 #  This image was designed to work with OMAP 3530 hardware like the Beagleboard or Gumstix Overo.
-
-
-include recipes-images/angstrom/systemd-image.bb
+DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
+LICENSE = "MIT"
 
 export IMAGE_BASENAME = "ansgstrom-kde-active-image"
 
-IMAGE_FEATURES += "package-management"
+include recipes-images/angstrom/systemd-image.bb
 
+IMAGE_FEATURES += "package-management"
 IMAGE_INSTALL += "\
     packagegroup-kde-image \
     packagegroup-kde-base \
@@ -28,5 +26,3 @@ IMAGE_INSTALL += "\
     declarative-plasmoids \
     kate konsole ksnapshot \
 "
-
-LICENSE = "MIT"
