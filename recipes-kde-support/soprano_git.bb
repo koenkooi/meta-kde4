@@ -2,8 +2,8 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=58ea69e00c0f1a17ba58451500255625"
 DEPENDS = "redland virtuoso raptor libiodbc"
-SRCREV = "649dc0a271f0a291cbaa0da04554c4a5f5ebdfab"
-PV = "2.8.5+git${SRCPV}"
+SRCREV = "4085f0cb1a38ef3e5b9a223b395db82186b2de93"
+PV = "2.9.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://anongit.kde.org/soprano.git;branch=master \
