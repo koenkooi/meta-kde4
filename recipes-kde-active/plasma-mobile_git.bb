@@ -1,11 +1,11 @@
 DESCRIPTION = "This recipe builds the development version of plasma active / mobile"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL-2;md5=b234ee4d69f5fce4486a80fdaf4a4263"
-#finalized (and WORKING) depends list
+
 DEPENDS = "kdelibs4 kde-workspace kde-runtime soprano libkactivities4 quilt curl lsof automoc4-native qt-mobility-x11"
-#2012-08-7
-SRCREV = "72a55cca2a42d2b71bfef7b33e0c334deb481ed2"
-PV = "2+git${SRCPV}"
+#2012-10-8 Plasma Active 3.0
+SRCREV = "4300367dbc2b3d7506566594e139da5a4145f259"
+PV = "3.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://anongit.kde.org/plasma-mobile;protocol=git;branch=master \
