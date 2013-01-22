@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 DEPENDS = "db rasqal libtool libiodbc"
 PR = "r2"
 
-SRC_URI = "http://download.librdf.org/source/redland-1.0.15.tar.gz \
+SRC_URI = "http://download.librdf.org/source/${BPN}-${PV}.tar.gz \
     file://No-docs-and-NOCONFIGURE.patch \
     "
 SRC_URI[md5sum] = "b0deb87f3c7d3237a3d587c1e0f2f266"
