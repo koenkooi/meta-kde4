@@ -1,83 +1,72 @@
-From 019fc11f1a10649b1cc37b92318da51776cec716 Mon Sep 17 00:00:00 2001
+From 2a49d0d04d41785efc51aa444d8388ebac11330f Mon Sep 17 00:00:00 2001
 From: Samuel Stirtzel <s.stirtzel@googlemail.com>
-Date: Wed, 15 Feb 2012 13:26:45 +0100
-Subject: [PATCH] Fix cross compile Signed-off-by: Samuel Stirtzel
- <s.stirtzel@googlemail.com>
+Date: Tue, 15 Jan 2013 10:31:08 +0100
+Subject: [PATCH] Fix cross compile
 
+Upstream-Status: Inappropriate [embedded specific]
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
 ---
- configure.ac |   54 +++++++++++++++++++++++++++---------------------------
- 1 files changed, 27 insertions(+), 27 deletions(-)
+ configure.ac |   46 ----------------------------------------------
+ 1 file changed, 46 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 516c7b8..34411ac 100644
+index 8e86932..df0a6de 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -891,38 +891,38 @@ AC_MSG_RESULT($decimal_library)
+@@ -1129,52 +1129,6 @@ AC_MSG_RESULT($random_approach)
+ AM_CONDITIONAL(RASQAL_MTWIST, test $need_mtwist = yes)
  
- dnl Always need ceil, floor and round in rasqal_literal_ceil() etc.
- AC_MSG_CHECKING([for ceil, floor and round in default libs])
+ 
+-
+-
+-dnl Always need ceil, floor and round in rasqal_literal_ceil() etc.
+-AC_MSG_CHECKING([for ceil, floor and round in default libs])
 -ceil_lib=none
 -AC_RUN_IFELSE([AC_LANG_PROGRAM([[
 -#ifdef HAVE_MATH_H
 -#include <math.h>
 -#endif
+-#ifdef HAVE_STDLIB_H
+-#include <stdlib.h>
+-#endif
 -]], [[
--double d = ceil(1.0F) + floor(1.0F) + round(1.0F);
+-extern char **environ;
+-double t = strtod(environ[0], NULL);
+-return (int)(ceil(t) * floor(t) * round(t));
 -]])],
 -   AC_MSG_RESULT(yes)
 -   ceil_lib=libc,
 -   AC_MSG_RESULT(no),
 -   ceil_lib=none)
 -if test $ceil_lib = none; then
-+#ceil_lib=none
-+#AC_RUN_IFELSE([AC_LANG_PROGRAM([[
-+##ifdef HAVE_MATH_H
-+##include <math.h>
-+##endif
-+#]], [[
-+#double d = ceil(1.0F) + floor(1.0F) + round(1.0F);
-+#]])],
-+#   AC_MSG_RESULT(yes)
-+#   ceil_lib=libc,
-+#   AC_MSG_RESULT(no),
-+#   ceil_lib=none)
-+#if test $ceil_lib = none; then
-   LIBS="$LIBS -lm"
+-  LIBS="$LIBS -lm"
 -  AC_MSG_CHECKING([for ceil, floor and round with -lm])
 -  AC_RUN_IFELSE([AC_LANG_PROGRAM([[
-+#  AC_MSG_CHECKING([for ceil, floor and round with -lm])
-+#  AC_RUN_IFELSE([AC_LANG_PROGRAM([[
- #ifdef HAVE_MATH_H
- #include <math.h>
- #endif
+-#ifdef HAVE_MATH_H
+-#include <math.h>
+-#endif
+-#ifdef HAVE_STDLIB_H
+-#include <stdlib.h>
+-#endif
 -]], [[
--double d = ceil(1.0F) + floor(1.0F) + round(1.0F);
+-extern char **environ;
+-double t = strtod(environ[0], NULL);
+-return (int)(ceil(t) * floor(t) * round(t));
 -]])],
 -     AC_MSG_RESULT(yes)
 -     need_libm=1
 -     ceil_lib=libm,
 -     AC_MSG_RESULT(no),
 -     ceil_lib=none)
-+#]], [[
-+#double d = ceil(1.0F) + floor(1.0F) + round(1.0F);
-+#]])],
-+#     AC_MSG_RESULT(yes)
-+  need_libm=1
-+  ceil_lib=libm,
-+#     AC_MSG_RESULT(no),
-+#     ceil_lib=none)
-   LIBS="$oLIBS"
+-  LIBS="$oLIBS"
 -fi
 -if test $ceil_lib = none; then
 -  AC_MSG_ERROR([Could not find ceil, floor, round in default libs or with -lm])
 -fi
-+#fi
-+#if test $ceil_lib = none; then
-+#  AC_MSG_ERROR([Could not find ceil, floor, round in default libs or with -lm])
-+#fi
  if test $need_libm = 1; then
    RASQAL_EXTERNAL_LIBS="$RASQAL_EXTERNAL_LIBS -lm"
  fi
 -- 
-1.7.5.4
+1.7.9.5
 
