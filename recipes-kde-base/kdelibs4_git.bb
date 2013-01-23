@@ -1,12 +1,9 @@
-#     file://0003-Fix-FindKDE4Internals-cmake-file.patch \
-# This will cause errors related to disabled DEPRECATED settings (e.g. usr/include/nepomuk/tools.h will be missing but is required)
-##  -DKDE_PLATFORM_PROFILE=Mobile \
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 DEPENDS = "kdelibs4-native automoc4-native soprano-native strigi libdbusmenu-qt soprano shared-desktop-ontologies dbus giflib jasper attica jpeg libpng bzip2 libpcre perl-native aspell"
-## Tag v4.9.0
-SRCREV = "bfdb17858efeeabf74ccb4a4010e250bcde6aa42"
-PV = "4.9.0+git${SRCPV}"
+## Tag v4.10.0
+SRCREV = "e3dfb97d2e11d78164e9b04f4019bdf3a1fdaf21"
+PV = "4.10.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
@@ -26,7 +23,6 @@ inherit kde_cmake kde_exports kde_without_docs kde_rdepends perlnative
 # This will prevent errors when the cmake macro _set_fancy is required by other cmake files while compiling kdelibs.
 EXTRA_OECMAKE =+ "\
     -DKJS_FORCE_DISABLE_PCRE=TRUE \
-    -DSTRIGI_REQUIRED=FALSE \
     \
     -DICEMAKER_EXECUTABLE=${STAGING_BINDIR_NATIVE}/icemaker \
     \
