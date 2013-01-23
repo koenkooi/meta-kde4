@@ -14,6 +14,7 @@ SRC_URI = "git://anongit.kde.org/kdelibs.git;branch=master \
     file://0002-Fix-openssl-check.patch \
     file://0003-Fix-FindKDE4Internals-cmake-file.patch \
     file://0004-Fix-the-path-to-Icemaker.patch \
+    file://0005-Fix-FindQt4.cmake-crosscompiling-issues.patch \
     file://0006-Fix-makekdewidget-executable-path.patch \
     "
 

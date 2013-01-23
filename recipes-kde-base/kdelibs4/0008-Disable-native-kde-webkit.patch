@@ -1,0 +1,28 @@
+From 5a89469eb6fab98b2b2e3a3a60319df75932f0c4 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Tue, 15 Jan 2013 16:41:03 +0100
+Subject: [PATCH] Disable native kde-webkit
+
+we don't build this anyway so why configure against its dependencies?
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3449c2f..db4690f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -333,7 +333,7 @@ if(NOT WINCE)
+ add_subdirectory( plasma )
+ endif(NOT WINCE)
+ add_subdirectory( kunitconversion )
+-add_subdirectory( kdewebkit )
++#add_subdirectory( kdewebkit )
+ add_subdirectory( includes )
+ 
+ add_subdirectory( experimental )
+-- 
+1.7.9.5
+

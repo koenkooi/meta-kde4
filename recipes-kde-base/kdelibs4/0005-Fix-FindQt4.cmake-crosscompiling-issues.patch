@@ -1,0 +1,108 @@
+From 4f5400e8bef7ad4d17875e2e69fb49b9fb5262ce Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 24 Jan 2013 11:23:07 +0100
+Subject: [PATCH] Fix FindQt4.cmake crosscompiling issues
+
+This fixes the error:
+-- Qt's moc NOT found!
+-- Qt's uic NOT found!
+-- Qt's rcc NOT found!
+CMake Error at /work/oe-core/tmp-eglibc/sysroots/overo/usr/share/apps/cmake/modules/FindQt4.cmake:1216 (MESSAGE):
+  Qt libraries, includes, moc, uic or/and rcc NOT found!
+
+The error is produced by FindQt4.cmake in ${STAGING_DATADI_NATIVE}/cmake/Modules
+
+Upstream-Status: Inappropriate[Embedded specific]
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ cmake/modules/FindQt4.cmake |   70 ++++++++++++++++++++++---------------------
+ 1 file changed, 36 insertions(+), 34 deletions(-)
+
+diff --git a/cmake/modules/FindQt4.cmake b/cmake/modules/FindQt4.cmake
+index f482d3c..9e3ca15 100644
+--- a/cmake/modules/FindQt4.cmake
++++ b/cmake/modules/FindQt4.cmake
+@@ -1058,43 +1058,45 @@ IF (QT4_QMAKE_FOUND)
+   #######################################
+ 
+ 
+-  IF(QT_QMAKE_CHANGED)
+-    SET(QT_UIC_EXECUTABLE NOTFOUND)
+-    SET(QT_MOC_EXECUTABLE NOTFOUND)
+-    SET(QT_UIC3_EXECUTABLE NOTFOUND)
+-    SET(QT_RCC_EXECUTABLE NOTFOUND)
+-    SET(QT_DBUSCPP2XML_EXECUTABLE NOTFOUND)
+-    SET(QT_DBUSXML2CPP_EXECUTABLE NOTFOUND)
+-    SET(QT_LUPDATE_EXECUTABLE NOTFOUND)
+-    SET(QT_LRELEASE_EXECUTABLE NOTFOUND)
+-    SET(QT_QCOLLECTIONGENERATOR_EXECUTABLE NOTFOUND)
+-    SET(QT_DESIGNER_EXECUTABLE NOTFOUND)
+-    SET(QT_LINGUIST_EXECUTABLE NOTFOUND)
+-  ENDIF(QT_QMAKE_CHANGED)
+-  
+-  FIND_PROGRAM(QT_MOC_EXECUTABLE
+-    NAMES moc-qt4 moc
+-    PATHS ${QT_BINARY_DIR}
+-    NO_DEFAULT_PATH
+-    )
++  IF(NOT CMAKE_CROSSCOMPILING)
++    IF(QT_QMAKE_CHANGED)
++      SET(QT_UIC_EXECUTABLE NOTFOUND)
++      SET(QT_MOC_EXECUTABLE NOTFOUND)
++      SET(QT_UIC3_EXECUTABLE NOTFOUND)
++      SET(QT_RCC_EXECUTABLE NOTFOUND)
++      SET(QT_DBUSCPP2XML_EXECUTABLE NOTFOUND)
++      SET(QT_DBUSXML2CPP_EXECUTABLE NOTFOUND)
++      SET(QT_LUPDATE_EXECUTABLE NOTFOUND)
++      SET(QT_LRELEASE_EXECUTABLE NOTFOUND)
++      SET(QT_QCOLLECTIONGENERATOR_EXECUTABLE NOTFOUND)
++      SET(QT_DESIGNER_EXECUTABLE NOTFOUND)
++      SET(QT_LINGUIST_EXECUTABLE NOTFOUND)
++    ENDIF(QT_QMAKE_CHANGED)
+ 
+-  FIND_PROGRAM(QT_UIC_EXECUTABLE
+-    NAMES uic-qt4 uic
+-    PATHS ${QT_BINARY_DIR}
+-    NO_DEFAULT_PATH
+-    )
++    FIND_PROGRAM(QT_MOC_EXECUTABLE
++      NAMES moc-qt4 moc
++      PATHS ${QT_BINARY_DIR}
++      NO_DEFAULT_PATH
++      )
+ 
+-  FIND_PROGRAM(QT_UIC3_EXECUTABLE
+-    NAMES uic3
+-    PATHS ${QT_BINARY_DIR}
+-    NO_DEFAULT_PATH
+-    )
++    FIND_PROGRAM(QT_UIC_EXECUTABLE
++      NAMES uic-qt4 uic
++      PATHS ${QT_BINARY_DIR}
++      NO_DEFAULT_PATH
++      )
+ 
+-  FIND_PROGRAM(QT_RCC_EXECUTABLE 
+-    NAMES rcc
+-    PATHS ${QT_BINARY_DIR}
+-    NO_DEFAULT_PATH
+-    )
++    FIND_PROGRAM(QT_UIC3_EXECUTABLE
++      NAMES uic3
++      PATHS ${QT_BINARY_DIR}
++      NO_DEFAULT_PATH
++      )
++
++    FIND_PROGRAM(QT_RCC_EXECUTABLE
++      NAMES rcc
++      PATHS ${QT_BINARY_DIR}
++      NO_DEFAULT_PATH
++      )
++  endif(NOT CMAKE_CROSSCOMPILING)
+ 
+ if(NOT WINCE)
+   FIND_PROGRAM(QT_DBUSCPP2XML_EXECUTABLE 
+-- 
+1.7.9.5
+
