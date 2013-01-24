@@ -1,0 +1,36 @@
+From 6b24079f80b12b0df8f46b8d239a429e49fcff75 Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Thu, 24 Jan 2013 09:59:50 +0100
+Subject: [PATCH] Fix Namespace to NameSpace in kconfig files
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ conf/settings.kcfgc      |    2 +-
+ conf/settings_core.kcfgc |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/conf/settings.kcfgc b/conf/settings.kcfgc
+index 5e2ec95..9f34ea2 100644
+--- a/conf/settings.kcfgc
++++ b/conf/settings.kcfgc
+@@ -1,5 +1,5 @@
+ ClassName=Settings
+-Namespace=Okular
++NameSpace=Okular
+ File=okular.kcfg
+ Inherits=SettingsCore
+ Mutators=true
+diff --git a/conf/settings_core.kcfgc b/conf/settings_core.kcfgc
+index 4bfd6d9..67a1a62 100644
+--- a/conf/settings_core.kcfgc
++++ b/conf/settings_core.kcfgc
+@@ -1,5 +1,5 @@
+ ClassName=SettingsCore
+-Namespace=Okular
++NameSpace=Okular
+ File=okular_core.kcfg
+ Mutators=true
+ Singleton=true
+-- 
+1.7.9.5
+
