@@ -1,0 +1,27 @@
+From 6368eaf4ec36b1806e358b1390c6e6829500292a Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 23 Jan 2013 16:21:11 +0100
+Subject: [PATCH] Disable ktouchpadenabler to unbreak build
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9442c10..0058390 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -162,7 +162,8 @@ if(${KDE_PLATFORM_PROFILE} STREQUAL "Desktop")
+ 
+    if (Q_WS_X11)
+       macro_optional_add_subdirectory(kinfocenter)
+-      macro_optional_add_subdirectory(ktouchpadenabler)
++      #unbuildable
++      #macro_optional_add_subdirectory(ktouchpadenabler)
+    endif (Q_WS_X11)
+ 
+    if(NOT WIN32)
+-- 
+1.7.9.5
+

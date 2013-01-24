@@ -2,20 +2,20 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 DEPENDS = "${STDDEPENDS} virtual/libgl"
 DEPENDS_omap3 = "${STDDEPENDS} virtual/egl"
-## Tag v4.9.0
-SRCREV = "df6a86044ffd3d8f02dc0b15348d3475338cad10"
-PV = "4.9.0+git${SRCPV}"
-PR = "r3"
+## Tag v4.10.0
+SRCREV = "61e365add266a28d339d8dd1f68fb506101f9f84"
+PV = "4.10.0+git${SRCPV}"
 
 SRC_URI = "git://anongit.kde.org/kde-workspace;protocol=git;branch=master \
     file://Fix-Phonon-to-phonon-include-naming-sheme.patch \
-    file://Fix-path-to-X11-libraries.patch"
+    file://Disable-ktouchpadenabler-to-unbreak-build.patch \
+    "
 
 # Gracefully depend on virtual/egl if needed.
-STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano python"
+STDDEPENDS = "kdelibs4 libkactivities4 qimageblitz libxkbfile perl-native boost soprano python libxcb xcb-util-image xcb-util-renderutil"
 S = "${WORKDIR}/git"
 
-inherit kde_cmake kde_without_docs kde_rdepends perlnative kde_exports
+inherit kde_cmake kde_without_docs kde_rdepends perlnative kde_exports pythonnative
 
 EXTRA_OECMAKE += "\
     -DPHONON_INCLUDE_DIR=${OE_QMAKE_INCDIR_QT} \
@@ -56,7 +56,15 @@ RCONFLICTS_${PN}-startkde = "plasma-startscript"
 FILES_${PN} += "\
     ${libdir}/libkdeinit4_*.so \
     ${libdir}/libkickoff.so \
+    ${libdir}/kconf_update_bin/notifications-to-orgkdenotifications \
+    ${libdir}/kconf_update_bin/force_krunner_lock_shortcut_unreg \
     ${libdir}/kde4/*.so \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/libdecorationplugin.so \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/ButtonGroup.qml \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/Decoration.qml \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/MenuButton.qml \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/DecorationButton.qml \
+    ${libdir}/kde4/imports/org/kde/kwin/decorations/plastik/libplastikplugin.so \
     ${libdir}/kde4/plugins/*/*.so \
     ${libdir}/kde4/libexec/* \
     ${libdir}/strigi/strigita_font.so \
@@ -77,19 +85,22 @@ FILES_${PN} += "\
     \
     ${sysconfdir}/* \
     "
+
 FILES_${PN}-dbg += "\
     ${libdir}/kde4/.debug/* \
     ${libdir}/kde4/libexec/.debug/* \
     ${libdir}/kde4/plugins/*/.debug/* \
     ${libdir}/strigi/.debug/* \
     ${libdir}/kconf_update_bin/.debug/* \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/.debug/libdecorationplugin.so \
+    ${libdir}/kde4/imports/org/kde/kwin/decorations/plastik/.debug/libplastikplugin.so \
     "
+
 # ${PN}-dev is currently "messy" so re-add all libraries by hand
 FILES_SOLIBSDEV = ""
 FILES_${PN}-dev += "\
     ${datadir}/cmake/* \
     ${libdir}/cmake/KDE4Workspace/*.cmake \
-    \
     \
     ${libdir}/libkdecorations.so \
     ${libdir}/libkephal.so \
@@ -119,7 +130,11 @@ FILES_${PN}-dev += "\
     ${libdir}/libsystemsettingsview.so \
     ${libdir}/libtaskmanager.so \
     ${libdir}/libweather_ion.so \
+    \
+    ${libdir}/kde4/imports/org/kde/kwin/decorations/plastik/qmldir \
+    ${libdir}/kde4/imports/org/kde/kwin/decoration/qmldir \
     "
+
 FILES_${PN}-startkde = "${bindir}/startkde"
 FILES_${PN}-cursors-oxygen-black = "${datadir}/icons/Oxygen_Black/*"
 FILES_${PN}-cursors-oxygen-blue = "${datadir}/icons/Oxygen_Blue/*"
