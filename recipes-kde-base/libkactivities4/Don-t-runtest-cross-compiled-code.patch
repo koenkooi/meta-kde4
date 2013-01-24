@@ -1,0 +1,99 @@
+From 3a6822c65ee289a3732199e579720c1a0a80517b Mon Sep 17 00:00:00 2001
+From: Samuel Stirtzel <s.stirtzel@googlemail.com>
+Date: Wed, 23 Jan 2013 13:00:22 +0100
+Subject: [PATCH] Don't runtest cross compiled code
+
+Signed-off-by: Samuel Stirtzel <s.stirtzel@googlemail.com>
+---
+ cmake/modules/CheckCxxFeatures.cmake |   74 +++++++++++++++++-----------------
+ 1 file changed, 38 insertions(+), 36 deletions(-)
+
+diff --git a/cmake/modules/CheckCxxFeatures.cmake b/cmake/modules/CheckCxxFeatures.cmake
+index a4a0f11..11093b0 100644
+--- a/cmake/modules/CheckCxxFeatures.cmake
++++ b/cmake/modules/CheckCxxFeatures.cmake
+@@ -7,43 +7,45 @@ set(CXX_FEATURES_UNSUPPORTED "")
+ 
+ macro(CXX_PERFORM_TEST TEST_SOURCE_FILE TEST_TEST_BINARY_DIR EXPECTED_RESULT RESULT COMPILE_DEFINITIONS)
+ 
+-    try_run(
+-        RUN_RESULT_VAR COMPILE_RESULT_VAR
+-        "${TEST_BINARY_DIR}" "${TEST_SOURCE_FILE}"
+-        COMPILE_DEFINITIONS "${COMPILE_DEFINITIONS}"
+-        COMPILE_OUTPUT_VARIABLE COMPILE_OUT
+-        RUN_OUTPUT_VARIABLE RUN_OUT
+-    )
+-
+-    set(RESULT_VAR FALSE)
+-
+-    if (COMPILE_RESULT_VAR AND NOT RUN_RESULT_VAR)
+-        set(RESULT_VAR TRUE)
+-    endif (COMPILE_RESULT_VAR AND NOT RUN_RESULT_VAR)
+-
+-    if (NOT ("${RESULT_VAR}" STREQUAL "${EXPECTED_RESULT}"))
+-        # message ("Got ${RESULT_VAR} as a result, but ${EXPECTED_RESULT} expected")
+-
+-        if (NOT ${COMPILE_RESULT_VAR})
+-            # message("------ compilation output ------")
+-            # message("${COMPILE_OUT}")
+-        endif (NOT ${COMPILE_RESULT_VAR})
+-
+-        if (${RUN_RESULT_VAR})
+-            # message("---------- run output ----------")
+-            # message("${RUN_OUT}")
+-            # message("Process returned: ${RUN_RESULT_VAR}")
+-        endif (${RUN_RESULT_VAR})
+-
+-        # message("--------------------------------")
+-
+-        set (${RESULT} FALSE)
+-
+-    else ()
+-        set (${RESULT} TRUE)
+-
+-    endif ()
+ 
++#     try_run(
++#         RUN_RESULT_VAR COMPILE_RESULT_VAR
++#         "${TEST_BINARY_DIR}" "${TEST_SOURCE_FILE}"
++#         COMPILE_DEFINITIONS "${COMPILE_DEFINITIONS}"
++#         COMPILE_OUTPUT_VARIABLE COMPILE_OUT
++#         RUN_OUTPUT_VARIABLE RUN_OUT
++#     )
++# 
++#     set(RESULT_VAR FALSE)
++# 
++#     if (COMPILE_RESULT_VAR AND NOT RUN_RESULT_VAR)
++#         set(RESULT_VAR TRUE)
++#     endif (COMPILE_RESULT_VAR AND NOT RUN_RESULT_VAR)
++# 
++#     if (NOT ("${RESULT_VAR}" STREQUAL "${EXPECTED_RESULT}"))
++#         # message ("Got ${RESULT_VAR} as a result, but ${EXPECTED_RESULT} expected")
++# 
++#         if (NOT ${COMPILE_RESULT_VAR})
++#             # message("------ compilation output ------")
++#             # message("${COMPILE_OUT}")
++#         endif (NOT ${COMPILE_RESULT_VAR})
++# 
++#         if (${RUN_RESULT_VAR})
++#             # message("---------- run output ----------")
++#             # message("${RUN_OUT}")
++#             # message("Process returned: ${RUN_RESULT_VAR}")
++#         endif (${RUN_RESULT_VAR})
++# 
++#         # message("--------------------------------")
++# 
++#         set (${RESULT} FALSE)
++# 
++#     else ()
++#         set (${RESULT} TRUE)
++# 
++#     endif ()
++
++set (${RESULT} TRUE)
+ 
+ 
+ endmacro(CXX_PERFORM_TEST TEST_SOURCE EXPECTED_RESULT RESULT)
+-- 
+1.7.9.5
+
