@@ -35,7 +35,7 @@ set( ENV{QT_CONF_PATH} ${WORKDIR}/qt.conf )
 # directory as rpath by default
 set( CMAKE_INSTALL_RPATH ${OECMAKE_RPATH} )
 # Don't use native cmake modules
-set( CMAKE_MODULE_PATH ${STAGING_DATADIR}/cmake/Modules/ ${STAGING_DATADIR}/apps/cmake/modules/ )
+set( CMAKE_MODULE_PATH ${STAGING_LIBDIR}/cmake/ ${STAGING_DATADIR}/apps/cmake/modules/ ${STAGING_DATADIR}/cmake/Modules/ )
 # add for non /usr/lib libdir, e.g. /usr/lib64
 set( CMAKE_LIBRARY_PATH ${libdir} )
 ##---- see http://techbase.kde.org/Getting_Started/Build/Windows/Cross-Compiling
