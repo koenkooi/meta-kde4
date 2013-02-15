@@ -4,9 +4,9 @@
 DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
 LICENSE = "MIT"
 
-export IMAGE_BASENAME = "ansgstrom-kde-active-image"
-
 include recipes-images/angstrom/systemd-image.bb
+
+export IMAGE_BASENAME = "ansgstrom-kde-active-image"
 
 IMAGE_FEATURES += "package-management"
 IMAGE_INSTALL += "\

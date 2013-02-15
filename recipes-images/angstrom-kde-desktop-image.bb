@@ -8,9 +8,9 @@ DESCRIPTION = "Test image for meta-kde with the Angstrom distribution"
 # the _recipe_ license, the contents of the image is provided under different licenses
 LICENSE = "MIT"
 
-export IMAGE_BASENAME = "ansgstrom-kde-desktop-image"
-
 include recipes-images/angstrom/systemd-image.bb
+
+export IMAGE_BASENAME = "ansgstrom-kde-desktop-image"
 
 CONMANPKGS = ""
 IMAGE_FEATURES += "package-management"
