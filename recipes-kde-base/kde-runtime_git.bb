@@ -1,10 +1,9 @@
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5c213a7de3f013310bd272cdb6eb7a24"
 DEPENDS = "kdelibs4 libkactivities4 kdepimlibs soprano exiv2 soprano-native shared-desktop-ontologies nepomuk-core"
-## Tag v4.9.0
-SRCREV = "bb752c3bf029e1fb0211fd4d1ffcc28ffeae5c26"
-PV = "4.9.0+git${SRCPV}"
-PR = "r1"
+## Tag v4.10.0
+SRCREV = "a9ca1460d154de5587a4b0a46fa2adb5ff857d24"
+PV = "4.10.0+git${SRCPV}"
 
 SRC_URI = "git://anongit.kde.org/kde-runtime;protocol=git;branch=master"
 
