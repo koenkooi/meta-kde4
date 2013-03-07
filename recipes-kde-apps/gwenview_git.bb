@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 inherit kde_cmake kde_rdepends kde_without_docs
 
 # for videos?
-RDEPENDS = "libqtphonon4"
+RDEPENDS_${PN} = "libqtphonon4"
 
 FILES_${PN} += "${datadir} \
     ${libdir}/kde4/*.so"
