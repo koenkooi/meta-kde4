@@ -1,7 +1,7 @@
 Layer name:          meta-kde
 Layer purpose:       Support plasma active and plasma desktop in OpenEmbedded
 Layer status:        Work in progress / unstable
-Layer dependencies:  meta-openembedded, openembedded-core
+Layer dependencies:  meta-networking, meta-openembedded, openembedded-core
 Layer license:       MIT license (see COPYING.MIT)
 
 Layer maintainers:
@@ -12,7 +12,7 @@ Copyright 2012 - Kai Kang
 Copyright 2013 - Khem Raj
 Copyright 2012, 2013 - Koen Kooi
 Copyright 2012 - Robert Yang
-Copyright 2011, 2012 - Samuel Stirtzel
+Copyright 2011-2013 - Samuel Stirtzel
 
 Thanks to:
 Andreas Müller
