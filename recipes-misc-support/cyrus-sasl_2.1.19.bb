@@ -47,7 +47,7 @@ do_install () {
 FILES_${PN} += "${prefix}/lib/sasl2/*.so*"
 FILES_${PN}-dev += "${libdir}/sasl2/*.la ${libdir}/sasl2/*.a"
 
-pkg_postinst () {
+pkg_postinst_${PN} () {
         grep cyrus /etc/passwd || adduser --disabled-password --home=/var/spool/mail --ingroup mail -g "Cyrus sasl" cyrus
     echo "cyrus" | saslpasswd2 -p -c cyrus
     chgrp mail /etc/sasldb2
