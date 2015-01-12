@@ -1,7 +1,7 @@
 ## For a full depends list see log.do_configure
 LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=1e7512b07f133ba3841965a175302b84"
-DEPENDS = "kdelibs4 okular libeigen2 lcms2 exiv2 soprano shared-mime-info attica recordsxml2cpp-native icu"
+DEPENDS = "kdelibs4 okular libeigen2 lcms exiv2 soprano shared-mime-info attica recordsxml2cpp-native icu"
 ## Tag 2.4.0
 SRCREV = "3182dfa2ebe5b15f27cd86a8858a94ee4babc9a3"
 PV = "2.4.0+git${SRCPV}"
